@@ -69,9 +69,20 @@ Folino, F., Guarascio, M., Pontieri, L.: Discovering context-aware models for
 Goodfellow, I., Bengio, Y., Courville, A.: Deep Learning, chap. Sequence
   Modeling: Recurrent and Recursive Nets, pp. 373--420. MIT Press (2016)
 
+\bibitem{graves2013icassp}
+Graves, A., Mohamed, A.R., Hinton, G.E.: Speech recognition with deep recurrent
+  neural networks. In: IEEE International Conference on Acoustics, Speech and
+  Signal Processing (ICASSP). pp. 6645--6649. IEEE (2013)
+
 \bibitem{hochreiter1997long}
 Hochreiter, S., Schmidhuber, J.: Long short-term memory. Neural computation
   9(8),  1735--1780 (1997)
+
+\bibitem{doi:10.1108/02635571111137241}
+Kang, B., Jung, J.Y., Cho, N.W., Kang, S.H.: Real time business process
+  monitoring using formal concept analysis. Industrial Management \& Data
+  Systems  111(5),  652--674 (2011),
+  \url{http://dx.doi.org/10.1108/02635571111137241}
 
 \bibitem{Leontjeva2015}
 Leontjeva, A., Conforti, R., Di~Francescomarino, C., Dumas, M., Maggi, F.M.:
@@ -134,6 +145,13 @@ Suriadi, S., Ouyang, C., van~der Aalst, W.M.P., ter Hofstede, A.H.M.: Root
   Cause Analysis with Enriched Process Logs, pp. 174--186. Springer Berlin
   Heidelberg, Berlin, Heidelberg (2013)
 
+\bibitem{Sutskever2014SSL29690332969173}
+Sutskever, I., Vinyals, O., Le, Q.V.: Sequence to sequence learning with neural
+  networks. In: Proceedings of the 27th International Conference on Neural
+  Information Processing Systems. pp. 3104--3112. NIPS'14, MIT Press,
+  Cambridge, MA, USA (2014),
+  \url{http://dl.acm.org/citation.cfm?id=2969033.2969173}
+
 \bibitem{niek96732}
 Tax, N., Verenich, I., Rosa, M.L., Dumas, M.: Predictive business process
   monitoring with lstm neural networks (2017), to appear in CAiSE 2017
@@ -147,6 +165,11 @@ Teinemaa, I., Dumas, M., Maggi, F.M., {Di Francescomarino}, C.: Predictive
 Tillmann, C., Ney, H.: Word reordering and a dynamic programming beam search
   algorithm for statistical machine translation. Comput. Linguist.  29(1),
   97--133 (Mar 2003)
+
+\bibitem{doi:10.1142/S0218126698000043}
+VAN DER~AALST, W.M.P.: The application of petri nets to workflow management.
+  Journal of Circuits, Systems and Computers  08(01),  21--66 (1998),
+  \url{http://www.worldscientific.com/doi/abs/10.1142/S0218126698000043}
 
 \bibitem{quteprints96732}
 Verenich, I., Dumas, M., Rosa, M.L., Maggi, F.M., Chasovskyi, D., Rozumnyi, A.:

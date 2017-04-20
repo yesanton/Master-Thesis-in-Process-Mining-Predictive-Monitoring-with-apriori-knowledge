@@ -85,6 +85,47 @@ Also, example of the issue to resolution process, textual comments are added to 
 With this knowledge about types of business processes it is easier to understand the limitations of the current state of the art methods to be described in next sections. 
 
 
+\subsection{Hidden Markov Models}
+Hidden Markov Models (HMMs) are one of the most used probabilistic models. These models belong to the family of directed probabilistic graphical models. 
+
+Under this model, random variables are divided into two sets, namely a set seen outside, an \textit{observations} set $X=X_1,...,X_i,...,X_n$, and a hidden sequence (that is considered to be a first order Markov chain), \textit{states} $Y=Y_1,...,Y_i,...,Y_n$.
+
+The model is built by four sets of parameters. 
+
+\begin{center}
+	\centering
+	\begin{tabular}{| l | l  |}	
+		\hline
+		$P(Y_1 = c_k | Y_0 = start) $, & initial probability \\
+		\hline
+		$P(Y_i = c_k | Y_{i-1} = c_l) $ & transition probability \\
+		\hline
+		$P(Y_i = stop | Y_{i-1} = c_k) $ & final probability \\
+		\hline
+		$P(X_i = w_j | Y_{i} = c_k) $ & emission probability \\
+		\hline
+	\end{tabular}
+\end{center}
+
+The observation set is the one that is seen on the outside. That implies what the usual usage of HMMs is having an HMM defined by parameters above to predict the sequence of states.
+
+In order to predict the sequence the Viterbi algorithm is used. It is a perfect example of a dynamic programming algorithm to find \textit{max-product} of probabilities over all pace of sequences.
+
+\subsection{Conditional Random Field}
+
+The HMM model described above is a generative model, that is used to model the joint distribution of the outcome and the features $P(Y,X)$. There is another version of sequential models that is discriminative. It is called Conditional Random Field. It is used to build a conditional probability $P(Y|X)$ of the outcome.
+
+CRF is a random field, in which the output $y$ is conditioned on input $x$. The conditional probability takes form
+
+\[P(Y|X)=1/Z(X) * \exp(\sum_{m=1}^{M}{(\lambda_m * f_m (y_n, y_{n-1}, x_n))})\]
+
+where the $Z(X)$ normalization function of the form 
+
+\[Z(X)=\sum_{y}{\exp(\sum_{m=1}^{M}{(\lambda_m * f_m (y_n, y_{n-1}, x_n))})}\]
+
+The main advantage of this model is relaxation of condition of observed data with labels. 
+
+
 
 
 \subsection{RNNs and LSTM}
@@ -336,9 +377,87 @@ In our approach, the a-priori knowledge that describes how a running case will d
 %
 We assume that activities occurring during the process execution fall into the set of atomic propositions. LTL rules are constructed from these atoms by applying the temporal operators $\NEXT$ (next), $\sometime$ (future), $\always$ (globally), and $\until$ (until) in addition to the usual boolean connectives. Given a formula $\varphi$, $\NEXT \varphi$ means that the next time instant exists and $\varphi$ is true in the next time instant (strong next). $\sometime \varphi$ indicates that $\varphi$ is true sometimes in the future. $\always \varphi$ means that $\varphi$ is true always in the future. $\varphi \until \psi$ indicates that $\varphi$ has to hold at least until $\psi$  holds and $\psi$ must hold in the current or in a future time instant.
 
+\subsection{Beam search}
+
+Beam search is a heuristic search algorithm, based on the principle of exploring the graph of possible solutions by the most promising node. It is built on the assumption of the big search space. It orders all partial solutions with some heuristic measure keeping only small portion of the most promising ones, expanding them to get the complete solution.
+
+There are few variations of this algorithm, from which two will be thoroughly explained here.
+
+\subsubsection{Best-first variation of Beam search}
+
+Best-first search explores the solution space following the most probable solution first. The algorithm exploits a tree structure, in which each node maintains its state as open and closed. The algorithm assumes that all nodes are open at the initialization, and after visiting the nodes marks them as closed. 
+
+The pseudo code for the algorithm is following:
+
+
+\begin{algorithm}
+	\caption{Best first search}
+	\label{alg:protrack}
+	\begin{algorithmic}[1]
+		\State define node of the graph, OPEN, to be starting node $s$
+		\If {\textsc{list} is empty} 
+		\State	failure
+		\EndIf
+		\State Take the best node from the list (call it $n$), and make it CLOSED
+		\State Expand node $n$
+		\If {any of the successor nodes are the solution} 
+			\State	success, return the solution traced back
+		\EndIf
+		\ForAll {node of the successors} 
+		\State	apply evaluation function $f$ to the $node$\;
+		\State	if $node$ is new (not CLOSED) mark as OPEN\;
+		\EndFor
+	\end{algorithmic}
+\end{algorithm}
+
+
+
+\vspace{0.2 cm}
+
+Different evaluation function can be used for the task. The decision is made upon the specifics of the problem, and it directly influences the effectiveness of the algorithm. 
+
+\subsubsection{Breath-first variation of Beam search}
+
+Breath-first search begins with an empty node and explores the search space in the breath-wise order. 
+
+This type of beam search operates using few priority queues instead of tree structures as in previous approach. 
+
+Here is the pseudo code for the algorithm (all elements in priority queues are stores with priority based on some evaluation function):
+
+\begin{algorithm}
+ 	\caption{Breath-first Beam search}
+	\label{alg:protrack}
+	\begin{algorithmic}[1]
+		\State define two empty priority queues, $s1$ and $s2$
+		\State add the first element to $s1$
+		\While {solution is not found or the search space is not empty} 
+			\While {s1 is not empty}
+				\State get element $elem$ from s1
+				\If{ solution found } 
+					\State	success
+					\EndIf
+					\State expands $elem$ and write $beamsize$-elements to s2
+					\EndWhile
+					\State $s2$ equals first part of $s1$ with the size of $beamsize$
+					\EndWhile
+	\end{algorithmic}
+\end{algorithm}
+
+
+
+
+\vspace{0.2 cm}
+Both of these algorithms use the same tactic by cutting the space to the most probable and better performing prospective solutions. These algorithms are different, and depending on the nature of the problem given can have very different performance.
+
+Beam search is used in many areas such as machine translation.
+
+
 % section background (end)
 
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "BPM17"
 %%% End: 
+
+
+
