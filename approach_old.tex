@@ -1,0 +1,366 @@
+\section{The approach} % (fold)
+\label{sec:our_approach}
+%%%% CONTENT
+% subsection 1: loops
+% subsection 2: background K
+
+% section our_approach (end)
+Our objective is predicting sequences of activities (i) by taking into account available a-priori knowledge and (ii) in a reasonable amount of time. 
+More formally, given a prefix $p_k(\sigma)=\left\langle e_1, ..., e_k\right\rangle$ of length $k$ of an ongoing trace $\sigma=\left\langle e_1, ..., e_n\right\rangle$ and some knowledge on the trace $\sigma$, $\cal{K}(\sigma)$, the problem that we want to face is identifying the function $f(p_k(\sigma), k(\sigma)) = s_k(\sigma)$ in a relatively short time.
+Predicting the next activity and the sequence of the next activities is a problem that is tackled by state-of-the-art approaches with LSTM RNNs~\cite{quteprints96732,evermann,niek96732}. We hence start from these approaches and building on top of them so as to take into account also a-priori knowledge.
+%for providing predictions by also exploiting the a-priori knowledge. %(and, in particular, the most performing one~\cite{niek96732}) so as to exploit the a-priori knowledge in the predictions. 
+
+%As all the supervised approaches, LSTM requires a learning phase in which a model is learned from some known data and a runtime phase, in which predictions are provided based on the model. 
+The easiest possibility \todo{It is hard to say if it is the easiest to put in the training. It should actually be harder to put a-priori knowledge in training and expect 100 percent compliance on prediction time.}to achieve this goal is including the a-priori knowledge in the data used for training the prediction model. However, this would raise a main problem: since the a-priori knowledge can in principle change from case to case, this would require to retrain the model for each prediction, thus hampering the scalability requirement. A smarter approach is hence required for dealing with a-priori knowledge by building on top of state-of-the-art approaches for the prediction of next activities.  
+%The overall idea is getting the possible continuations of the on-going trace from the LSTM approach, ranking them according to the likelihood of the prediction and selecting the first prediction which is compliant to the a-priori knowledge. However, although RNN is not computationally expensive per se, building all the possible predicted sequences could be costly and inefficient.
+
+%The inference algorithm used in RNN, for process mining logs is not computationally expensive due to the logs nature, but building the all-possible tree is computationally and memory-wise nearly impossible.
+
+%So, in order to address problem number two, it was decided to take the approach used in statistical sequence to sequence predictions mostly found in translation tasks \cite{Tillmann2003WRD778822778827} that is a Beam search. 
+%So we will use the RNN with LSTM training system proposed in \cite{niek96732}, and design inference algorithm that will search through given probability space at each step of the prediction using Beam search, to predict compliant with LTL rule, but still most probable continuation of the trace.
+
+%The alternative investigated in this paper is exploiting the approach classically used in statistical sequence-to-sequence predictions in translation tasks~\cite{Tillmann2003WRD778822778827}: the \textit{beam search} algorithm. The beam search is a heuristic algorithm based on graphs that explores the search space by expanding only the most promising branches. 
+
+In the next sections we first introduce an extension of state-of-the-art approaches that allows for taking into account also a-priori knowledge (Subsection~\ref{ssec:apriori}); we then sketch an enhancement of the algorithm used by this approach (\nocycle) for overcoming the issues encountered with loopy datasets (Subsection~\ref{ssec:nocycle}). The extension algorithm for accounting for a-priori knowledge and the enhancement for removing cycles is then combined in the \protrack approach.
+
+
+
+   
+%Current state of the art methods for predicting suffix of the ongoing trace are those based on the Recurrent Neural Networks as stated in the previous chapter. They give best performance on most real world logs.
+
+
+%\subsection{Introduction to approach}
+\subsection{Exploiting a-priori knowledge}
+\label{ssec:apriori}
+
+%Here the motivation for taken decisions of our approach for solving the problem stated in research question is given. 
+
+%RQ: How can prior knowledge about ongoing process be used to boost accuracy of predictions of trends of activities?
+
+%Here we decompose the research question into chunks to better understand the problem stated. \textit{Boost accuracy of prediction} means to develop an approach that will have better performance than current state of the art. \textit{Trends of activities} means that we are interested in finding the suffix of the trace. \textit{Ongoing process} means that we will have \textit{prior knowledge} on the inference time. 
+
+%Speaking precisely, the function of interest is $f(hd^k, kno) = hd^1(tl^k(\pi_A(\sigma)))$. Given the head of the trace of the size k, and given prior knowledge, it produces next event. That is the head of the size 1, of the tale of the trace.
+
+%The prior knowledge can be expressed as formulas in linear temporal logic (LTL). These are the most suitable for the given problem, as one can express the restriction on the process found in real-life logs.
+
+%For example, it is easy to express simple rules such as "eventually will happen 'A'", or "After 'A' follows 'B'". 
+
+%Also, LTL checkers empowered by automatons, already exist and are powerful. In the following paper \cite{vanderAalst2005}, the authors propose the LTL checker built inside of ProM process mining toolkit, that was designed for verification of business processes.
+
+%Current state of the art methods for predicting suffix of the ongoing trace are those based on the Recurrent Neural Networks as stated in the previous chapter. They give best performance on most real world logs.
+%Our aim is to find the best prediction algorithm, that will include LTL rules check on inference time. Due to specifics of the problem we can not build a training algorithm that will have prior information. 
+
+
+
+%Given a prefix $p_k(\sigma)=\left\langle e_1, ..., e_k\right\rangle$ of length $k$ of an ongoing trace $\sigma=\left\langle e_1, ..., e_n\right\rangle$ and some knowledge on the trace $\sigma$, $\cal{K}(\sigma)$, the problem that we want to face is identifying the function $f(p_k(\sigma), k(\sigma)) = s_k(\sigma)$.
+
+%In order to face this problem, we need to find an algorithm that allows us to exploit the background knowledge $\cal{K}(\sigma)$.
+
+%Two challenges can arise while building a new approach for predicting a trace suffix. First, if we train using known training methods, to adapt algorithm to predict compliant with the rule, but still most probable suffix. And second, the inference time should still be acceptable for real world applications (it's impossible to retrain RNN each time inference is performed).
+
+%Decision was taken to go with the RNN approach as it is the best performer \cite{niek96732}, and due to specifics of the inference algorithm. Those are that given trained RNN model and the trace prefix as an input, the model will give us basically probability distribution over possible next event. That means that we can theoretically build a probability tree of all possible suffixes. 
+
+
+%This approach would theoretically eliminate problem number one, giving all possible traces one can choose the one compliant and most probable at the same time. 
+
+%The inference algorithm used in RNN, for process mining logs is not computationally expensive due to the logs nature, but building the all-possible tree is computationally and memory-wise nearly impossible.
+
+%So, in order to address problem number two, it was decided to take the approach used in statistical sequence to sequence predictions mostly found in translation tasks \cite{Tillmann2003WRD778822778827} that is a Beam search. 
+
+The overall idea is getting the possible continuations of the on-going trace from the LSTM approach, ranking them according to the likelihood of the prediction and selecting the first prediction which is compliant to the a-priori knowledge. However, although RNN is not computationally expensive per se, building all the possible predicted sequences could be costly and inefficient.
+
+The alternative investigated in this paper is exploiting, on top of state-of-the-art LSTM techniques, the approach classically used in statistical sequence-to-sequence predictions in translation tasks~\cite{Tillmann2003WRD778822778827}: the \textit{beam search} algorithm. The beam search is a heuristic algorithm based on graphs that explores the search space by expanding only the most promising branches. 
+Specifically, the proposed approach builds on top of the RNN with LSTM encoding and training system proposed in~\cite{niek96732} and reported in Section~\ref{sec:back}. At testing time, an inference algorithm explores, at each step of the prediction, the probability space using Beam search to cut the branches of the model which brings to predictions that are not compliant with the LTL rule. 
+
+We achieve this objective, by adding few intermediate steps to enable the breadth first beam search in the Algorithm~\ref{alg:baseline, baseline2} presented in Section~\ref{sec:background}.%For beam search we need to save the probability distribution over most probable of size of beam coefficient.
+%
+%The breadth first beam search on the other hand works differently. 
+The algorithm first explores the N next events given the prefix, and checks if any of them are compliant. If any of them are, the algorithm predicts the remaining trace to the end, assuming to be most probable. If on the first step the LTL formula compliant prefix not found, the next step consists of predicting for every N prefixes N next events. So it will have $N*N$ resulting traces. The algorithm then decides to cut $N*N-N$ traces based on the estimated probability. It is done by summing up the log probability of the trace up to the last step.
+
+It continues until the end of the trace.
+
+By these approaches we limit our search space to the much smaller number of possible solutions. This procedure is heuristic, so sometimes, with not big enough beam size it is possible to cut out best, and/or compliant solutions.
+
+In real world testing it is shown that even with the beam size of 3, almost always the solutions are found.
+
+
+
+%So we will use the RNN with LSTM training system proposed in \cite{niek96732}, and design inference algorithm that will search through given probability space at each step of the prediction using Beam search, to predict compliant with LTL rule, but still most probable continuation of the trace.
+
+
+%We combined algorithm for removing cycles with beam search algorithms for accounting for apriori knowledge to get the best results.
+
+
+
+%\subsection{Technical explanation (architecture)}
+
+%The method consists of two stages, first is the training, and inference. Firstly the training will be described in brief, and then this subsection will focus on inference approach in depth.
+
+%The training algorithm is described in \cite{niek96732}. We use Recurrent Neural Networks with Long Short Term Memory cells.
+
+%Best encoding for the given problem was to use so called \textit{one-hot encoding}. Given all possible activities set $A$, we construct the vector of the length $|A|+3$ where first $|A|$ features are $0$s, and only one $1$ in the place of the current activity $index(\pi_A(e))$. Also three time based features are added at the end of the feature vector. Those are the increment of the time stamps, the time since midnight (since activities time of execution have shift in time towards working hours), and time since start of the week.
+
+%We choose the architecture due to the options given on Figure 3.
+
+%Standard inference algorithm is having $hd^k$ that is the first k activities in the process, to apply function $f(hd^k)$ to find $hd^1(tl^k(\pi_A(\sigma)))$, the most probable next event in the trace.
+
+%The steps are to first encode $hd^k$ prefix into the one-hot encoding. Next, the resulting matrix is fed into the model to receive the probability distribution over all possible next activities and time features. In order to predict the second activity, the newly found one-hot encoded $hd^k+1$ is fed back into the network.
+
+
+%This process continues until the stop symbol is predicted.
+
+%This process can be shown as simple piece of pseudo code. 
+%\\
+
+%\begin{algorithm}[H]
+%	\KwData{$hd^k(\sigma)$}
+%	\KwResult{$\sigma$ prefix+suffix}
+%	initialization\;
+%	\While{end symbol not predicted}{
+%		enc = encode-one-hot $hd^k$\;
+%		prob-distr = model.predict(enc)\;
+%		predicted = choose most probable(prob-distr)\;
+%		concatenate $hd^k$ + predicted\;
+%		k = k + 1\;
+%	}
+%	return $hd^k$
+%	\caption{Inference in RNN for predicting suffix of activities}
+%\end{algorithm}
+
+%\vspace{0.2 cm}
+
+
+%We change this scenario by adding few intermediate steps to enable the beam search. For beam search we need to save the probability distribution over most probable of size of beam coefficient.
+
+%Two different beam search variants will be introduced. These are best first search, and breath first search. 
+
+
+%Algorithm 4 shows the best first search beam search modification applied on the problem.
+%\\
+%
+%\begin{algorithm}[H]
+%	\KwData{$hd^k(\sigma)$}
+%	\KwResult{$\sigma$ prefix+suffix}
+%	initialization\;
+%	\While{not (end symbol predicted and LTL formula satisfied)}{
+%		enc = encode-one-hot $hd^k$\;
+%		prob-distr = model.predict(enc)\;
+%		predicted = choose N most probable(prob-distr)\;
+		
+%		\If{predicted equal end symbol and LTL-satisfied}{
+%			break\;
+%		}
+%		\uElseIf{predicted equal end symbol and not LTL-satisfied}{
+%			find-the-last-unexplored-node\;
+%			k = unexplored-node-k\;
+%		} {
+%			save N elements into tree nodes as next events $hd^k$ + $predicted$\;
+%		}
+%		k = k + 1\;
+%	}
+%	return $hd^k$
+%	\caption{Inference in RNN for predicting suffix of activities with best-first beam search}
+%\end{algorithm}
+
+%\vspace{0.2 cm}
+
+%Best first search explores the most probable events, firstly trying to reach the end in the most probable path, afterwards backtracking to find less probable but probably LTL formula compliant that will be the output of the algorithm.
+
+%The breath first beam search on the other hand works differently. It first explores the N next events given the prefix, and checks if any of them are compliant. If any of them are, the algorithm predicts the remaining trace to the end, assuming to be most probable. If on the first step the LTL formula compliant prefix not found, the next step consists of predicting for every N prefixes N next events. So it will have $N*N$ resulting traces. The algorithm then decides to cut $N*N-N$ traces based on the estimated probability. It is done by summing up the log probability of the trace up to the last step.
+
+%It continues until the end of the trace.
+
+%By these approaches we limit our search space to the much smaller number of possible solutions. This procedure is heuristic, so sometimes, with not big enough beam size it is possible to cut out best, and/or compliant solutions.
+
+%In real world testing it is shown that even with the beam size of 3, almost always the solutions are found.
+
+%\subsection{Pseudocodes:}
+%The baseline approach
+
+
+%\begin{algorithm}
+%	\caption{Baseline inference algorithm for predicting suffix of activities}\label{AIPal}
+%	\begin{algorithmic}[1]
+%		\Function{EvaluateSuffix}{$prefix$, $model$, $limit$}
+%	\State $k$ = 0
+%		\State $traceResulting$ = $prefix$
+%		\Do
+%		\State $encoded$ = encode($traceResulting$)
+%		\State $nextSymbolProb$ = predictNext($model$,$encoded$)
+%		\State $nextSymbol$ = getSymbol($nextSymbolProb$)
+%		\State $traceResulting$ = concatenate($traceResulting$, $nextSymbol$)
+%		\State k = k + 1  
+%		\doWhile{$($not $nextSymbol$ equal to $endSymbol)$ and $(k$ \textless $limit)$}
+%		\State return traceResulting
+%		\EndFunction
+		
+%		\Function{getSymbol}{$nextSymbolProb$}
+%		\State top = chooseMaxProb($nextSymbolProb$)
+%		\State return probabilityToSymbol(top)
+%		\EndFunction
+		
+%	\end{algorithmic}
+%\end{algorithm}
+
+
+%\par
+
+%Next is the no cycle algorithm. Here we add one function that is responsible for finding the cycle in the trace, and returning the amplify coefficient. Also we modify $getSymbol$ function to allow extended behavior. Also, function $amplify$ was added as to find the panishment coefficient for the current cycle. The $amplifyFormula$ in the $amplify$ function can be specific to the log. We are using $e^{x}$
+
+%\begin{algorithm}
+%	\caption{Nocycle extention of the algorithm for predicting suffix of activities}\label{AIPal}
+%	\begin{algorithmic}[1]
+%		\Function{EvaluateSuffixNoCycle}{$prefix$, $model$, $limit$}
+%		\State $k$ = 0
+%		\State $traceResulting$ = $prefix$
+%		\Do
+%		\State $encoded$ = encode($traceResulting$)
+%		\State $nextSymbolProb$ = predictNext($model$,$encoded$)
+%		\State $amplifier$,$symbStartSycle$ = amplify($traceResulting$)
+%		\State $nextSymbol$ = getSymbolAmpl($nextSymbolProb$, $amplifier$,$symbStartSycle$)
+%		\State $traceResulting$ = concatenate($traceResulting$, $nextSymbol$)
+%		\State k = k + 1  
+%		\doWhile{$($not $nextSymbol$ equal to $endSymbol)$ and $(k$ \textless $limit)$}
+%		\State return traceResulting
+%		\EndFunction
+%		
+%		\Function{amplify}{$trace$}
+%		\State $rep$ = findAllCycles($trace$)
+%		\State \If{$rep$ contains curreny cycle in $trace$} {
+%		\State numberOfRep = getNumberCurrentcycleRepeats($rep$,$trace$)
+%		\State return amplifyFormula(numberOfRep), firstSymbolOfCurrentTrace}
+%		\State return 
+%		\EndFunction
+
+%		\Function{getSymbolAmpl}{$nextSymbolProb$, $amplifier$,$symbStartSycle$}
+%		\State index = findItemIndex($symbStartSycle$)
+%		\State $nextSymbolProb$.item(index) = $nextSymbolProb$.item(index) * $amplifier$
+%		\State top = chooseMaxProb($nextSymbolProb$)
+%		\State return probabilityToSymbol(top)
+%		\EndFunction
+%	\end{algorithmic}
+%\end{algorithm}
+
+
+%Now the description of nocycle + backtrack.
+
+
+\begin{algorithm}
+	\caption{Nocycle backtrack extention of the algorithm}\label{AIPal}
+	\begin{algorithmic}[1]
+		\Function{EvaluateSuffixNoCycleBacktrack}{$prefix$, $model$, $limit$}
+		\State $k$ = 0
+		\State $traceResulting$ = $prefix$
+		\Do
+		\State $encoded$ = encode($traceResulting$)
+		\State $nextSymbolProb$ = predictNext($model$,$encoded$)
+		\State $amplifier$,$symbStartSycle$ = amplify($traceResulting$)
+		\State \For{i in range from 1 to beamsize}{$nextSymbol$ = getSymbolAmpl($nextSymbolProb$, $amplifier$,$symbStartSycle$, i)
+		\State \If{$(nextSymbol$ equals $stopSymbol)$ and formulaVerified(concatenate($traceResulting$, $nextSymbol$)) equals True}{return concatenate($traceResulting$, $nextSymbol$)}}
+		\State $nextSymbol$ = getSymbolAmpl($nextSymbolProb$, $amplifier$,$symbStartSycle$, i)
+		\State $traceResulting$ = concatenate($traceResulting$, $nextSymbol$)
+		\State k = k + 1  
+		\doWhile{$($not $nextSymbol$ equal to $endSymbol)$ and $(k$ \textless $limit)$}
+		\State return traceResulting
+		\EndFunction
+		
+		\Function{amplify}{$trace$}
+		\State $rep$ = findAllCycles($trace$)
+		\State \If{$rep$ contains curreny cycle in $trace$} {
+			\State numberOfRep = getNumberCurrentcycleRepeats($rep$,$trace$)
+			\State return amplifyFormula(numberOfRep), firstSymbolOfCurrentTrace}
+		\State return 
+		\EndFunction
+		
+		\Function{getSymbolAmpl}{$nextSymbolProb$, $amplifier$,$symbStartSycle$}
+		\State index = findItemIndex($symbStartSycle$)
+		\State $nextSymbolProb$.item(index) = $nextSymbolProb$.item(index) * $amplifier$
+		\State top = chooseMaxProb($nextSymbolProb$)
+		\State return probabilityToSymbol(top)
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+
+
+
+\subsection{Learning from dataset structures}
+\label{ssec:noloop}
+%\todo{This Anton added for the cycle removal part}
+%\textbf{To further boost accuracy of the inference algorithms, the technique called "cycle removal" is proposed.} After analyzing logs and the test results produced by the inference from Recurrent Neural Network, we noticed that many logs contain repeating patterns of sequences of activities. Original approach\cite{quteprints96732} have problems learning those dependencies. That results in producing long traces with looping patterns in results. 
+
+%The logs such as BPI11, BPI12 and BPI13 contain traces that have significant average number of cycles per trace. We explored the idea to detect cycles on inference time and exploit the fact that each step of the inference produces the probability distribution of the next possible symbol.
+
+By experimenting the LSTM approach on different datasets, we found that datasets with traces characterized by cycles perform worse than the other cases, as also observed in~\cite{quteprints96732}. This is mainly due to the fact that a frequent iteration of a cycle causes the weight of the back-loop, i.e.,  the connection between the last and the first element of the cycle, to increase. To overcome the problem we propose a two-step algorithm. In a first phase the current trace is analyzed in order to discover cycles. In a second phase the cycle discovery is used for decreasing the weight related to a reiteration of the loop. 
+More in detail:
+\begin{enumerate}
+\item For each ongoing prefix $p^k=e_1e_2 \ldots e_k$ of size $k$, we identify consecutive cycle occurrences $c_1c_2 \ldots c_x$ of size $j$ such that $x>=2$ and such that $\pi_A(e_k)=\pi_A(e_{c_{x_s}})$;  
+\item $x$ is then used to correct the distribution of the next event. The algorithm uses a formula (for example $x^{2}$ or $e^{x}$) to diminish the probability of the loop to occur, that is multiplying the output of the formula by the probability for the loop causing next event. 
+\end{enumerate}
+
+
+Algorithm~\ref{alg:nocycle} reports the details of the approach followed for avoidng the loop issue. 
+Specifically, the algorithm adds to the state-of-the-art algorithm a function that is responsible for finding the cycle in the trace, and returns the amplify coefficient. Also we modify $getSymbol$ function to allow extended behavior \todocdf{clarify}. Also, function $amplify$ was added as to find the punishment coefficient for the current cycle. The $amplifyFormula$ in the $amplify$ function can change for different logs. \todocdf{What does it mean?} %We are using $e^{x}
+The formula chosen depends on the average number of cycles per trace in the corresponding log. For a bigger number of cycles, the more steep function is selected.
+\todocdf{Mention which formula we are using for the evaluation in the evaluation.}
+
+\begin{algorithm}
+	\caption{Nocycle extention of the algorithm for predicting suffix of activities}\label{AIPal}
+	\begin{algorithmic}[1]
+		\Function{EvaluateSuffixNoCycle}{$prefix$, $model$, $limit$}
+		\State $k$ = 0
+		\State $traceResulting$ = $prefix$
+		\Do
+		\State $encoded$ = encode($traceResulting$)
+		\State $nextSymbolProb$ = predictNext($model$,$encoded$)
+		\State $amplifier$,$symbStartSycle$ = amplify($traceResulting$)
+		\State $nextSymbol$ = getSymbolAmpl($nextSymbolProb$, $amplifier$,$symbStartSycle$)
+		\State $traceResulting$ = concatenate($traceResulting$, $nextSymbol$)
+		\State k = k + 1  
+		\doWhile{$($not $nextSymbol$ equal to $endSymbol)$ and $(k$ \textless $limit)$}
+		\State return traceResulting
+		\EndFunction
+		
+		\Function{amplify}{$trace$}
+		\State $rep$ = findAllCycles($trace$)
+		\State \If{$rep$ contains curreny cycle in $trace$} {
+		\State numberOfRep = getNumberCurrentcycleRepeats($rep$,$trace$)
+		\State return amplifyFormula(numberOfRep), firstSymbolOfCurrentTrace}
+		\State return 
+		\EndFunction
+
+		\Function{getSymbolAmpl}{$nextSymbolProb$, $amplifier$,$symbStartSycle$}
+		\State index = findItemIndex($symbStartSycle$)
+		\State $nextSymbolProb$.item(index) = $nextSymbolProb$.item(index) * $amplifier$
+		\State top = chooseMaxProb($nextSymbolProb$)
+		\State return probabilityToSymbol(top)
+		\EndFunction
+	\end{algorithmic}
+	\label{alg:nocycle}
+\end{algorithm}
+
+
+ 
+% iterations just over. As s
+%The algorithm we propose consist of two parts. First is to find the number of relevant cycles in the trace being predicted, and second is to amplify the probability to actually leave the cycle.
+
+%1. At every step of the inference, all cycles in the current trace are detected. This is done my employing regular expressions that detect one or more repetitions of the same substring\footnote{See more at \url{github.com/yesanton/ProcessSequencePrediction}}. We are interested in $x$ number that is how many times current cycle occurs. 
+
+%2. This number is then used to correct the distribution of next event. The algorithm uses a formula (for example $x^{2}$ or $e^{x}$) to diminish the probability of the loop to occur, that is multiplying the output of the formula by the probability for the loop causing next event. 
+
+\subsection{Implementation}
+\label{ssec:implementation}
+
+Implementation was done using Python 2.6, with usage of Keras \cite{chollet2015keras} and TensorFlow \cite{tensorflow2015-whitepaper} libraries for RNN, LSTM. The full source code is available on github\footnote{\url{https://github.com/yesanton/ProcessSequencePrediction}}.  
+
+The LTL checker was exempt from the source code of ProM plugin. It is written in Java so the Py4J library was used as a gateway to access Java code from Python.
+
+When building the \textit{first-best Beam search}, the tree structure was introduced that holds all necessary intermediate values, and up to N leaves. It stores the prefix up to now, parent node (for backtracking), the encoded data, total predicted time, and node status that can be discovered or closed.
+
+The node structure then used to save all path of predictions, and if the execution of the algorithm discovers that at the end the predicted trace is not compliant it starts backtracking to the first non closed node. 
+
+For the breath first search the Queue class from Python library was used to store step-wise most probable outcomes.
+
+More implementation details can be seen on our github page.
+
+

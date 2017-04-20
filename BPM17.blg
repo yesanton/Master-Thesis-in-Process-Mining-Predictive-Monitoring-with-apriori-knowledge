@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: BPM17.aux
+The style file: splncs03.bst
+Database file #1: bibliography.bib
+Warning--entry type for "bpichallenge2012" isn't style-file defined
+--line 153 of file bibliography.bib
+Warning--I didn't find a database entry for "Schonenberg_timeprediction"
+Warning--can't use both author and editor fields in vanderAalst2010
+Warning--missing publisher in Leontjeva2015
+Warning--can't use both author and editor fields in Maggi2012
+Warning--can't use both author and editor fields in Pika
+Warning--empty year in DBLP:conf/icsoc/Rogge-SoltiW13
+Warning--can't use both author and editor fields in Schonenberg2008
+Warning--can't use both author and editor fields in suriadi
+Warning--empty note in quteprints96732
+You've used 32 entries,
+            2785 wiz_defined-function locations,
+            802 strings with 12038 characters,
+and the built_in function-call counts, 19170 in all, are:
+= -- 1542
+> -- 714
+< -- 30
++ -- 296
+- -- 260
+* -- 1266
+:= -- 2450
+add.period$ -- 36
+call.type$ -- 32
+change.case$ -- 241
+chr.to.int$ -- 0
+cite$ -- 40
+duplicate$ -- 1614
+empty$ -- 1656
+format.name$ -- 284
+if$ -- 4159
+int.to.chr$ -- 0
+int.to.str$ -- 32
+missing$ -- 347
+newline$ -- 101
+num.names$ -- 64
+pop$ -- 679
+preamble$ -- 1
+purify$ -- 194
+quote$ -- 0
+skip$ -- 501
+stack$ -- 0
+substring$ -- 1049
+swap$ -- 926
+text.length$ -- 30
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 116
+warning$ -- 8
+while$ -- 150
+width$ -- 34
+write$ -- 318
+(There were 10 warnings)

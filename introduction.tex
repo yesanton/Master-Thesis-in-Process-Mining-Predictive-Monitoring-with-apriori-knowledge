@@ -1,0 +1,49 @@
+%!TEX root = ./BPM17.tex
+
+
+\section{Introduction} % (fold)
+\label{sec:introduction}
+
+
+We have come to the world where success is highly correlated with the ability for businesses to provide superior  delivery of services compared to their rivals. Competition made companies to seek for better management and organization of their work-flow. Furthermore, technologies also evolved, enabling the use of advanced methods for analysis that was not possible before. To assist business needs, Process Mining field has evolved. It designs techniques to analyze performance of the company from event logs.  
+
+Predictive monitoring~\cite{Maggi:CAiSE2014} is a maturing subfield of Process Mining, that deals with online prediction of process outcomes. Predicted outcomes may be of different nature, that are the classes, degree of compliance with a measure, or achieving objective.
+
+An example would be predicting the compliance of a process execution in insurance company, given annotated log. Given uncompleted traces of the claims processes, the goal would be to predict if customers will have the decisions on their claim on time. These predictions are generally based on: (i) the \emph{sequence of activities} already executed in the case; (ii) the \emph{timestamp} indicating when each activity in the case was executed; and (iii) the \emph{values of data attributes} after each execution of an activity in the case.
+
+
+
+Predictive monitoring undergoes rapid development of algorithms and techniques focused at predicting an outcome, as a label of the process as well as predicting ongoing process execution. Also, to enhance the process decisions, systems that can give recommendations based on current process execution, log, and some performance measures are built. 
+
+Problems of this kind could be viewed as standard machine learning problems. Given event log consisting of traces as a set of feature vectors in classic ML, we aim to predict the labels (classification), of future process executions. But the real world process mining problems are daunting to the existing machine learning theory, as there are no methods that adapt easily to all additional requirements. 
+
+Many sophisticated methods\cite{evermann,Polatoetal:2016,niek96732} are currently available for prediction of business processes, but none of them account for the prior knowledge that can be known on execution time. 
+
+What motivates this thesis is the surmise that past event logs, or more in general knowledge about the past, is not the only important source of knowledge that can be leveraged to make predictions. In many real life situations, cases exist in which, together with past execution data, some case-specific additional knowledge (a-priori knowledge) about the future is available and can be leveraged for improving the predictive power of a predictive process monitoring technique. Indeed, this additional a-priori knowledge is what characterizes the future context of execution of the process that will affect the development of the currently running cases. Think for instance to the temporary unavailability of a surgery room which may delay or even rule out the possibility of executing  certain activities in a patient treatment process. While it is impractical to retrain the predictive algorithms to take into consideration this additional knowledge every time it becomes available, it is also reasonable to assume that considering it in some way would improve the accuracy of the predictions on an ongoing case.
+
+While this observation seems plausible and a-priori knowledge appears to have the potential of improving predictions, its concrete realization poses interesting challenges: a first challenge is the provision of actual techniques able to leverage on past event logs and a-priori knowledge for predicting the sequence of future activities in ongoing traces. A second challenge is the actual verification that these techniques can show an improvement in terms of accuracy on real life logs over a plain baseline that leverages only knowledge from past events.
+
+Therefore, our work is concerned at following closely the research question:
+
+\textit{RQ: How can prior knowledge about ongoing process be used to boost accuracy of predictions of trends of activities?}
+
+%The family of techniques presented in this paper, together with their careful evaluation, aims at addressing the challenges above.
+
+In light of this motivation, in Section~\ref{sec:our_approach}, we provide two techniques based on Recurrent Neural Networks with Long Short-Term Memory (LSTM) cells~\cite{hochreiter1997long} able to leverage a-priori knowledge about process executions for predicting the sequence of future activities of an ongoing case. The proposed algorithms are opportunely tailored in a way that the a-priori knowledge is not taken into account for training the predictor. In this way, the a-priori knowledge can be changed on-the-fly at prediction time without the need to retrain the predictive algorithms.
+%, a type of predictions that can be used to provide valuable input for planning and resource allocation \cite{DBLP:conf/emisa/BeckerBDM14,Polatoetal:2016,niek96732}.
+In particular, we introduce:
+\begin{itemize}
+	\item a \nocycle technique which is able to leverage knowledge about the structure of the process execution traces, and in particular about the presence of repetitions of sequences (i.e., cycles), to improve a plain LSTM-based baseline so that it does not fall into a local minimum, a phenomenon already hinted in \cite{niek96732} but not yet solved;
+	\item an \protrack technique which takes into account a-priori knowledge together with the knowledge that comes from historical data.
+	% \protrack builds the predicted sequence of future activities in an ongoing traces starting from the current activity onward while \backtrack builds it from the end of the predicted sequence backwards.
+	%\todocg{Please check this sentence if correct}
+\end{itemize}
+In Section~\ref{sec:evaluation}, we present a wide experimentation carried out using six real-life logs and aimed at investigating whether the proposed algorithms increase the accuracy of the predictions. The outcome of our experiments is that the application of these techniques provides an improvement up to $50\%$ in terms of prediction accuracy over the baseline.
+In addition to the core part (Sections~\ref{sec:our_approach} and~\ref{sec:evaluation}), the paper contains an introduction to some background notions (Section 2), a detailed illustration of the research problem (Section~\ref{sec:the_problem}), related work (Section~\ref{sec:related_work}) and concluding remarks (Section~\ref{sec:conclusions}).
+% section introduction (end)
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "BPM17"
+%%% End:

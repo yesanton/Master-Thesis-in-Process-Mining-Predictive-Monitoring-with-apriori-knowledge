@@ -1,0 +1,60 @@
+\section{Related Work} % (fold)
+%!TEX root = ./BPM17.tex
+\label{sec:related_work}
+
+The literature related to predictive business process monitoring can be roughly classified according to the type of predictions that is provided.
+A first group of works focuses on the time perspective. In~\cite{DBLP:journals/is/AalstSS11}, the authors present a set of approaches in which annotated transition systems, containing time information extracted from event logs, are used to: (i) check time conformance;
+  (ii) predict the remaining processing time of incomplete cases; (iii) recommend appropriate activities to end users working on these cases. In \cite{Folino}, an approach for predicting business process performances is presented. The approach is based on context-related execution scenarios discovered and modeled through state-aware performance predictors. In~\cite{DBLP:conf/icsoc/Rogge-SoltiW13}, the authors use stochastic Petri nets to predict the remaining execution time of a process execution. In~\cite{Metzgeretal12}, the authors present a technique for predicting the delay between the expected and the actual arrival time of cases pertaining to a transport and logistics process. In~\cite{Senderovichetal15}, the queue theory is used in order to predict possible delays in process executions.
+
+Another set of works in the literature focuses on approaches that generate predictions and recommendations to reduce risks. For example, in~\cite{DBLP:conf/caise/ConfortiLRA13}, the authors present a technique to support process participants in making risk-informed decisions with the aim of reducing the process risks. Risks are predicted by traversing decision trees generated from the logs of past process executions. In~\cite{Pika}, the authors make predictions about time-related process risks by identifying and leveraging statistical indicators observable in event logs  that highlight the possibility of transgressing deadlines.
+In \cite{suriadi}, an approach for Root Cause Analysis through classification algorithms is presented.
+
+A third group of prediction approaches predicts the outcome (e.g., the satisfaction of a business objective) of a case. In~\cite{Maggi:CAiSE2014} a framework is introduced, which is able to predict the fulfillment (or the violation) of a boolean predicate in a running case, by looking at: (i) the sequence of activities already performed in the case; and (ii) the data payload of the last activity of the running case. The framework, which provides accurate results at the expense of a high runtime overhead, has been enhanced in~\cite{Di-Francescomarino:2016aa} by introducing a clustering preprocessing step in which cases sharing a similar activity history are clustered together. A classifier for each cluster is trained with the data payload of the traces in the cluster. In~\cite{Leontjeva2015}, the authors compare different feature encoding approaches where traces are treated as complex symbolic sequences, that is, sequences of activities each carrying a data payload consisting of attribute-value pairs. In~\cite{DBLP:conf/bpm/TeinemaaDMF16}, the unstructured information contained in text messages exchanged during process executions has been leveraged for improving the prediction accuracy.
+
+The problem investigated in this paper falls into a fourth and last set of works, i.e., into the set of very recent efforts aiming at predicting the sequence of future activities given the activities observed so far.
+%~\cite{Polatoetal:2016,niek96732,evermann}.
+In~\cite{Polatoetal:2016}, Polato et al.~propose several techniques for predicting the remaining time and the sequence of future activities in an ongoing case using simple regression, regression with contextual information, and data-aware transition systems.
+%
+%Recently, many machine learning toolkits started leveraging the power
+%of Graphical Processing Units (GPUs).  This allowed researchers and
+%engineer to train their NNs in a significantly reduced amount of time:
+%many complex network architectures have been trained to perform
+%several task, many of them achieving remarkable performances.  Such
+%innovation fostered a new interest in NNs that spread across both
+%Industry and Industry.  Business Process Management is not an
+%exception. \cite{quteprints96732,niek96732,evermann} Recent papers
+%suggest state of the art performance on the prediction tasks for
+%business process log outcomes.
+%
+%Due to the nature of the problem, that is the sequence to sequence prediction, the recurrent neural networks are most leveraged. The main motivation for this type of neural networks is currently the problems in Natural Language Processing, such as speech recognition\cite{graves2013icassp}, or translation\cite{Sutskever2014SSL29690332969173}.
+%
+% In ~\cite{quteprints96732}, Verenich et al. rely on RNNs with sliding windows for predicting the next activity, i.e., they use $k$events to predict the event $k+1$.% (to predict event k+1, they use k..(N+k) events).
+Other approaches~\cite{evermann,niek96732} make use of RNNs with LSTM cells.
+In particular, Evermann et al.~\cite{evermann} propose an RNN with two hidden layers trained with back propagation,  %, 500 dimensions and 20 steps. They use batches of 20 to train the RNN with back propagation.
+%The evaluation was made on the BPI2012, BPI2013 data sets. They argue that the results with this approach are comparable to state of the art based on clustering and annotating transition system approaches.
+while Niek et al.~\cite{niek96732} leverage LSTM and an encoding based on activities and timestamps (illustrated in detail in Section~\ref{subsec:RNNforpredictive}) to provide predictions on the next activities and their timestamps.
+% The results show that their approach, which is the most recent one in the literature, outperforms all the others.
+Differently from all these works, this paper investigates how to take advantage of possibly existing a-priori knowledge for making predictions on the sequence of future activities.
+
+%\todoincg{Fix bibentry for Niek. I would cite the technical report from which we took the data adding as a note that a version is to appear in CAISE 2017.}
+
+%They achieve state of the art performance on most logs evaluated.
+%In order to predict the next events and their timestamps, they rely on a boolean encoding of the event sequences and on few time-related features. The encoding is then used for feeding the RNN.
+
+%In order to predict next event and time, they use one-hot encoding for event sequence, and few time features (such as difference between time-stamps, time from midnight, time from beginning of the week). Using these features they construct a vector to be fed into recurrent neural network.
+
+%They are looking for functions $f_a^1$ and $f_t^1$ that are basically the probability distributions over all possible trace continuations.
+
+%Also, as they now have basically two sequences to train with, that are the sequence of events, and the sequence of time values, the paper suggests the different possible RNN architectures.
+%\begin{figure}[!ht]
+%	\begin{center}
+%		\includegraphics[width=\textwidth]{paper1233.png}
+%		\caption{Possible neural network architectures \cite{niek96732}. Single task layers (a), shared multitask layers (b), or n+m shared layers (c).}
+%	\end{center}
+%\end{figure}
+
+%The evaluation was done on many data sets, such as Helpdesk, BPI12, BPI12 with no duplicates, Environment permit. On most of them suffix (sequence of next events) prediction beats state of the art performance. It worked especially well with logs that had a lot of short traces (Helpdesk log contains average 7 event traces).
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "BPM17"
+%%% End:

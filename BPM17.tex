@@ -1,0 +1,152 @@
+%\documentclass[llncs]{svmultln}
+\documentclass[12pt]{llncs}
+%\documentclass{article}
+\usepackage{color}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{float}
+\usepackage{array}
+\usepackage{xspace}
+\usepackage{paralist}
+\usepackage{todonotes}
+\usepackage{comment}
+%\usepackage{newtxtext}
+%\usepackage[]{algorithm2e}
+\pagestyle{plain}
+\usepackage{url}
+\usepackage{numprint}
+\usepackage{booktabs}  % nice looking tables
+\usepackage{siunitx}
+\usepackage{color, colortbl}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% \usepackage[boldmath]{numprint}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{afterpage}
+\usetikzlibrary{shapes,arrows}
+%\usepackage{newtxtext}
+\usepackage[english]{babel}
+
+% \newcommand{\backtrack}{\textsc{Backtrack}\xspace}
+\newcommand{\protrack}{\textsc{A-priori}\xspace}
+\newcommand{\nocycle}{\textsc{Nocycle}\xspace}
+
+\newcommand{\todocg}[1]{\todo[color=green!40]{CG:#1}}
+\newcommand{\todoincg}[1]{\todo[color=green!40,inline]{CG:#1}}
+\newcommand{\todocdf}[1]{\todo[color=blue!40]{CDF:#1}}
+\newcommand{\todoincdf}[1]{\todo[color=blue!40,inline]{CDF:#1}}
+\newcommand{\todogp}[1]{\todo[color=magenta]{GP:#1}}
+\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+
+\newcommand{\npla}[1]{\langle#1\rangle}
+\renewcommand{\baselinestretch}{0.975}
+
+
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+%	\addtocounter{page}{-1}%
+	\newpage}
+
+\begin{document}
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+	\large
+	UNIVERSITY OF TARTU\\%[2mm]
+	Institute of Computer Science\\
+	Software Engineering Curriculum\\%[2mm]content...
+	
+	\vspace{25mm}
+	
+	\Large Anton Yeshchenko
+	
+	\vspace{4mm}
+	
+	\huge An Eye into the Future: Leveraging A-Priori Knowledge in Predictive Business Process Monitoring
+	
+	%\vspace*{\stretch{7}}
+	\vspace{20mm}
+	
+	\Large Master's Thesis (20 ECTS)
+\end{center}
+
+\vspace{2mm}
+
+\begin{flushright}
+	{
+		\setlength{\extrarowheight}{5pt}
+		\begin{tabular}{r l} 
+			\sffamily \iflanguage{english}{Supervisor}{Juhendaja}: & \sffamily Fabrizio Maria Maggi \\
+			\sffamily \iflanguage{english}{Supervisor}{Juhendaja}: & \sffamily Chiara Di Francescomarino
+		\end{tabular}
+	}
+\end{flushright}
+
+%\vspace*{\stretch{3}}
+%\vspace{10mm}
+
+\vfill
+\centerline{Tartu 2017}
+
+\afterpage{\blankpage}
+%\afterpage{\null\newpage}
+
+
+%\title{Predictive Business Process Monitoring Enhanced with Apriori Knowledge}
+%\title{An Eye into the Future: Leveraging A-Priori Knowledge in Predictive Business Process Monitoring}
+\input{tlsymbols}
+%\author{Chiara Di Francescomarino\inst{1} \and Chiara Ghidini\inst{1} \and Fabrizio Maria Maggi\inst{2} \and\\ Giulio Petrucci\inst{1,3} \and Anton Yeshchenko\inst{2}}
+
+%\institute{
+%  FBK-IRST, Via Sommarive 18, 38050 Trento, Italy
+%  \email{dfmchiara|ghidini|petrucci@fbk.eu}
+ % \and
+ % University of Tartu, Ulikooli 18, 50090 Tartu, Estonia
+  %\email{f.m.maggi|anton.yeshchenko@ut.ee}
+  %\and
+  %University of Trento, Via Sommarive 14, 38050 Trento, Italy
+%}
+
+%\maketitle
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+\keywords{Predictive Process Monitoring, Recurrent Neural Networks, Linear Temporal Logic, A-priori Knowledge, Process mining}
+
+\clearpage
+
+\newpage 
+\setcounter{tocdepth}{3}
+\tableofcontents
+\clearpage
+
+\input{introduction}
+\input{background}
+\input{relatedwork}
+\input{problem}
+\input{approach}
+\input{evaluation}
+\input{conclusions}
+
+
+\bibliographystyle{splncs03}
+\bibliography{bibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

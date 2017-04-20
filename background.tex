@@ -1,0 +1,344 @@
+%!TEX root = ./BPM17.tex
+
+
+\section{Background} % (fold)
+\label{sec:background}
+%%%% CONTENT
+% background + related work
+In this section, we report the background concepts useful for understanding the remainder of the thesis.
+
+
+
+\subsection{Event Logs and Traces}
+An event log is a set of traces, each representing the execution of a process (case instance). Each trace consists of a sequence of activities, each referring to the execution of an activity in a finite activity set $A$.
+\begin{definition}[Trace, Event Log]
+	A trace $\sigma=\left\langle a_1, a_2, ... a_n\right\rangle \in A^*$ over $A$ is a sequence of activities. An event log $L \in \cal{B}$(A) is a multi-set of traces over the activity set $A$.
+\end{definition}
+
+A \emph{prefix of length} $k$ of a trace $\sigma=\left\langle a_1, a_2, ... a_n\right\rangle \in A^*$, is a trace $p_k(\sigma)=\left\langle a_1, a_2, ... a_k\right\rangle \in A^*$ where $k \leq n$; the \emph{suffix of the prefix of length} $k$ is defined as the remaining part of $\sigma$, that is, $s_k(\sigma) = \left\langle a_k+1, a_k+2, ... a_n\right\rangle \in A^*$. For example, the prefix of length $3$ of $\npla{a,c,r,f,s,p}$ is $\npla{a,c,r}$, while the suffix of this prefix is $\npla{f,s,p}$.
+
+A \emph{cycle} in a trace $\sigma \in A^*$ is a sequence of activities repeated at least twice in $\sigma$ (with adjacent repetitions). For example, trace $\npla{a,b,a,b,a,b,c,d,e,f,g,e,f,g,c,d}$ contains two cycles: $\npla{a,b}$ (3 repetitions) and $\npla{e,f,g}$ (2 repetitions).
+
+
+
+\subsection{Predictive monitoring}
+
+Predictive monitoring is an advancing-sub field of Process Mining. As a a sub field of Process Mining, its main focus also lies in exploring and exploiting the process logs. More specifically, it deals with online predictions of process outcomes. Predicted outcomes of interest can be compliance of with a measure, achieving objective, or classifications. Classification is giving a label to the uncompleted trace.  
+\par
+Many algorithms are applied to mentioned problems, these include classic machine learning algorithms of classification and clustering. More complex concepts are also used, such as Markov models~\cite{Leontjeva2015}, time series, and deep learning\cite{niek96732,evermann,quteprints96732} approaches. 
+\par
+In order to successfully apply these algorithms, one usually needs to have solid understanding on the log's nature. The aspects that can come into play, are the data types, stationarity, or heteroscedasticity. More complications can be brought if log contains unstructured content such as textual comments.
+\par
+A log is a set of traces, each containing events with its even class, ID, name, and usually time stamp and n-dimensional payload vector. Events correspond to particular cases in the process. Early process mining approaches tend to ignore the data payload, taking into consideration only the control-flow. Some of the approaches do the opposite, that is consider data, without control-flow~\cite{vanderAalst2010,Schonenberg_timeprediction,Schonenberg2008}  
+\par
+In that case one can say that the traces were considered to be a simple sequences. Moreover, those analysis was mainly done in offline fashion, to explore the completed cases. But, to make more accurate, mature, online predictions one should abandon neither payload nor control-flow information. That's when the Complex Symbolic Sequences as methods of encoding of a log are introduced. 
+
+
+
+\subsection{Complex Symbolic Sequences}
+
+Simple Symbolic Sequences for log encoding use a huge range of methods inherited from massive number of works from machine learning and statistics such as concerning concerning problems from health-informatics, or anomaly detection in Unix access systems. determining fraud users by its query log sequences.~\cite{Xing:2010:BSS:1882471.1882478} The Simple Symbolic Sequence is simply an ordered list sampled out of some given alphabet. 
+
+With the use of Simple Symbolic Sequences, it was relatively simple to apply methods, feature based classifications, sequence distance based, support vector machines, or model based classification.~\cite{Xing:2010:BSS:1882471.1882478}
+
+Simple Symbolic Sequences have limitations that prevent getting best results of their use.
+That is because most of the logs contain rich information of the process, that is not limited to control-flow. An example would be the log in the big fast food chain, where daily log is recorded about their employee. In Table 1, you can see that log of this nature contains static features, control-flow components and number of dynamic features. Static feature include ID of the employee, and his age. Dynamic features are the $t_i$ that is the time spent working, $rID_i$ is an ID of the restaurant that employee worked in on that day, $rev_i$ money he earned for the company. 
+
+This log is rich with information, and in order to work with it, you need to capture as much information as possible.
+
+On contrary to Simple Symbolic Sequences, the Complex Symbolic Sequences are introduced and we can capture much more information about log. Complex Symbolic Sequence is basically ordered list of vectors, where each vector is a subset of some alphabet.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{| l | l | l | l | l | l | l | l | l | l | l | l |}
+		\hline
+		& Age & ID & t\_1 & .. & t\_n & rID\_1 & .. & rID\_n & rev\_1 & .. & rev\_n \\	
+		\hline
+		tr1 & 20 & 00123 & 28800 & .. & 24840 & 11 & .. & 12 & 120\$ & .. & 112\$ \\
+		tr2 & 24 & 00023 & 16890 & .. & 23460 & 12 & .. & 12 & 80\$ & .. & 111\$ \\
+		tr3 & 18 & 01129 & 23804 & .. & 17897 & 11 & .. & 11 & 340\$ & .. & 23\$ \\
+		tr4 & 21 & 00772 & 40034 & .. & 24564 & 12 & .. & 12 & 130\$ & .. & 2\$ \\
+		\hline
+		
+	\end{tabular}
+	\caption{Example of Complex Symbolic Sequence encoding}
+	\label{tab:statements}
+\end{table}
+
+
+
+When Complex Symbolic Sequences are used complexity space of the prediction problem grows substantially. Also, new approaches for working with them must be used. 
+
+Some of the base lines of working with complex symbolic sequences use index-based encodings, and index latest payload encodings~\cite{Leontjeva2015}.   
+
+\subsection{Structured and unstructured data}
+
+There are few distinct types of data, that can be stored in the event. Simple, structured types include time-stamps, numbers, and nominal values. If the log contains only these types it is called a log with structured data. 
+
+On the other hand, the logs can contain text information such as comments or emails, bringing one more field into play. The text mining methods in conjunction with sequence classification are used to bring down the problem~\cite{Teinemaa2016}.
+
+As for example mentioned above, it might be daily comment from manager of the employees in the fast-food chain. 
+
+Also, example of the issue to resolution process, textual comments are added to events. In the repair agency, the comment can be added with registering of the issue by customer, and later in repair process by any involved party, that are repairmen, managers, or customers.
+\\
+
+With this knowledge about types of business processes it is easier to understand the limitations of the current state of the art methods to be described in next sections. 
+
+
+
+
+\subsection{RNNs and LSTM}
+Artificial Neural Networks (or just Neural Networks, NNs) are a well
+known class of discriminative models. In classification tasks, they are
+used to model the probability of a given input to belong to a certain
+class, given some features of the input. We can describe them in
+mathematical terms as follows:
+%
+\begin{equation}
+  \label{eq:condprob}
+  p(\mathbf{y}|\mathbf{x}) = f_{\mathit{NN}}(\mathbf{x}; \theta).
+\end{equation}
+%
+In \eqref{eq:condprob}, $\mathbf{x}$ is the feature vector that represents the input,
+$\mathbf{y}$ is a random variable representing the output class
+labels, $f_{\mathit{NN}}$ is the function modeled by the neural network, and
+$\theta$ is the set of parameters of such a function to be learnt during
+the training phase.
+
+
+\begin{figure}[t]
+  \centering
+  \resizebox{.56\textwidth}{!}{
+    \begin{tikzpicture}[node distance=5em]
+	% \matrix [column sep={6em,between origins},row sep=4em]
+	% {
+      \node [name=x_1] {$\mathbf{x}^{\langle 1 \rangle}$};
+      \node [name=x_2, right of=x_1] {$\mathbf{x}^{\langle 2 \rangle}$};
+      \node [name=x_3, right of=x_2] {$\mathbf{x}^{\langle 3 \rangle}$};
+      \node [name=x_dots, right of=x_3, xshift=-1em] {\ldots};
+      \node [name=x_K, right of=x_dots, xshift=-1em] {$\mathbf{x}^{\langle K \rangle}$};
+
+      \node [draw, shape=circle, name=h_1, above of=x_1, yshift=-1.5em, label=above right:{$\mathbf{h}^{\langle 1 \rangle}$}] {};
+      \node [draw, shape=circle, name=h_2, above of=x_2, yshift=-1.5em,label=above right:{$\mathbf{h}^{\langle 2 \rangle}$}] {};
+      \node [draw, shape=circle, name=h_3, above of=x_3, yshift=-1.5em,label=above right:{$\mathbf{h}^{\langle 3 \rangle}$}] {};
+      \node [name=h_dots, above of=x_dots, yshift=-1.5em] {\ldots};
+      \node [draw, shape=circle, name=h_K, above of=x_K, yshift=-1.5em, label=above right:{$\mathbf{h}^{\langle K \rangle}$}] {};
+
+      \path [draw, -latex'] (x_1.north) -- (h_1.south);
+      \path [draw, -latex'] (x_2.north) -- (h_2.south);
+      \path [draw, -latex'] (x_3.north) -- (h_3.south);
+      \path [draw, -latex'] (x_K.north) -- (h_K.south);
+
+      \node [name=y_1, above of=h_1, yshift=-1.5em] {$\mathbf{y}^{\langle 1 \rangle}$};
+      \node [name=y_2, above of=h_2, yshift=-1.5em] {$\mathbf{y}^{\langle 2 \rangle}$};
+      \node [name=y_3, above of=h_3, yshift=-1.5em] {$\mathbf{y}^{\langle 3 \rangle}$};
+      \node [name=y_dots, above of=h_dots, yshift=-1.5em] {\ldots};
+      \node [name=y_K, above of=h_K, yshift=-1.5em] {$\mathbf{y}^{\langle K \rangle}$};
+
+      \path [draw, -latex'] (h_1.north) -- (y_1.south);
+      \path [draw, -latex'] (h_2.north) -- (y_2.south);
+      \path [draw, -latex'] (h_3.north) -- (y_3.south);
+      \path [draw, -latex'] (h_K.north) -- (y_K.south);
+
+      \path [draw, -latex'] (h_1.east) -- (h_2.west);
+      \path [draw, -latex'] (h_2.east) -- (h_3.west);
+      \path [draw, -latex'] (h_3.east) -- (h_dots.west);
+      \path [draw, -latex'] (h_dots.east) -- (h_K.west);
+      % }
+    \end{tikzpicture}
+  }
+  \caption{Recurrent Neural Network}
+  \label{fig:rnn}
+\end{figure}
+
+Recurrent Neural Networks (RNNs, see Fig.~\ref{fig:rnn}) are a subclass of Neural Networks. We
+illustrate them with the help of an example in which the
+classification task concerns in assigning the correct part of speech -- noun, verb, adjective, etc. --
+to words.  If we take the word \emph{``file''} in isolation,
+it can be both a noun and a verb. Nonetheless, this ambiguity
+disappears when we consider it in an actual sentence. Therefore, in the
+sentence \emph{``I have to file a complain''} it acts as a verb, while
+in the sentence \emph{``I need you to share that file with me''} it
+acts as a noun.
+
+This simple example shows that for some tasks the classification at a
+certain time-step $t$ depends not only on the current input (i.e.,
+\emph{``file''}) but also on the input (i.e., the part of the
+sequence) seen so far. The tasks that share this characteristic are
+said to be \emph{recurrent}. Natural Language tasks are a typical
+example of recurrent phenomena.
+
+In mathematical terms, let us write
+$\mathbf{x}^{\langle 1 \rangle}, ..., \mathbf{x}^{\langle K \rangle}$
+to indicate an input sequence of $K$ time-steps, represented by the
+superscript between angle brackets. In this way, at each time-step $t$,
+the conditional probability of a given input to belong to a certain class is described by
+%
+\begin{equation}
+\label{eq:condprobrec}
+  p(\mathbf{y}^{\langle y \rangle}|\mathbf{x}^{\langle t \rangle}, ..., \mathbf{x}^{\langle 1 \rangle}) = f_{\mathit{RNN}}(\mathbf{x}^{\langle 1 \rangle}, ..., \mathbf{x}^{\langle t \rangle}; \theta).
+\end{equation}
+%
+RNNs have been proven to be extremely appropriate for modeling sequential
+data (see~\cite{goodfellow2016dlbook}). As shown in Fig.~\ref{fig:rnn}, they typically leverage
+recurrent functions in their hidden layers, which are, in turn, composed of hidden states. Let
+$\mathbf{h}^{\langle t \rangle}$, with
+\begin{equation}
+  \label{eq:hidden}
+  \mathbf{h}^{\langle t \rangle} = h(\mathbf{x}^{\langle t \rangle}, \mathbf{h}^{\langle t-1 \rangle}; \theta_{h});
+\end{equation}
+be the activation of the hidden state at the $t$-th time-step. $h$ is a so-called \emph{cell function}, parameterized over a set
+of parameters $\theta_{h}$ to be learnt during the training, and accepting as inputs the current input $\mathbf{x}^{\langle t \rangle}$ and its value at the
+previous time-step $\mathbf{h}^{\langle t-1 \rangle}$.
+The activation of the hidden state is then mapped (using a linear map) into a continuous vector of the
+same size as the number of output classes. All the elements in such a vector are greater than zero and their sum is equal to one. Therefore, this vector can be seen as a probability distribution over the output space.
+All these constraints can be easily achieved specifying the generic equation \eqref{eq:condprobrec} by means of a softmax function:
+%
+\begin{equation}
+  \label{eq:softmax}
+  p(\mathbf{y}^{\langle y \rangle}|\mathbf{x}^{\langle t \rangle}, ..., \mathbf{x}^{\langle 1 \rangle}) =
+  softmax(\mathbf{W}\mathbf{h}^{\langle t \rangle} + \mathbf{b});
+\end{equation}
+%
+where the weight matrix $\mathbf{W}$ and the bias vector $\mathbf{b}$
+are parameters to be learnt during the training phase.
+
+% The presentation of RNNs ends with a note about the representation of the input: at each time-step, the
+% input should be represented by means of a vector. When our input space is
+% made of a finite set of symbols (e.g. a vocabulary of words) the most
+% straightforward way to represent it is to use a one-hot encoding:
+% the $i$-th symbol will be encoded into a vectors of dimension equal to
+% the dimension of the input space with all the elements set to 0 and
+% just the $i$-th to one. Such representations are not very practical:
+% they grow linearly with the dimension of the input space; their sum produce a vector which is not one-hot anymore; multiplying them
+% element-wise produce an all-zero vector; and so on. To overcome such limitations, the so called \emph{low
+%   dimensional embedding} technique is used: the $i$-th symbol is
+% represented with the $i$-th row of an \emph{embedding matrix} learnt
+% at training time. The number of the column of the matrix, and
+% consequently the dimension of the input vectors, is an hyper-parameter
+% of the model to be set at design time.
+
+Among the different cell functions $h$ (see equation~\eqref{eq:hidden}) explored in literature, Long Short-Term
+Memory (LSTM)~\cite{hochreiter1997long} shows a significant ability to maintain the memory of its input across long time spans. This property makes them extremely suitable to be used in RNNs that have to deal with input sequences with complex long-term dependencies such as the ones we consider in this paper.
+
+% The cell made of four \emph{gates}, namely the input gate $\mathbf{i}$, the forget gate $\mathbf{f}$, the output gate $\mathbf{o}$ and the cell update gate $\mathbf{g}$.
+% At each time step, we have that:
+% \begin{equation}
+%   \label{eq:lstmgates}
+%   \begin{aligned}
+%     \mathbf{i}^{\langle t \rangle} &= \sigma(\mathbf{W}_i\mathbf{x}^{\langle t \rangle} + \mathbf{U}_i\mathbf{h}^{\langle t-1 \rangle} + \mathbf{b}_i);\\
+%     \mathbf{f}^{\langle t \rangle} &= \sigma(\mathbf{W}_f\mathbf{x}^{\langle t \rangle} + \mathbf{U}_f\mathbf{h}^{\langle t-1 \rangle} + \mathbf{b}_f);\\
+%     \mathbf{o}^{\langle t \rangle} &= \sigma(\mathbf{W}_o\mathbf{x}^{\langle t \rangle} + \mathbf{U}_o\mathbf{h}^{\langle t-1 \rangle} + \mathbf{b}_o);\\
+%     \mathbf{g}^{\langle t \rangle} &= f(\mathbf{W}_g\mathbf{x}^{\langle t \rangle} + \mathbf{U}_g\mathbf{h}^{\langle t-1 \rangle} + \mathbf{b}_g);\\
+%   \end{aligned}
+% \end{equation}
+% where
+% $\theta_{LSTM} = [\mathbf{W}_i, \mathbf{U}_i, \mathbf{b}_i,
+% \mathbf{W}_f, \mathbf{U}_f, \mathbf{b}_f, \mathbf{W}_o, \mathbf{U}_o,
+% \mathbf{b}_o, \mathbf{W}_g, \mathbf{U}_g, \mathbf{b}_g]$ is the set of
+% parameters to be learned during the training phase.  The cell holds an
+% internal state $\mathbf{c}^{\langle t \rangle}$ that is updated at
+% each timespep according to the following:
+% \begin{equation}
+%   \label{eq:lstmstate}
+%   \mathbf{c}^{\langle t \rangle} = \mathbf{f}^{\langle t \rangle} \odot \mathbf{c}^{\langle t-1 \rangle} + \mathbf{i}^{\langle t \rangle} \odot \mathbf{g}^{\langle t-1 \rangle};
+% \end{equation}
+% being $\odot$ the element-wise product between two vectors,
+% $\sigma(\cdot)$ the sigmoid function and $f(\cdot)$ a non-linear
+% function, typically the hyperbolic tangent $\tanh(\cdot)$. Intuitively
+% we can see how the forget gate $\mathbf{f}$ controls how much of the
+% previous cell state flows into the current state, while the input gate
+% controls how much of the cell update signal gets into it. Finally, the
+% cell activation is given by the:
+% \begin{equation}
+%   \label{eq:lstmactivation}
+%   \mathbf{h}^{\langle t \rangle} = \mathbf{o}^{\langle t \rangle} \odot f(\mathbf{c}^{\langle t \rangle});
+% \end{equation}
+% where the output gate controls the fraction of output signal coming from the cell state.
+
+\subsection{RNNs with LSTM for Predictive Process Monitoring}
+\label{subsec:RNNforpredictive}
+In order to provide predictions on the suffix of a given prefix (of a running case), state-of-the-art approaches for predictive process monitoring use RNNs with LSTM cells.  The most recent and performing approach in this field \cite{niek96732} relies on an encoding of activity sequences that combine features related to the activities in the sequence (the so called \textit{one-hot encoding}) and features related to the time characterizing these activities. Given the set $A = \{a_{1_A}, \ldots a_{m_A}\}$ of all possible activities, an ordering function $idx:A \rightarrow \{1, \ldots, \left|A\right| \} \subseteq \mathbb{N}$ is defined on it, such that $a_{i_A}<>a_{j_A}$ if and only if $i_A<>j_A$, i.e., two activities have the same A-index if and only if they are the same activity. For instance, if $A=\{a,b,c\}$, we have $idx: A \rightarrow \{1,2,3\}$ and $idx(a)=1$, $idx(b)=2$ and $idx(c)=3$. Each activity $a_i \in \sigma$ is encoded as a vector $\mathbb(A_i)$ of length $|A|+3$ such that the first $|A|$ features are all set to $0$, except the one occurring at the index of the current activity $idx(a_i)$, which is set to $1$. The last three features of the vector pertain to time: the first one relates to the time increase with respect to the previous activity, the second reports the time since midnight (to distinguish between working and night time), and the last one refers to the time since the beginning of the week.
+%For example, given the alphabet $A$ above, the activity $b$ in a trace $\sigma =  \left\langle bcc \right\rangle$ will be encoded as the vector $(0,1,0)$.
+
+A trace is encoded by composing the vectors obtained from all activities in the trace into a matrix. During the training phase, the encoded traces are used for building the LSTM model. During the testing phase, a (one-hot encoded) prefix of a running case is used to query the learned model, which returns the predicted suffix by running an inference algorithm.
+%\todocdf{Do we need other details about the architecture?}
+Algorithm~\ref{alg:baseline} reports the inference algorithm introduced in \cite{niek96732} and based on RNN with LSTM cells for predicting the suffix of a given prefix $p_k(\sigma)$ of length $k$. The algorithm takes as input the prefix $p_k(\sigma)$, the LSTM model $lstm$ and a maximum number of iterations $max$ and returns as output the complete trace (the prefix and the predicted suffix).
+First, the prefix $p_k(\sigma)$ is encoded by using the one-hot encoding (line~\ref{lst1:encoding}). The resulting matrix is then used for feeding the LSTM model and getting the probability distribution over different possible symbols that can occur in the next position of the trace (line~\ref{lst1:prob}). The symbol with the highest probability is hence selected from the ranked probabilities (line~\ref{lst1:next}). Then, a new trace is obtained by concatenating the current prefix with the new predicted symbol (line~\ref{lst1:trace}). In order to predict the second activity, the one-hot encoding of the new prefix is computed and used to recursively feed the network. The procedure is iterated until the predicted symbol is the end symbol or a maximum number of iterations $max$ is reached (line~\ref{lst1:while}).
+
+\begin{algorithm}
+	\caption{Inference algorithm for predicting the suffix of $p_k(\sigma)$}
+	\label{alg:baseline}
+	\begin{algorithmic}[1]
+		\Function{PredictSuffix}{$p_k(\sigma)$, $lstm$, $max$}
+		\State $k$ = 0
+		\State $trace$ = $p_k(\sigma)$
+		\Do
+		\State $trace_{encoded}$ = \textsc{encode}($trace$) \label{lst1:encoding}
+		\State $next\_symbol\_probs$ = \textsc{predictNextSymbols}($lstm$, $trace_{encoded}$) \label{lst1:prob}
+		\State $next\_symbol$ = \textsc{getSymbol}($next\_symbol\_prob$, $trace_{encoded}$) \label{lst1:next}
+		\State $trace$ = $trace \cdot next\_symbol$\label{lst1:trace}
+		\State $k = k + 1$
+		\doWhile{$($not $next\_symbol$ == $end\_symbol)$ and $(k$ \textless $max)$}\label{lst1:while}
+		\State \textbf{return} $trace$
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+%\begin{algorithm}[H]
+%	\KwData{$p_k(\sigma)$}
+%	\KwResult{$\sigma$}
+%	initialization\;
+%	\While{end symbol not predicted}{
+%		enc = encode-one-hot ($p_k$)\;
+%		prob-distr = model.predict(enc)\;
+%		predicted = choose most probable(prob-distr)\;
+%		$p^{k+1}$ = concatenate $p_k(\sigma)$ + predicted\;
+%		k = k + 1\;
+%	}
+%	return $p_k$
+%	\caption{Inference in RNN for predicting the suffix of a prefix of $k$ symbols}
+%	\label{alg:baseline}
+%\end{algorithm}
+
+%\todocdf{Which one shall we keep?}
+
+%\begin{algorithm}
+%	\caption{Baseline inference algorithm for predicting suffix of activities}
+%	\label{alg:baseline}
+%	\begin{algorithmic}[1]
+%		\Function{EvaluateSuffix}{$prefix$, $model$, $limit$}
+%		\State $k$ = 0
+%		\State $traceResulting$ = $prefix$
+%		\Do
+%		\State $encoded$ = encode($traceResulting$)
+%		\State $nextSymbolProb$ = predictNext($model$,$encoded$)
+%		\State $nextSymbol$ = getSymbol($nextSymbolProb$)
+%		\State $traceResulting$ = concatenate($traceResulting$, $nextSymbol$)
+%		\State k = k + 1
+%		\doWhile{$($not $nextSymbol$ equal to $endSymbol)$ and $(k$ \textless $limit)$}
+%		\State return traceResulting
+%		\EndFunction
+		
+%		\Function{getSymbol}{$nextSymbolProb$}
+%		\State top = chooseMaxProb($nextSymbolProb$)
+%		\State return probabilityToSymbol(top)
+%		\EndFunction
+		
+%	\end{algorithmic}
+%\end{algorithm}
+
+
+
+
+\subsection{Linear Temporal Logic}
+In our approach, the a-priori knowledge that describes how a running case will develop in the future is formulated in terms of Linear Temporal Logic (LTL) rules~\cite{Pnueli77}. LTL is a modal logic with modalities devoted to describe time aspects. Classically, LTL is defined for infinite traces. However, to describe the characteristics of a business process, we use a variant of LTL defined for finite traces (since business processes are supposed to complete eventually).
+%
+We assume that activities occurring during the process execution fall into the set of atomic propositions. LTL rules are constructed from these atoms by applying the temporal operators $\NEXT$ (next), $\sometime$ (future), $\always$ (globally), and $\until$ (until) in addition to the usual boolean connectives. Given a formula $\varphi$, $\NEXT \varphi$ means that the next time instant exists and $\varphi$ is true in the next time instant (strong next). $\sometime \varphi$ indicates that $\varphi$ is true sometimes in the future. $\always \varphi$ means that $\varphi$ is true always in the future. $\varphi \until \psi$ indicates that $\varphi$ has to hold at least until $\psi$  holds and $\psi$ must hold in the current or in a future time instant.
+
+% section background (end)
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "BPM17"
+%%% End: 

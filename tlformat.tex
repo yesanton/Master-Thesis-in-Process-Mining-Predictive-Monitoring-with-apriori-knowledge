@@ -1,0 +1,102 @@
+% The mdf sponsored, miw designed macro to put text back in
+% roman in while in math mode:
+%
+%Here are some quotes:" % prints quotes
+%
+%And in math mode, $x="some roman text"$.
+{\catcode`\"=\active
+\gdef\turnonquotes{\catcode`\"=\active \let"=\dobox}
+\gdef\dobox#1"{\hbox{\rm #1}}}
+
+\everymath={\turnonquotes}
+\everydisplay={\turnonquotes}
+
+
+% The signature of functions can be done using the following 2 macros
+%
+\def\funcsig#1#2{#1\rightarrow{#2}}
+\def\Signature#1#2{#1\colon\, #2}
+\let\Sig=\Signature
+
+% Put a box around some text:
+\def\parlinebox#1{\begin{center}
+                  \fbox{\parbox{4.5in}{#1}}
+                  \end{center}}
+
+% To put a silly quote at the beginning of your text, do:
+% \sillyquote{Some text}{By whom} right at the beginning of your
+% chapter.
+\def\sillyquote#1#2{%
+        \begin{flushright}
+        \parbox[t]{3in}{{\noindent #1}
+                
+        \def\baselinestretch{1}
+        {\it #2}}
+        \end{flushright}
+        \vspace{1cm}}
+
+\def\vsillyquote#1#2{%
+        \begin{flushright}
+        \parbox[t]{3in}{{\noindent #1}
+                
+        \def\baselinestretch{1}
+        \begin{flushright}{\it #2}\end{flushright}}
+        \end{flushright}
+        \vspace{1cm}}
+
+%To put an old-fashioned centerline across the page:
+\def\mycentreline{\begin{center} \rule{3.8in}{0.005in}\end{center}}
+
+% Now on to `proper' semantics!
+% We've found that sometimes (e.g., using crappy printers that blur our 
+% symbols) the obvious use of \! in [\! [ etc moves the 
+% brackets a little too close together, so we have:
+
+\def\squash{\mskip-2.5mu}
+% and we can replace all obvious occurences of \! by \squash ...
+% That's if you like it that way.
+% (obviously this can be changed easily back to 3 or 2.5 etc.,..
+
+\def\leftsem{\lbrack\!\lbrack}
+\def\rightsem{\rbrack\!\rbrack}
+% these two definitions are used consistently, so if a better way 
+% is found of doing these brackets (e.g., pictures) just substitute
+% in these two and the rest will follow
+
+\def\SEMt#1{\hbox{$\leftsem #1\rightsem $}}
+\def\SEM#1{\leftsem #1\rightsem}
+\def\DENSEM#1{{\cal D}\leftsem #1\rightsem}
+\def\OPSEM#1{{\cal O}\leftsem #1\rightsem}
+\def\SSSEM#1{{\cal S}\leftsem #1\rightsem}
+\def\GENSEM#1#2{{\cal #1}\leftsem #2\rightsem}
+\def\TSEM#1{{\cal T}\leftsem #1\rightsem}
+
+% Now for some macros useful for talks on temporal semantics!
+% First, one of Grahams
+\def\Vlongline{\hbox to 140pt{\hrulefill}}
+\newcommand{\infrule}[2]{{\renewcommand{\arraystretch}{0.6}\begin{array}{c} #1 \\       \Vlongline \\#2 \\ \end{array}}}
+% and now for michael's hack of grahams beautiful makerow ...
+\newcommand{\superinfrule}[3]{{\renewcommand{\arraystretch}{0.6}\begin{array}{#1} #2 \\ \Vlongline \\#3 \\ \end{array}}}
+
+% and for a more general version of both these:
+% The following macro takes 4 arguments. These are interpreted as follows:
+% #1 --- defines the positioning of the array. (N.B., if other than l,
+%        c, or r are used, `&'s must be in the arguments somewhere
+% #2 --- argument for the top element of the inference rule
+% #3 ---   "       "   "  bottom element.
+% #4 --- optional arraystretch parameter
+%
+\newcommand{\inferencerule}[4]{\renewcommand{\arraystretch}{#4}\begin{array}{#1}{}#2\\\hline{}#3\end{array}}
+
+% Now one of Graham's environments to make comments stand out:
+%
+% \newenvironment{comment}%
+%         {\begin{center}\begin{minipage}%
+%                         {.9\textwidth}\small\tt}%
+%                       {\end{minipage}%
+%          \end{center}}
+
+% Now a couple of environments for doing arrays in square brackets:
+%
+\newenvironment{sqarray}[2]{\left[ \begin{array}[#1]{#2}}{\end{array} \right]}
+                        

@@ -1,0 +1,645 @@
+%  tlsymbols.tex
+%
+        %%%%%%%%%%%%%%%%%%%%
+        %     WARNING      %
+        %%%%%%%%%%%%%%%%%%%%
+% The master copy of this file is the one that resides in
+% /usr/sun3/common/lib/tex/macros
+% If you modify any other copy of the file it will be overwritten by
+% the nightly rdist ditribution
+%
+
+% First input tlformat.tex:
+
+\input{./tlformat}
+
+\makeatletter
+\def\@psfmtname{pslplain}
+\ifx\fmtname\@psfmtname \else \def\cmsy@{2}\fi % make sure we can always get cmsy
+
+% This file contains a few LaTeX definitions for temporal symbols.
+% Most are standard, the first few being generated using LaTeX picure
+% mode.
+% Section 1 contains mainly common temporal symbols, in particular:
+%       \always                 --- the standard `box' symbol
+%       \sometime               --- the standard `diamond' symbol
+%       \next                   --- the open circle (weak or standard next)
+%       \snext                  --- open circle with a dot in the
+%                                   middle (strong next operator)
+%       \last                   --- filled in circle ( standard last)
+%       \slast                  --- as \last, but with small white
+%                                   circle in centre (strong last)
+%       \until                  --- standard binary (strong) until operator
+%                                   ( calligraphic `U')
+%       \since                  --- standard binary (strong) since operator
+%                                   ( calligraphic `S')
+%       \chop                   --- standard binary chop operator
+%                                   (calligraphic `C')
+%       \ctlFinf                --- CTL* `infinitely often operator'
+%                                   (F with an infinity on top)
+%       \ctlGalm                --- CTL* `almost always operator'
+%                                   (G with an infinity on top)
+%       \infoften               --- (\sometime with an infinity on top)
+%       \almalways              --- (\always with an infinity on top)
+%
+%
+% Section 2.    And now for some non-temporal but very standard operators:
+%               ----------------------------------------------------------
+%       \Nat                    --- standard natural numbers symbol
+%       \Int                    --- standard integers symbol
+%       \Real                   --- standard real numbers symbol
+%       \Ratl                   --- standard rational numbers
+%       \Bool                   --- you guessed it!
+%
+% Section 3 contains more operators for different systems, e.g.,
+% CSP, CCS, Dynamic Logic, Process Logic, etc.,
+%
+% So, here we go:
+%
+% Section 1: Temporal Symbols
+% ===========================
+%
+%
+% 1a: Yer basic temporal operators:
+%     ----------------------------
+%
+%\newcommand{\always}{\raisebox{-.2ex}{
+ %                          \mbox{\unitlength=0.9ex
+  %                         \begin{picture}(2,2)
+   %                        \linethickness{0.06ex}
+    %                       \put(0,0){\line(1,0){2}}
+     %                      \put(0,2){\line(1,0){2}}
+      %                     \put(0,0){\line(0,1){2}}
+       %                    \put(2,0){\line(0,1){2}}
+        %                   \end{picture}}}
+         %             \,}
+
+\newcommand{\always}{\square}
+
+\newcommand{\alwaysP}{\rule[-0.2ex]{1.8ex}{1.8ex}\,}
+%\def\sometime{\mathord{\hbox{\large$\mathchar"0\cmsy@7D$}}} % PS \diamondsuit
+                                                            % is too small
+\def\sometime{\lozenge}
+
+\ifx\fulldiamondsuit\undefined %
+\def\sometimeP{\!\,\makebox[1em]{$\sometime$}\hspace{-1em}
+    \raisebox{.25ex}{\makebox[1em]{$\bullet$}}\,} %
+\else %
+\def\sometimeP{\!\,\raisebox{-0.2ex}{\makebox[1em]{\LARGE$\fulldiamondsuit$}}}%
+\fi
+% make sure we can always get \sometimeP!!
+\let\was=\sometimeP
+%
+%\newcommand{\sometime}{\,\raisebox{-.2ex}{
+%                       \mbox{\unitlength=0.9ex
+%                       \begin{picture}(2,2)
+%                       \linethickness{0.06ex}
+%                       \put(0.75,0){\line(3,4){0.75}}
+%                       \put(0.75,0){\line(-3,4){0.75}}
+%                       \put(0.75,2){\line(-3,-4){0.75}}
+%                       \put(0.75,2){\line(3,-4){0.75}}
+%                       \end{picture}}}
+%                       \,}
+%
+%\newcommand{\sometimet}{\,\raisebox{-.2ex}{
+%                       \mbox{\unitlength=0.9ex
+%                       \begin{picture}(2,2)
+%                       \linethickness{0.06ex}
+%                       \put(0.64,0){\line(2,3){0.64}}
+%                       \put(0.64,0){\line(-2,3){0.64}}
+%                       \put(0.64,2){\line(-2,-3){0.64}}
+%                       \put(0.64,2){\line(2,-3){0.64}}
+%                       \end{picture}}}
+%                       \,}
+%
+% But until the above work, we'll use the old favourite:
+\def\mysometime{\hspace{-1.2ex}\hbox{\large$\mathchar"0\cmsy@7D$}}
+\def\mysometimesmall{\hbox{$\mathchar"0\cmsy@7D$}}
+
+%\newcommand{\NEXT}{\!\raisebox{-.2ex}{ %possibly add a little space before
+ %                       \mbox{\unitlength=0.9ex
+  %                      \begin{picture}(2,2)
+   %                     \linethickness{0.06ex}
+    %                    \put(1,1){\circle{2}} % Draws circle with
+     %                   \end{picture}}}       % diameter 2 at centre 1,1
+      %                  \,}
+
+\newcommand{\NEXT}{\bigcirc}
+
+\newcommand{\snext}{\raisebox{-.2ex}{ %possibly add a little space before
+                        \mbox{\unitlength=0.9ex
+                        \begin{picture}(2,2)
+                        \linethickness{0.06ex}
+                        \put(1,1){\circle{2}} % Draws circle with
+                        % diameter 2 at centre 1,1, and puts dot in middle
+                        \put(1,1){\circle*{0.4}}
+                        \end{picture}}}
+                        \,}
+
+\newcommand{\last}{\!\raisebox{-.2ex}{
+                        \mbox{\unitlength=0.9ex
+                        \begin{picture}(2,2)
+                        \linethickness{0.06ex}
+                        \put(1,1){\circle*{1.92}} % Draws a filled in circle
+                        \end{picture}}}       % with diameter 2 at centre 1,1
+                        \,}
+%OLD ONE:
+%\newcommand{\slast}{\,\raisebox{-.2ex}{
+%                       \mbox{\unitlength=0.9ex
+%                       \begin{picture}(2,2)
+%                       \linethickness{0.9ex}   % which doesn't matter
+                                                % in picture mode when
+                                                % drawing circles!
+%                       \put(1,1){\circle{0.6}} % Draws a circle with%
+                                                % a very thick line
+%                       \put(1,1){\circle{0.8}}
+%                       \put(1,1){\circle{1.0}}
+%                       \put(1,1){\circle{1.2}}
+%                       \put(1,1){\circle{1.4}}
+%                       \put(1,1){\circle{1.6}}
+%                       \put(1,1){\circle{1.8}}
+%                       \end{picture}}}
+%                       \,}
+\newcommand{\slast}{\raisebox{-.2ex}{
+                        \mbox{\unitlength=0.9ex
+                        \begin{picture}(2,2)
+                        \linethickness{0.9ex}   % which doesn't matter
+                                                % in picture mode when
+                                                % drawing circles!
+%                       \put(1,1){\circle{0.6}} % Draws a circle with%
+                                                % a very thick line
+                        \put(1,1){\circle{0.9}}
+                        \put(1,1){\circle{1.0}}
+                        \put(1,1){\circle{1.2}}
+                        \put(1,1){\circle{1.4}}
+                        \put(1,1){\circle{1.6}}
+                        \put(1,1){\circle{1.8}}
+                        \put(1,1){\circle{1.86}}
+                        \put(1,1){\circle{1.92}}
+                        \end{picture}}}
+                        \,}
+%
+% Now general macros that can be changed...
+\def\stronglast{\!\!\slast}
+\def\heretofore{\,\alwaysP}
+\let\weaklast=\last
+% The next two are like this becuae we assume infinite futures:
+\let\strongnext=\next
+\let\weaknext=\next
+%
+% Also we have Until and Chop symbols. Due to the confusion over what
+% an Unless symbols should look like, we're going to leave that up to
+% you. Some people use an italic `U', while others use a calligraphic `W':
+% \def\unless{\hbox{$\, U\,$}}
+% \def\unless{\hbox{$\,{\cal W}\,$}}
+%
+%\def\until{\hbox{$\,\mathchar"2255\,$}}
+%\def\since{\hbox{$\,\mathchar"2253\,$}}
+%\def\chop{\hbox{$\,\mathchar"2243\,$}}
+\def\until{\sqcup}
+%\def\unless{\hbox{$\, U\,$}}
+% Now we've "plumped" for having unless as W!
+\def\unless{\hbox{$\,\cal W \,$}}
+\def\since{\hbox{$\,\cal S \,$}}
+\def\zince{\hbox{$\,\cal Z \,$}}
+\def\chop{\hbox{$\,\cal C \,$}}
+\def\itchop{\hbox{$\, C\, $}}
+\def\ituntil{\hbox{$\, U\, $}}
+
+\newcommand{\alwaysf}{\raisebox{-.2ex}{
+                           \mbox{\unitlength=0.9ex
+                           \begin{picture}(2,2)
+                           \linethickness{0.06ex}
+                           \put(0,0){\line(1,0){2}}
+                           \put(0,2){\line(1,0){2}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(2,0){\line(0,1){2}}
+                           \put(1,0.6){\line(0,1){0.8}}
+                           \put(0.6,1){\line(1,0){0.8}}
+                           \end{picture}}}
+                      \,}
+
+\newcommand{\alwaysb}{\raisebox{-.2ex}{
+                           \mbox{\unitlength=0.9ex
+                           \begin{picture}(2,2)
+                           \linethickness{0.06ex}
+                           \put(0,0){\line(1,0){2}}
+                           \put(0,2){\line(1,0){2}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(2,0){\line(0,1){2}}
+                           \put(0.6,1){\line(1,0){0.8}}
+                           \end{picture}}}
+                      \,}
+
+\newcommand{\alwaysfb}{\raisebox{-.2ex}{
+                           \mbox{\unitlength=0.9ex
+                           \begin{picture}(2,2)
+                           \linethickness{0.06ex}
+                           \put(0,0){\line(1,0){2}}
+                           \put(0,2){\line(1,0){2}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(2,0){\line(0,1){2}}
+                           \put(1,0.9){\line(0,1){0.8}}
+                           \put(0.6,1.3){\line(1,0){0.8}}
+                           \put(0.6,0.7){\line(1,0){0.8}}
+                           \end{picture}}}
+                      \,}
+
+%
+% BEWARE: The following macros for sometime require pspicture option
+%
+\newcommand{\sometimef}{\,\raisebox{-.2ex}{
+                        \mbox{\unitlength=0.9ex
+                        \begin{picture}(2,2)
+                        \linethickness{0.06ex}
+                        \put(0.8,0){\line(4,5){0.8}}
+                        \put(0.8,0){\line(-4,5){0.8}}
+                        \put(0.8,2){\line(-4,-5){0.8}}
+                        \put(0.8,2){\line(4,-5){0.8}}
+                        \put(0.8,0.6){\line(0,1){0.8}}
+                        \put(0.4,1){\line(1,0){0.8}}
+                        \end{picture}}}
+                        \,}
+
+\newcommand{\sometimeb}{\,\raisebox{-.2ex}{
+                        \mbox{\unitlength=0.9ex
+                        \begin{picture}(2,2)
+                        \linethickness{0.06ex}
+                        \put(0.8,0){\line(4,5){0.8}}
+                        \put(0.8,0){\line(-4,5){0.8}}
+                        \put(0.8,2){\line(-4,-5){0.8}}
+                        \put(0.8,2){\line(4,-5){0.8}}
+                        \put(0.4,1){\line(1,0){0.8}}
+                        \end{picture}}}
+                        \,}
+
+\newcommand{\sometimefb}{\,\raisebox{-.2ex}{
+                        \mbox{\unitlength=0.9ex
+                        \begin{picture}(2,2)
+                        \linethickness{0.06ex}
+                        \put(0.8,0){\line(4,5){0.8}}
+                        \put(0.8,0){\line(-4,5){0.8}}
+                        \put(0.8,2){\line(-4,-5){0.8}}
+                        \put(0.8,2){\line(4,-5){0.8}}
+                        \put(0.4,0.7){\line(1,0){0.8}}
+                        \put(0.4,1.3){\line(1,0){0.8}}
+                        \put(0.8,0.9){\line(0,1){0.8}}
+                        \end{picture}}}
+                        \,}
+
+
+ \newcommand{\unintf}{\raisebox{-.2ex}{
+                           \mbox{\unitlength=0.9ex
+                           \begin{picture}(2,2)
+                           \linethickness{0.06ex}
+                           \put(0,0){\line(1,0){2}}
+                           \put(0,2){\line(1,0){2}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(2,0){\line(0,1){2}}
+                           \put(1,0.6){\line(0,1){0.8}}
+                           \put(0.6,1){\line(1,0){0.8}}
+                           \put(1,2.3){\makebox(0,0){$\sim$}}
+                           \end{picture}}}
+                      \,}
+
+ \newcommand{\unintb}{\raisebox{-.2ex}{
+                           \mbox{\unitlength=0.9ex
+                           \begin{picture}(2,2)
+                           \linethickness{0.06ex}
+                           \put(0,0){\line(1,0){2}}
+                           \put(0,2){\line(1,0){2}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(2,0){\line(0,1){2}}
+                           \put(0.6,1){\line(1,0){0.8}}
+                           \put(1,2.3){\makebox(0,0){$\sim$}}
+                           \end{picture}}}
+                      \,}
+
+
+%
+% 1b: Some less common temporal operators:
+%     -----------------------------------
+%
+% We also have some variations on the ``\until'' operator, i.e., weak,
+% Kr\"oger weak, Kr\"oger strong etc.
+
+\def\skuntil{\,{\cal U}_k\,}
+\def\wuntil{\,{\cal U}_w\,}
+\def\wkuntil{\,{\cal U}_{kw}\,}
+
+% Now for some TLR operators:
+%
+\def\untilp{\,{\cal U}^{+}\,}
+\def\unlessp{\unless^+}
+
+% We also have Kr\"ogers `atnext' operator (in text form until a
+% better version is invented).
+\def\atnext{\,\hbox{\bf atnext}\,}
+
+% and the good old EL next action operator:
+% (again like this until a better symbol is found)
+\def\Act{\hbox{\rm\bf A} }
+\def\BAct{\hbox{\rm\bf B} }
+\def\CAct{\hbox{\rm\bf C} }
+\def\Actv{\Act_{\bar{v}}}
+\def\Acty{\Act_{\bar{y}}}
+\def\Actvuy{\Act_{\bar{v}\cup\bar{y}}}
+\def\Actz{\Act_{\bar{z}}}
+\def\Actx{\Act_{\bar{x}}}
+\def\BActv{\BAct_{\bar{v}}}
+\def\Actpr{\Act_{\hbox{\rm PROP}}}
+
+%
+% 1c: Some fixpoint-type operators:
+%     ----------------------------
+%
+% The standard fixpoint operators:
+\def\lstfix#1#2{\mu#1.\, #2{#1}}
+\def\grfix#1#2{\nu#1.\, #2{#1}}
+\def\lstfixapp#1#2{\mu#1.\, #2 (#1 )}
+\def\grfixapp#1#2{\nu#1.\, #2 (#1 )}
+
+% We can also define some common fixpoints as follows:
+% always
+\def\alwfix#1#2{\nu#2 .(#1\land\next#2)}
+
+% alwayvs, but using next action instead of next:
+\def\actionalwfix#1#2{\nu#2 .(#1\land\Act#2)}
+
+% Various sometime, and until versions. Strong, weak, using next, or
+% next action.
+\def\weaksomefix#1#2{\mu#2 .(#1\,\lor\next#2)}
+\def\weakuntfix#1#2#3{\mu#3 .(#2\,\lor (#1\land\next#3))}
+\def\unlessfix#1#2#3{\nu#3 .(#2\,\lor (#1\land\next#3))}
+\def\somefix#1#2{\mu#2 .(#1\lor\snext#2)}
+\def\actionsomefix#1#2{\mu#2 .(#1\lor\Act#2)}
+\def\untfix#1#2#3{\mu#3 .(#2\,\lor (#1\land\snext#3))}
+\def\actionuntfix#1#2#3{\mu#3 .(#2\,\lor (#1\land\Act#3))}
+\def\prodtheta#1{\theta (#1)}
+\def\prodchi#1{\chi (#1)}
+\def\prodGamma#1{\Gamma (#1)}
+\def\negprodnegchi#1{\neg\chi(\neg#1)}
+\def\negprodnegtheta#1{\neg\theta(\neg#1)}
+\def\negprodnegGamma#1{\neg\Gamma(\neg#1)}
+
+%
+% 1d: Some CTL and associated operators:
+%     ---------------------------------
+\def\ctlFinf{\!\!\!\!\hbox{\renewcommand{\arraystretch}{0.1} %
+             \begin{tabular}[b]{c} $\infty$\\ F\end{tabular}}\!\!\!{}}
+\def\ctlGalm{\hbox{\renewcommand{\arraystretch}{0.1} %
+             \begin{tabular}[b]{c} $\infty$\\ G\end{tabular}}}
+\def\infoften{\hbox{\renewcommand{\arraystretch}{0.1} %
+             \begin{tabular}[b]{c} $\infty$\\ $\sometime$\end{tabular}}}
+\def\infR{\renewcommand{\arraystretch}{0.1} %
+             \begin{array}[b]{c} \infty\\ \sometime\end{array}}
+\def\almalways{\hbox{\renewcommand{\arraystretch}{0.4} %
+             \begin{tabular}[b]{c} $\infty$\\ ${\!\raisebox{-.3ex}{
+                           \mbox{\unitlength=0.9ex
+                           \begin{picture}(2,2)
+                           \linethickness{0.06ex}
+                           \put(0,0){\line(1,0){2}}
+                           \put(0,2){\line(1,0){2}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(2,0){\line(0,1){2}}
+                           \end{picture}}}
+                      \,}$\end{tabular}}}
+\def\almR{\renewcommand{\arraystretch}{0.4} %
+             \begin{array}[b]{c} \infty\\ {\!\raisebox{-.3ex}{
+                           \mbox{\unitlength=0.9ex
+                           \begin{picture}(2,2)
+                           \linethickness{0.06ex}
+                           \put(0,0){\line(1,0){2}}
+                           \put(0,2){\line(1,0){2}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(2,0){\line(0,1){2}}
+                           \end{picture}}}
+                      \,}\end{array}}
+%
+% Section 2: Some other standard mathematical symbols
+% ===================================================
+%
+% 2a: Standard domains
+%     ----------------
+%
+% Now for the standard Natural, Real, and Integer symbols: %
+%\font\symbols=msym10
+%\def\Nat{\hbox{\symbols\char"4E}}
+%\def\Int{\hbox{\symbols\char"5A}}
+%\def\Real{\hbox{\symbols\char"52}}
+%\def\Bool{\hbox{\rm\bf B}}
+%\def\Ratl{\hbox{\rm\bf Q}}
+% Unfortunately, some idiot didn't provide gf files for msym10, so we
+% have to resort to the old bold rubbish again:
+\def\Nat{\hbox{\rm \bf N}}
+\def\Int{\hbox{\rm \bf Z}}
+\def\Real{\hbox{\rm \bf R}}
+\def\Bool{\hbox{\rm\bf B}}
+\def\Ratl{\hbox{\rm\bf Q}}
+
+% 2b: Standard logical operations
+%     ---------------------------
+%
+% and a few logical aliases you might expect
+
+\let\A=\forall
+\let\E=\exists
+\def\Eunique{\exists !}
+\def\ax{\vdash\quad}
+
+% Some more standard logical operators:
+\let\imp=\rightarrow
+\def\iffe{\,\Leftrightarrow\,}
+\let\iff=\Leftrightarrow
+\let\prv=\vdash
+\def\lland{\,\land\,}
+\def\bland{\ \land\ }
+\def\llor{\,\lor\,}
+
+% now for a few more sensible definitions, namely macros for
+% IFF, NOT and AND, where these roman font words appear in a
+% definition (again to be used in math font only)
+
+\def\IFF{\quad\hbox{\rm iff}\quad}
+\def\IF{\ \hbox{\rm if}\ }
+\def\THEN{\ \hbox{\rm then}\,}
+\def\ELSE{\ \hbox{\rm else}\,}
+\def\NOT{\ \hbox{\rm not}\,}
+\def\AND{\ \hbox{\rm and}\  }
+\def\TAND{\ \hbox{\rm and}\ }
+\def\OR{\ \hbox{\rm or}\ }
+\def\SuTh{\ \hbox{\rm such that}\ }
+\def\PROP{\hbox{\rm PROP}\,}
+\def\PROG{\hbox{\rm PROG}\,}
+\def\ASS{\hbox{\rm ASS}\,}
+
+% Some funny (but dangerous) versions of logical values:
+
+% Here's a useful macro for changing fonts in the new latex
+\def\normal{\ifx\selectfont\undefined\else\normalshape\fi}
+
+\def\ltrue{\hbox{\rm\bf true}}
+\def\lfalse{\hbox{\rm\bf false}}
+\def\true{\hbox{\bf True}}
+\def\false{\hbox{\bf False}}
+
+% and a few from set theory:
+\let\union=\cup
+\let\Union=\bigcup
+\let\intersection=\cap
+\let\Intersection=\bigcap
+\let\intersect=\cap
+\let\Intersect=\bigcap
+
+% Section 3: Various other symbols (in subsections)
+% =================================================
+%
+% 3a: CCS, and CSP symbols.
+%     --------------------
+%
+% And now some of Graham's CCS/CSP macros:
+\newcommand{\fatbar}{\raisebox{-.25ex}{
+                           \mbox{\unitlength=1ex
+                           \begin{picture}(1,2)
+                           \linethickness{0.05ex}
+                           \put(0,0){\line(1,0){1}}
+                           \put(0,2){\line(1,0){1}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(1,0){\line(0,1){2}}
+                           \end{picture}}}
+                      \;}
+\newcommand{\openfatbar}{\raisebox{-.25ex}{
+                           \mbox{\unitlength=1ex
+                           \begin{picture}(1,2)
+                           \linethickness{0.05ex}
+                           %\put(0,0){\line(1,0){1}}
+                           \put(0,2){\line(1,0){1}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(1,0){\line(0,1){2}}
+                           \end{picture}}}
+                      \;}
+\newcommand{\twolines}{\raisebox{-.25ex}{
+                           \mbox{\unitlength=1ex
+                           \begin{picture}(1,2)
+                           \linethickness{0.05ex}
+                           %\put(0,0){\line(1,0){1}}
+                           %\put(0,2){\line(1,0){1}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(0.5,0){\line(0,1){2}}
+                           \end{picture}}}
+                      \;}
+\newcommand{\twolinessub}{\raisebox{-.25ex}{
+                           \mbox{\unitlength=1ex
+                           \begin{picture}(1,2)
+                           \linethickness{0.05ex}
+                           %\put(0,0){\line(1,0){1}}
+                           %\put(0,2){\line(1,0){1}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(0.5,0){\line(0,1){2}}
+                           \end{picture}}}}
+
+\newcommand{\threelines}{\raisebox{-.25ex}{
+                           \mbox{\unitlength=1ex
+                           \begin{picture}(1,2)
+                           \linethickness{0.05ex}
+                           %\put(0,0){\line(1,0){1}}
+                           %\put(0,2){\line(1,0){1}}
+                           \put(0,0){\line(0,1){2}}
+                           \put(0.5,0){\line(0,1){2}}
+                           \put(1,0){\line(0,1){2}}
+                           \end{picture}}}
+                      \;}
+\newcommand{\pref}{\rightarrow}
+\newcommand{\dor}{\: \fatbar \:}
+\newcommand{\choice}{\fatbar }
+\newcommand{\parcomp}{\|}
+\newcommand{\ndor}{\: \openfatbar \:}
+%\newcommand{\csppar}{\: \parallel \:}
+%\newcommand{\cspint}{\: \mid\mid\mid \:}
+\newcommand{\csppar}{\: \twolines \:}
+\newcommand{\cspint}{\: \threelines \:}
+
+%
+% 3b: Dynamic and Process Logic Symbols
+%     ---------------------------------
+
+% As the \[lr]angle symbols are too thin, and <> are too wide for
+% dynamic logic <a>p brackets, we've defined these:
+%
+%\newcommand{\DLlangle}{\raisebox{-.25ex}{
+%                          \mbox{\unitlength=1ex
+%                          \begin{picture}(1,2)
+%                          \linethickness{0.05ex}
+%                          \put(0,1){\line(1,1){1}}
+%                          \put(0,1){\line(1,-1){1}}
+%                          \end{picture}}}}
+%
+%\newcommand{\DLrangle}{\raisebox{-.25ex}{
+%                          \mbox{\unitlength=1ex
+%                          \begin{picture}(1,2)
+%                          \linethickness{0.05ex}
+%                          \put(0,0){\line(1,1){1}}
+%                          \put(0,2){\line(1,-1){1}}
+%                          \end{picture}}}}
+%
+% Yes, you guessed it, these don't work! Apparently the minimum length
+% of angled line you can have is 2ex, which is a bit too long!
+% So, we'll resort to the following for the time being:
+\let\DLlangle=\langle
+\let\DLrangle=\rangle
+
+% For Process Logics:
+\def\f{\,\hbox{\rm f}\,}
+\def\fX{\,\hbox{\rm f}\, X}
+\def\suf{\/\hbox{\rm suf}\,}
+\def\first{\,\hbox{\rm first}}
+\def\firstu{\,\hbox{\rm first(}u\hbox{\rm )}\,}
+\let\fusion=\circ
+
+% and Dynamic Logics:
+\def\Ra{R_\alpha}
+\def\Rb{R_\beta}
+\def\bab{\DLlangle\alpha\DLrangle}
+\def\babX{\DLlangle\alpha\DLrangle X}
+\def\asomep{\lbrack\alpha\rbrack\,\hbox{\rm some}\, p}
+\def\astar{{\alpha^{\ast}}}
+\def\asupi{{\alpha^i}}
+
+% and some useful abbreviations (again pretty lazy):
+\def\RR{\hbox{$\cal R$} }
+\def\RRsubR{\, {\cal R}_R \, }
+\def\DD{\hbox{$\cal D$} }
+\def\DDQ{``${\cal D}$''}
+\def\OOQ{``${\cal O}$''}
+\def\SSQ{``${\cal S}$''}
+\def\LLQ{``${\cal L}$''}
+\def\CCQ{``${\cal C}$''}
+\def\SS{\hbox{$\cal S$} }
+\def\MM{\hbox{$\cal M$} }
+\def\NN{\hbox{$\cal N$}{}}
+\def\NNsubE{\, {\cal N}_E \, }
+\def\K{\hbox{\rm\bf K} }
+\def\T{\hbox{\rm\bf T} }
+\def\cL{\hbox{${\cal L}$} }
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+% A little help for those of us who define semantics fairly often:
+%
+% As the symbols `<A,s_0> |= ' are used so much in semantic definitions
+% we have the following macro:
+% N.B., all to be used in math mode only.
+
+% The new standard model macro is:
+\def\MOD#1#2{\,\langle{\cal #1},\, #2\rangle\,\models\ }
+
+\makeatother
+
+% The `vdm-like' definition symbol:
+% ( a triangle over = )
+%
+%\def\DEFINE{\raise.5ex  %
+%       \hbox{\footnotesize\underline{$\mathchar"3\cmsy@34$}}}
+%
+\def\DEFINE{\,\stackrel{\hbox{{\rm\tiny def}}}{=}\, }
+

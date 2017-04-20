@@ -1,0 +1,161 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem{bpichallenge2011}
+{3TU Data Center}: {BPI Challenge 2011 Event Log} (2011),
+  doi:10.4121/uuid:d9769f3d-0ab0-4fb8-803b-0d1120ffcf54
+
+\bibitem{vanderAalst2010}
+van~der Aalst, W.M.P., Pesic, M., Song, M.: Beyond Process Mining: From the
+  Past to Present and Future, pp. 38--52. Springer Berlin Heidelberg, Berlin,
+  Heidelberg (2010), \url{http://dx.doi.org/10.1007/978-3-642-13094-6_5}
+
+\bibitem{DBLP:journals/is/AalstSS11}
+van~der Aalst, W.M.P., Schonenberg, M.H., Song, M.: Time prediction based on
+  process mining. Information Systems  36(2),  450--475 (2011)
+
+\bibitem{tensorflow2015-whitepaper}
+Abadi, M., Agarwal, A., Barham, P., Brevdo, E., Chen, Z., Citro, C., Corrado,
+  G.S., Davis, A., Dean, J., Devin, M., Ghemawat, S., Goodfellow, I., Harp, A.,
+  Irving, G., Isard, M., Jia, Y., Jozefowicz, R., Kaiser, L., Kudlur, M.,
+  Levenberg, J., Man\'{e}, D., Monga, R., Moore, S., Murray, D., Olah, C.,
+  Schuster, M., Shlens, J., Steiner, B., Sutskever, I., Talwar, K., Tucker, P.,
+  Vanhoucke, V., Vasudevan, V., Vi\'{e}gas, F., Vinyals, O., Warden, P.,
+  Wattenberg, M., Wicke, M., Yu, Y., Zheng, X.: {TensorFlow}: Large-scale
+  machine learning on heterogeneous systems (2015),
+  \url{\url{http://tensorflow.org/}}, software available from tensorflow.org
+
+\bibitem{EnvironmentalLog}
+Buijs, J.: Environmental permit application process (``wabo''), coselog project
+  - municipality 4 (2014),
+  \url{https://doi.org/10.4121/uuid:e8c3a53d-5301-4afb-9bcd-38e74171ca32}
+
+\bibitem{chollet2015keras}
+Chollet, F.: Keras. \url{https://github.com/fchollet/keras} (2015)
+
+\bibitem{DBLP:conf/caise/ConfortiLRA13}
+Conforti, R., de~Leoni, M., Rosa, M.L., van~der Aalst, W.M.P.: Supporting
+  risk-informed decisions during business process execution. In: {Proc. of
+  CAiSE 2013}. pp. 116--132. Springer (2013)
+
+\bibitem{Damerau:1964:TCD:363958.363994}
+Damerau, F.J.: A technique for computer detection and correction of spelling
+  errors. Commun. ACM  7(3),  171--176 (Mar 1964)
+
+\bibitem{Di-Francescomarino:2016aa}
+{Di Francescomarino}, C., Dumas, M., Maggi, F.M., Teinemaa, I.:
+  Clustering-based predictive process monitoring. IEEE Transactions on Services
+  Computing  PP(99) (2016)
+
+\bibitem{bpichallenge2012}
+van Dongen, B.: Bpi challenge 2012 (2012),
+  \url{http://dx.doi.org/10.4121/uuid:3926db30-f712-4394-aebc-75976070e91f}
+
+\bibitem{bpichallenge2017}
+van Dongen, B.: Bpi challenge 2017 (2017),
+  \url{https://doi.org/10.4121/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b}
+
+\bibitem{evermann}
+Evermann, N., Rehse, J.R., Fettke, P.: A deep learning approach for predicting
+  process behaviour at runtime. In: PRAISE-2016 (2016)
+
+\bibitem{Folino}
+Folino, F., Guarascio, M., Pontieri, L.: Discovering context-aware models for
+  predicting business process performances. In: {Proc. of On the Move to
+  Meaningful Internet Systems (OTM)}, pp. 287--304. Springer (2012)
+
+\bibitem{goodfellow2016dlbook}
+Goodfellow, I., Bengio, Y., Courville, A.: Deep Learning, chap. Sequence
+  Modeling: Recurrent and Recursive Nets, pp. 373--420. MIT Press (2016)
+
+\bibitem{hochreiter1997long}
+Hochreiter, S., Schmidhuber, J.: Long short-term memory. Neural computation
+  9(8),  1735--1780 (1997)
+
+\bibitem{Leontjeva2015}
+Leontjeva, A., Conforti, R., Di~Francescomarino, C., Dumas, M., Maggi, F.M.:
+  Complex symbolic sequence encodings for predictive monitoring of business
+  processes. In: BPM 2015, pp. 297--313 (2015)
+
+\bibitem{Maggi2012}
+Maggi, F.M., Bose, R.P.J.C., van~der Aalst, W.M.P.: Efficient Discovery of
+  Understandable Declarative Process Models from Event Logs, pp. 270--285.
+  Springer Berlin Heidelberg, Berlin, Heidelberg (2012),
+  \url{http://dx.doi.org/10.1007/978-3-642-31095-9_18}
+
+\bibitem{Maggi:CAiSE2014}
+Maggi, F.M., {Di Francescomarino}, C., Dumas, M., Ghidini, C.: Predictive
+  monitoring of business processes. In: CAiSE 2014. LNCS, vol. 8484, pp.
+  457--472. Springer (2014)
+
+\bibitem{Metzgeretal12}
+Metzger, A., Franklin, R., Engel, Y.: Predictive monitoring of heterogeneous
+  service-oriented business networks: The transport and logistics case. In:
+  Proceedings of the 2012 Annual SRII Global Conference. pp. 313--322. SRII
+  '12, IEEE Computer Society, Washington, DC, USA (2012)
+
+\bibitem{Pika}
+Pika, A., van~der Aalst, W.M.P., Fidge, C.J., ter Hofstede, A.H.M., Wynn, M.T.:
+  Predicting Deadline Transgressions Using Event Logs, pp. 211--216. Springer
+  Berlin Heidelberg, Berlin, Heidelberg (2013)
+
+\bibitem{Pnueli77}
+Pnueli, A.: The temporal logic of programs. In: 18th Annual Symposium on
+  Foundations of Computer Science, Providence, Rhode Island, USA, 31 October -
+  1 November 1977. pp. 46--57. {IEEE} Computer Society (1977)
+
+\bibitem{Polatoetal:2016}
+Polato, M., Sperduti, A., Burattin, A., de~Leoni, M.: Time and activity
+  sequence prediction of business process instances. CoRR  abs/1602.07566
+  (2016)
+
+\bibitem{DBLP:conf/icsoc/Rogge-SoltiW13}
+Rogge-Solti, A., Weske, M.: Prediction of remaining service execution time
+  using stochastic petri nets with arbitrary firing delays. In: ICSOC 2013. pp.
+  389--403. Springer
+
+\bibitem{Schonenberg2008}
+Schonenberg, H., Weber, B., van Dongen, B., van~der Aalst, W.: Supporting
+  Flexible Processes through Recommendations Based on History, pp. 51--66.
+  Springer Berlin Heidelberg, Berlin, Heidelberg (2008),
+  \url{http://dx.doi.org/10.1007/978-3-540-85758-7_7}
+
+\bibitem{Senderovichetal15}
+Senderovich, A., Weidlich, M., Gal, A., Mandelbaum, A.: Queue mining for delay
+  prediction in multi-class service processes. Inf. Syst.  53,  278--295 (2015)
+
+\bibitem{bpichallenge2013}
+Steeman, W.: Bpi challenge 2013 (2013),
+  \url{https://doi.org/10.4121/uuid:a7ce5c55-03a7-4583-b855-98b86e1a2b07}
+
+\bibitem{suriadi}
+Suriadi, S., Ouyang, C., van~der Aalst, W.M.P., ter Hofstede, A.H.M.: Root
+  Cause Analysis with Enriched Process Logs, pp. 174--186. Springer Berlin
+  Heidelberg, Berlin, Heidelberg (2013)
+
+\bibitem{niek96732}
+Tax, N., Verenich, I., Rosa, M.L., Dumas, M.: Predictive business process
+  monitoring with lstm neural networks (2017), to appear in CAiSE 2017
+
+\bibitem{DBLP:conf/bpm/TeinemaaDMF16}
+Teinemaa, I., Dumas, M., Maggi, F.M., {Di Francescomarino}, C.: Predictive
+  business process monitoring with structured and unstructured data. In: {BPM}
+  2016. pp. 401--417 (2016)
+
+\bibitem{Tillmann2003WRD778822778827}
+Tillmann, C., Ney, H.: Word reordering and a dynamic programming beam search
+  algorithm for statistical machine translation. Comput. Linguist.  29(1),
+  97--133 (Mar 2003)
+
+\bibitem{quteprints96732}
+Verenich, I., Dumas, M., Rosa, M.L., Maggi, F.M., Chasovskyi, D., Rozumnyi, A.:
+  Tell me what{'}s ahead? predicting remaining activity sequences of business
+  process instances (June 2016), \url{http://eprints.qut.edu.au/96732/}
+
+\bibitem{Xing:2010:BSS:1882471.1882478}
+Xing, Z., Pei, J., Keogh, E.: A brief survey on sequence classification. SIGKDD
+  Explor. Newsl.  12(1),  40--48 (Nov 2010),
+  \url{http://doi.acm.org/10.1145/1882471.1882478}
+
+\end{thebibliography}

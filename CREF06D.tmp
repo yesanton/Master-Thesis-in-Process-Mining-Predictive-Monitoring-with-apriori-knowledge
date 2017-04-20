@@ -1,0 +1,63 @@
+%\documentclass[llncs]{svmultln}
+\documentclass{llncs}
+%\documentclass{article}
+\usepackage{color}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{float}
+\usepackage{array}
+\usepackage{xspace}
+\usepackage{paralist}
+\usepackage{todonotes}
+\usepackage{comment}
+%\usepackage{newtxtext}
+\usepackage[]{algorithm2e}
+\pagestyle{plain}
+\usepackage{url}
+\usepackage{numprint}
+\usepackage{booktabs}  % nice looking tables
+\usepackage{siunitx}
+%\usepackage[boldmath]{numprint}
+\begin{document}
+\mainmatter
+
+\title{Predictive Business Process Monitoring enhanced with Background Knowledge}
+\author{Anton Yeshchenko\inst{1}\and Chiara Di Francescomarino\inst{2} \and Chiara Ghidini\inst{2} \and Fabrizio Maria Maggi\inst{1} \and Giulio Petrucci\inst{1}}
+
+\institute{University of Tartu, Ulikooli 18, 50090 Tartu, Estonia
+  \email{}
+\and
+  FBK-IRST, Via Sommarive 18, 38050 Trento, Italy
+  \email{}
+}
+
+\maketitle
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+\keywords{Predictive Process Monitoring, Deep learning, Recurrent Neural Networks, Linear Temporal Logic}
+
+
+\input{introduction}
+\input{relatedwork}
+\input{problem}
+\input{approach}
+\input{evaluation}
+\input{conclusions}
+
+
+\bibliographystyle{splncs03}
+
+\bibliography{bibliography}
+
+\end{document}
