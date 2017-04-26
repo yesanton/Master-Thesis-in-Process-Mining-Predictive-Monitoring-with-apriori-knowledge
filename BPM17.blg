@@ -1,63 +1,59 @@
 This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: BPM17.aux
-White space in argument---line 68 of file BPM17.aux
- : \citation{quteprints96732,
- :                            niek96732, evermann}
-I'm skipping whatever remains of this command
 The style file: splncs03.bst
 Database file #1: bibliography.bib
 Warning--entry type for "bpichallenge2012" isn't style-file defined
 --line 153 of file bibliography.bib
 Warning--I didn't find a database entry for "Schonenberg_timeprediction"
 Warning--I didn't find a database entry for "Teinemaa2016"
+Warning--can't use both author and editor fields in vanderAalst2005
 Warning--can't use both author and editor fields in vanderAalst2010
 Warning--missing publisher in Leontjeva2015
 Warning--can't use both author and editor fields in Maggi2012
 Warning--can't use both author and editor fields in Pika
-Warning--empty year in DBLP:conf/icsoc/Rogge-SoltiW13
 Warning--can't use both author and editor fields in Schonenberg2008
 Warning--can't use both author and editor fields in suriadi
 Warning--empty note in quteprints96732
-You've used 36 entries,
+You've used 38 entries,
             2785 wiz_defined-function locations,
-            836 strings with 13107 characters,
-and the built_in function-call counts, 21784 in all, are:
-= -- 1779
-> -- 777
-< -- 36
-+ -- 322
-- -- 282
-* -- 1433
-:= -- 2767
-add.period$ -- 44
-call.type$ -- 36
-change.case$ -- 268
+            855 strings with 14112 characters,
+and the built_in function-call counts, 23309 in all, are:
+= -- 1894
+> -- 861
+< -- 37
++ -- 356
+- -- 314
+* -- 1553
+:= -- 2968
+add.period$ -- 45
+call.type$ -- 38
+change.case$ -- 290
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 1841
-empty$ -- 1888
-format.name$ -- 309
-if$ -- 4754
+cite$ -- 46
+duplicate$ -- 1955
+empty$ -- 2004
+format.name$ -- 342
+if$ -- 5071
 int.to.chr$ -- 0
-int.to.str$ -- 36
-missing$ -- 390
-newline$ -- 113
-num.names$ -- 72
-pop$ -- 747
+int.to.str$ -- 38
+missing$ -- 420
+newline$ -- 119
+num.names$ -- 76
+pop$ -- 802
 preamble$ -- 1
-purify$ -- 213
+purify$ -- 233
 quote$ -- 0
-skip$ -- 588
+skip$ -- 616
 stack$ -- 0
-substring$ -- 1229
-swap$ -- 1065
-text.length$ -- 36
+substring$ -- 1301
+swap$ -- 1136
+text.length$ -- 37
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 132
+type$ -- 138
 warning$ -- 8
-while$ -- 172
-width$ -- 38
-write$ -- 364
-(There was 1 error message)
+while$ -- 183
+width$ -- 40
+write$ -- 387
+(There were 11 warnings)

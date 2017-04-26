@@ -10,6 +10,9 @@ In this section, we report the background concepts useful for understanding the 
 
 
 \subsection{Event Logs and Traces}
+
+Most of the huge enterprises and middle sized companies have a lot of processes being executed. With the rapid development of database technology and inexpensiveness of data warehouses saving all the transactional data in the company became a must. Most of this data is about processes that are happening in the company. Those range from core processes such as "order to cash" and "issue to resolution" to additional such as managerial processes. The nature of this information is processlike (sequential) so they are usually being recorded in the format of logs. 
+
 An event log is a set of traces, each representing the execution of a process (case instance). Each trace consists of a sequence of activities, each referring to the execution of an activity in a finite activity set $A$.
 \begin{definition}[Trace, Event Log]
 	A trace $\sigma=\left\langle a_1, a_2, ... a_n\right\rangle \in A^*$ over $A$ is a sequence of activities. An event log $L \in \cal{B}$(A) is a multi-set of traces over the activity set $A$.
@@ -20,6 +23,21 @@ A \emph{prefix of length} $k$ of a trace $\sigma=\left\langle a_1, a_2, ... a_n\
 A \emph{cycle} in a trace $\sigma \in A^*$ is a sequence of activities repeated at least twice in $\sigma$ (with adjacent repetitions). For example, trace $\npla{a,b,a,b,a,b,c,d,e,f,g,e,f,g,c,d}$ contains two cycles: $\npla{a,b}$ (3 repetitions) and $\npla{e,f,g}$ (2 repetitions).
 
 
+\subsection{Process mining}
+
+Process mining is a business process management technique that enables the analysis of processes based on the event logs. Main idea lies at improving business processes based on analysis of the logs as sequential, continuous processes. That what makes it different from the methods established in data mining and business intelligence which treat the data as set of distinct events to gather insights. 
+
+As a rule the methods of process mining applied mostly to the processes that do not have formal description or have consistent deviations from the predicted in the system. 
+
+The three main activities performed under the process mining field are:
+
+\begin{itemize}
+	\item \textbf{Process analysis (Discovery)} encompasses all methods to discover insights from the past process executions. 
+	\item \textbf{Conformance analysis} is to take existent formalized model check it against real log
+	\item \textbf{Process enhancement} helps to use log in order to enhance current executions of the processes
+\end{itemize}
+ 
+
 
 \subsection{Predictive monitoring}
 
@@ -27,26 +45,28 @@ Predictive monitoring is an advancing-sub field of Process Mining. As a a sub fi
 \par
 Many algorithms are applied to mentioned problems, these include classic machine learning algorithms of classification and clustering. More complex concepts are also used, such as Markov models~\cite{Leontjeva2015}, time series, and deep learning\cite{niek96732,evermann,quteprints96732} approaches. 
 \par
-In order to successfully apply these algorithms, one usually needs to have solid understanding on the log's nature. The aspects that can come into play, are the data types, stationarity, or heteroscedasticity. More complications can be brought if log contains unstructured content such as textual comments.
+In order to successfully apply these algorithms for aforementioned problems, one usually needs to have solid understanding on the process log nature. The aspects that can come into play, are the data types, stationarity, or heteroscedasticity. More complications can be brought if log contains unstructured content such as textual comments.
 \par
-A log is a set of traces, each containing events with its even class, ID, name, and usually time stamp and n-dimensional payload vector. Events correspond to particular cases in the process. Early process mining approaches tend to ignore the data payload, taking into consideration only the control-flow. Some of the approaches do the opposite, that is consider data, without control-flow~\cite{vanderAalst2010,Schonenberg_timeprediction,Schonenberg2008}  
+A log is a set of traces, each containing events with its even class, ID, name, and usually time stamp and n-dimensional payload vector. Events correspond to particular cases in the process. Early process mining approaches tend to ignore the data payload, taking into consideration only the control-flow (sequence of activities). Some of the approaches do the opposite, that is consider data, without control-flow~\cite{vanderAalst2010,DBLP:journals/is/AalstSS11,Schonenberg2008}  
 \par
-In that case one can say that the traces were considered to be a simple sequences. Moreover, those analysis was mainly done in offline fashion, to explore the completed cases. But, to make more accurate, mature, online predictions one should abandon neither payload nor control-flow information. That's when the Complex Symbolic Sequences as methods of encoding of a log are introduced. 
+In that case one can say that the traces were considered to be a simple sequences. Moreover, methods introduced usually designed to work in offline fashion, exploring completed cases. But, to make more accurate, mature, online predictions one should abandon neither payload nor control-flow information. That's when the Complex Symbolic Sequences as methods of encoding of a log are introduced. 
 
 
 
 \subsection{Complex Symbolic Sequences}
 
-Simple Symbolic Sequences for log encoding use a huge range of methods inherited from massive number of works from machine learning and statistics such as concerning concerning problems from health-informatics, or anomaly detection in Unix access systems. determining fraud users by its query log sequences.~\cite{Xing:2010:BSS:1882471.1882478} The Simple Symbolic Sequence is simply an ordered list sampled out of some given alphabet. 
+Every machine learning problem needs the data represented in a particular way, and algorithms adapted to the encoded data. For classical predictions of next steps in the sentence having bounded space of variants at each step the Simple Symbolic Sequence encoding is used. It is an encoding representing the sequence in a vector or a array of symbols.  
 
-With the use of Simple Symbolic Sequences, it was relatively simple to apply methods, feature based classifications, sequence distance based, support vector machines, or model based classification.~\cite{Xing:2010:BSS:1882471.1882478}
+Simple Symbolic Sequences for log encoding can be used with a range of methods inherited from a massive number of works from machine learning and statistics such as concerning problems from health-informatics, or anomaly detection in Unix access systems. determining fraud users by its query log sequences.~\cite{Xing:2010:BSS:1882471.1882478} That is because the simple symbolic sequence encoding is simply an ordered list sampled out of some given alphabet. 
+
+With the use of Simple Symbolic Sequences, it was relatively simple to apply methods, feature based classifications, sequence distance based, support vector machines, or model based classification~\cite{Xing:2010:BSS:1882471.1882478}.
 
 Simple Symbolic Sequences have limitations that prevent getting best results of their use.
-That is because most of the logs contain rich information of the process, that is not limited to control-flow. An example would be the log in the big fast food chain, where daily log is recorded about their employee. In Table 1, you can see that log of this nature contains static features, control-flow components and number of dynamic features. Static feature include ID of the employee, and his age. Dynamic features are the $t_i$ that is the time spent working, $rID_i$ is an ID of the restaurant that employee worked in on that day, $rev_i$ money he earned for the company. 
+That is because simple symbolic sequences discard most of the rich information present in process logs, that is not limited to control-flow. An example would be the log in the big fast food chain, where the process about their employee's actions is daily recorded into the log. In Table 1, you can see that log of this nature contains static features, control-flow components and number of dynamic features. Static feature include ID of the employee, and his age. Dynamic features are the $t_i$ that is the time spent working, $rID_i$ is an ID of the restaurant that employee worked in on that day, $rev_i$ money he earned for the company. 
 
-This log is rich with information, and in order to work with it, you need to capture as much information as possible.
+This log is rich with information additional information, and in order to work with it, one would want to capture as much information as possible.
 
-On contrary to Simple Symbolic Sequences, the Complex Symbolic Sequences are introduced and we can capture much more information about log. Complex Symbolic Sequence is basically ordered list of vectors, where each vector is a subset of some alphabet.
+On contrary to Simple Symbolic Sequences, the Complex Symbolic Sequences are introduced and we can capture much more information about log. Complex Symbolic Sequence is basically ordered list of vectors, where each vector is a subset of some alphabet inferred from the log.
 
 \begin{table}[h]
 	\centering
@@ -67,28 +87,28 @@ On contrary to Simple Symbolic Sequences, the Complex Symbolic Sequences are int
 
 
 
-When Complex Symbolic Sequences are used complexity space of the prediction problem grows substantially. Also, new approaches for working with them must be used. 
+When Complex Symbolic Sequences are used instead of Simple Symbolic Sequences complexity space of the prediction problem grows substantially. So it suggests to use new and more complex approaches to work with them.
 
-Some of the base lines of working with complex symbolic sequences use index-based encodings, and index latest payload encodings~\cite{Leontjeva2015}.   
+Some of the base lines of working with complex symbolic sequences use index-based encodings, and index latest payload encodings mentioned in following paper~\cite{Leontjeva2015}.   
 
 \subsection{Structured and unstructured data}
 
 There are few distinct types of data, that can be stored in the event. Simple, structured types include time-stamps, numbers, and nominal values. If the log contains only these types it is called a log with structured data. 
 
-On the other hand, the logs can contain text information such as comments or emails, bringing one more field into play. The text mining methods in conjunction with sequence classification are used to bring down the problem~\cite{Teinemaa2016}.
+On the other hand, the logs can contain text information such as comments or emails, bringing up the complexity level of the problem. Text mining methods in conjunction with sequence classification should be used to bring down the problem~\cite{DBLP:conf/bpm/TeinemaaDMF16}.
 
-As for example mentioned above, it might be daily comment from manager of the employees in the fast-food chain. 
+As for example mentioned above, it might be a daily comment from manager of the employees in the fast-food chain. 
 
-Also, example of the issue to resolution process, textual comments are added to events. In the repair agency, the comment can be added with registering of the issue by customer, and later in repair process by any involved party, that are repairmen, managers, or customers.
+Also, as for example of the issue to resolution process, textual comments on performance of the employee are added to events. In the repair agency, the comments can be added with registering of the issue by customer (describing the initial assessment of the issue), and later in repair process by any involved party, that are repairmen, managers, or customers. Also comments can be some content of the emails what are associated with a business process in the company. 
 \\
 
-With this knowledge about types of business processes it is easier to understand the limitations of the current state of the art methods to be described in next sections. 
+With this knowledge about types of business processes it is easier to understand the limitations of the current state of the art methods to be described in the related work section. 
 
 
 \subsection{Hidden Markov Models}
 Hidden Markov Models (HMMs) are one of the most used probabilistic models. These models belong to the family of directed probabilistic graphical models. 
 
-Under this model, random variables are divided into two sets, namely a set seen outside, an \textit{observations} set $X=X_1,...,X_i,...,X_n$, and a hidden sequence (that is considered to be a first order Markov chain), \textit{states} $Y=Y_1,...,Y_i,...,Y_n$.
+As for the model, random variables are divided into two sets, namely a set seen outside, an \textit{observations} set $X=X_1,...,X_i,...,X_n$, and a hidden sequence (that is considered to be a first order Markov chain) of \textit{states} $Y=Y_1,...,Y_i,...,Y_n$.
 
 The model is built by four sets of parameters. 
 
@@ -107,7 +127,7 @@ The model is built by four sets of parameters.
 	\end{tabular}
 \end{center}
 
-The observation set is the one that is seen on the outside. That implies what the usual usage of HMMs is having an HMM defined by parameters above to predict the sequence of states.
+The observation set is the one that is seen on the outside. The usual usage of HMMs is having an HMM defined by parameters above to predict the sequence of states.
 
 In order to predict the sequence the Viterbi algorithm is used. It is a perfect example of a dynamic programming algorithm to find \textit{max-product} of probabilities over all pace of sequences.
 
@@ -379,7 +399,7 @@ We assume that activities occurring during the process execution fall into the s
 
 \subsection{Beam search}
 
-Beam search is a heuristic search algorithm, based on the principle of exploring the graph of possible solutions by the most promising node. It is built on the assumption of the big search space. It orders all partial solutions with some heuristic measure keeping only small portion of the most promising ones, expanding them to get the complete solution.
+Beam search is a heuristic search algorithm, based on the principle of exploring the graph of possible solutions by the most promising node. It is built on the assumption of huge search space. It orders all partial solutions with some heuristic measure keeping only small portion of the most promising ones, expanding them to get the complete solution.
 
 There are few variations of this algorithm, from which two will be thoroughly explained here.
 
@@ -449,7 +469,7 @@ Here is the pseudo code for the algorithm (all elements in priority queues are s
 \vspace{0.2 cm}
 Both of these algorithms use the same tactic by cutting the space to the most probable and better performing prospective solutions. These algorithms are different, and depending on the nature of the problem given can have very different performance.
 
-Beam search is used in many areas such as machine translation.
+Beam search is used in many areas such as machine translation\cite{Koehn2007MOSEStranslationSystem}.
 
 
 % section background (end)

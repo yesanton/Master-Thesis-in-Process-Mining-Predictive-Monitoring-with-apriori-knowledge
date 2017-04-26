@@ -6,6 +6,12 @@
 {3TU Data Center}: {BPI Challenge 2011 Event Log} (2011),
   doi:10.4121/uuid:d9769f3d-0ab0-4fb8-803b-0d1120ffcf54
 
+\bibitem{vanderAalst2005}
+van~der Aalst, W.M.P., de~Beer, H.T., van Dongen, B.F.: Process Mining and
+  Verification of Properties: An Approach Based on Temporal Logic, pp.
+  130--147. Springer Berlin Heidelberg, Berlin, Heidelberg (2005),
+  \url{http://dx.doi.org/10.1007/11575771_11}
+
 \bibitem{vanderAalst2010}
 van~der Aalst, W.M.P., Pesic, M., Song, M.: Beyond Process Mining: From the
   Past to Present and Future, pp. 38--52. Springer Berlin Heidelberg, Berlin,
@@ -38,6 +44,10 @@ Chollet, F.: Keras. \url{https://github.com/fchollet/keras} (2015)
 Conforti, R., de~Leoni, M., Rosa, M.L., van~der Aalst, W.M.P.: Supporting
   risk-informed decisions during business process execution. In: {Proc. of
   CAiSE 2013}. pp. 116--132. Springer (2013)
+
+\bibitem{py4j}
+Dagenais, B.: {py4j}: A bridge between python and java (2016),
+  \url{\url{https://www.py4j.org}}, software available from py4j.org
 
 \bibitem{Damerau:1964:TCD:363958.363994}
 Damerau, F.J.: A technique for computer detection and correction of spelling
@@ -84,6 +94,15 @@ Kang, B., Jung, J.Y., Cho, N.W., Kang, S.H.: Real time business process
   Systems  111(5),  652--674 (2011),
   \url{http://dx.doi.org/10.1108/02635571111137241}
 
+\bibitem{Koehn2007MOSEStranslationSystem}
+Koehn, P., Hoang, H., Birch, A., Callison-Burch, C., Federico, M., Bertoldi,
+  N., Cowan, B., Shen, W., Moran, C., Zens, R., Dyer, C., Bojar, O.,
+  Constantin, A., Herbst, E.: Moses: Open source toolkit for statistical
+  machine translation. In: Proceedings of the 45th Annual Meeting of the ACL on
+  Interactive Poster and Demonstration Sessions. pp. 177--180. ACL '07,
+  Association for Computational Linguistics, Stroudsburg, PA, USA (2007),
+  \url{http://dl.acm.org/citation.cfm?id=1557769.1557821}
+
 \bibitem{Leontjeva2015}
 Leontjeva, A., Conforti, R., Di~Francescomarino, C., Dumas, M., Maggi, F.M.:
   Complex symbolic sequence encodings for predictive monitoring of business
@@ -120,11 +139,6 @@ Pnueli, A.: The temporal logic of programs. In: 18th Annual Symposium on
 Polato, M., Sperduti, A., Burattin, A., de~Leoni, M.: Time and activity
   sequence prediction of business process instances. CoRR  abs/1602.07566
   (2016)
-
-\bibitem{DBLP:conf/icsoc/Rogge-SoltiW13}
-Rogge-Solti, A., Weske, M.: Prediction of remaining service execution time
-  using stochastic petri nets with arbitrary firing delays. In: ICSOC 2013. pp.
-  389--403. Springer
 
 \bibitem{Schonenberg2008}
 Schonenberg, H., Weber, B., van Dongen, B., van~der Aalst, W.: Supporting

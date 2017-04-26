@@ -33,6 +33,22 @@ In this section, we provide an evaluation of our predictive business process mon
 
 For the evaluation of the techniques, we used six real-life event logs. Four of them were provided for the BPI Challenges (BPIC) 2011~\cite{bpichallenge2011}, 2012~\cite{bpichallenge2012}, 2013~\cite{bpichallenge2013}, and 2017~\cite{bpichallenge2017}, respectively. We also used two additional event logs, one pertaining to an environmental permit application process (``WABO''), used in the context of the CoSeLoG project~\cite{EnvironmentalLog} (\emph{EnvLog} for short in this paper), and another containing cases from a ticketing management process of the help desk of an Italian software company (\emph{Helpdesk}\footnote{\url{https://data.mendeley.com/datasets/39bp3vv62t/1}} for short).
 
+\begin{enumerate}
+	\item \textbf{Environment permit log} (\emph{EnvLog}) is the log containing data that come from Dutch municipality\footnote{\url{https://data.4tu.nl/repository/uuid:e8c3a53d-5301-4afb-9bcd-38e74171ca32}}. The cases are the application process of the environment permits. It contains 937 cases, 38.944 events, and 381 events types.
+	\item \textbf{Helpdesk} is the dataset containing events from a ticketing management process of the help desk of an Italian software company. The process consists of 9 activities, and all cases start with the insertion of a new ticket into the ticketing
+	management system. Each case ends when the issue is resolved and the ticket is closed. This log contains 3804 process instances (a.k.a "cases") and 13710 events
+	\item \textbf{BPI 11 log} is the famous in process mining log taken from Dutch Academic Hospital. The cases of the log correspond to the Gynaecology department of the hospital. Phases consist of the diagnosis and treatment of the patient. Some attributes are repeating as the procedures could take place few number of times. As the log contains sensitive information it was anonymized.
+	\item \textbf{BPI 12 subprocess W dataset\footnote{\url{http://data.4tu.nl/repository/uuid:3926db30-f712-4394-aebc-75976070e91f}.}} This is the part of the BPI 2012 challenge, that contains a real-life log, taken from a Dutch Financial Institute. The process represented in the event log is an application process for a personal loan or overdraft within a global financing organization. 
+	
+	This log is contains a lot of information the usual prediction task system would bot be interested in. The paper\cite{niek96732} proposed to cut the log down to the traces what contain events that are manualy executed. So the pre-processed log was taken from their github repository\footnote{\url{https://github.com/verenich/ProcessSequencePrediction/tree/master/data}}.
+	
+	\item \textbf{BPI 13 log\footnote{\url{http://www.win.tue.nl/bpi/doku.php?id=2013:challenge}}} was prepared by Volvo IT in Belgium. Log consist of incident and problem management from their system "VINST".   
+	
+	\item \textbf{BPI 17 log\footnote{\url{http://data.4tu.nl/repository/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b}}} is a process taken from Dutch financial institute. In particular the process we used it a loan applications. It has much more data that other logs that we considered. 
+		
+	
+\end{enumerate}
+
 The characteristics of these logs are summarized in Table~\ref{table:dataset}. For each log, we report the total number of traces, the number of activity labels (i.e., the size of the activity set of the log), the average trace length (avg-TL), the average number of repetitions of all cycles in the log (avg-CR), and the ratio between the number of activity labels and the number of traces, indicating the sparsity of the activity labels over the log.
 %Concerning the test set we did use 67\% of the whole dataset for training. Then we selected for testing a relevant subset of the remaining 33\%  satisfying, for each dataset, the additional (a-priori) knowledge, described in terms of LTL formulas. To maximize the size of the testing set we selected LTL formulas satisfied by a conspicuous number of traces among the remaining 33\% ones.
 
@@ -88,7 +104,7 @@ The experiments have been performed both on a GPU Tesla K40c and on a convention
 \label{ssec:results}
 %big table of results + comment the table (comment on logs with cycles, comment that and on why protrack traces are longer than backtrack, ... )
 
-Tables~\ref{table:results-strong} and~\ref{table:results-weak} report, for each event log, the performances of the two techniques we propose on the strong a-priori and weak a-priori testing sets. The results for both testing sets are compared with the baseline presented in~\cite{niek96732}. For each log, we provide the average Damerau-Levenshtein similarity between the predicted sequence (in square brackets, its average length) and the ground truth (column 5). The best average Damerau-Levenshtein similarity for each log is emphasized in gray. Column 6 reports the number of traces tested while column 7 specifies the range of the prefix lengths used for the specific event log. %The prefixes range is chosen around middle point of the average lengths of the traces.
+Tables~\ref{table:results-strong} and~\ref{table:results-weak} report, for each event log, the performances of the two techniques we propose on the strong a-priori and weak a-priori testing sets. Also, the same results are displayed on the graph~\ref{figure:results}. The results for both testing sets are compared with the baseline presented in~\cite{niek96732}. For each log, we provide the average Damerau-Levenshtein similarity between the predicted sequence (in square brackets, its average length) and the ground truth (column 5). The best average Damerau-Levenshtein similarity for each log is emphasized in gray. Column 6 reports the number of traces tested while column 7 specifies the range of the prefix lengths used for the specific event log. %The prefixes range is chosen around middle point of the average lengths of the traces.
 
 \newcommand{\maxf}[1]{{\cellcolor[gray]{0.8}} #1}
 
@@ -150,6 +166,17 @@ Tables~\ref{table:results-strong} and~\ref{table:results-weak} report, for each 
 	\caption{Prediction results on the weak a-priori testing set}
 	\label{table:results-weak}
 \end{table}
+
+
+
+\begin{figure}[!ht]
+	\begin{center}  
+		\includegraphics[width=\textwidth]{2_evaluation.png}
+		\caption{Graphical representation of evaluation}
+		\label{figure:results}
+	\end{center}
+\end{figure}
+
 
 The tables show that the proposed algorithms outperform the baseline in most of the logs.
 The presence of cycles in the logs has a strong impact on the performance of the \nocycle algorithm. In particular, if the logs have an average number of cycle repetitions smaller than $0.5$, as in the case of EnvLog, HelpDesk and BPIC17, then \nocycle does not show any improvement over the baseline. Therefore, we can conclude that \nocycle correctly deals with the presence of cycles in the logs to improve the predictions.

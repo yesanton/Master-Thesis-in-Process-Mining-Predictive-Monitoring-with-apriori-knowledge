@@ -148,9 +148,8 @@ The algorithm is then iterated until the queue of prefixes is empty or the maxim
 
 \subsection{Implementation}
 \label{ssec:implementation}
-Algorithms~\ref{alg:nocycle} and~\ref{alg:protrack} have been implemented in Python 2.6. In particular, the Keras~\cite{chollet2015keras} and TensorFlow~\cite{tensorflow2015-whitepaper} libraries have been used for neural networks. The LTL checker for checking the compliance of traces to LTL rules is instead based on automata and written in Java. The Py4J library was used as a gateway to access Java code from Python.
-The full source code is available on github at \url{https://github.com/yesanton/ProcessSequencePrediction}.
-
+Algorithms~\ref{alg:nocycle} and~\ref{alg:protrack} have been implemented in Python 2.6. In particular, the Keras~\cite{chollet2015keras} and TensorFlow~\cite{tensorflow2015-whitepaper} libraries have been used for neural networks. The LTL\cite{vanderAalst2005} checker for checking the compliance of traces to LTL rules is instead based on automata and written in Java. The Py4J library\cite{py4j} was used as a gateway to access Java code from Python.
+The full source code is available on github\footnote{\url{https://github.com/yesanton/Process-Sequence-Prediction-with-A-priori-knowledge}}. The link given contain detailed readme with instruction on how to reproduce all experiments on any machine. 
 
 %
 %When building the \textit{first-best Beam search}, the tree structure was introduced that holds all necessary intermediate values, and up to N leaves. It stores the prefix up to now, parent node (for backtracking), the encoded data, total predicted time, and node status that can be discovered or closed.
