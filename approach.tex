@@ -79,9 +79,9 @@ Algorithm~\ref{alg:nocycle} reports the pseudo-code of the \nocycle technique. S
 \subsection{Learning from A-priori Knowledge}
 \label{ssec:apriori}
 
-The overall idea for leveraging a-priori knowledge for predictive monitoring is simple: (i) we use the LSTM approach to get the possible predictions for an ongoing trace; (ii) we rank them according to the likelihood of the prediction; and (iii) we select the first prediction which is compliant with the LTL rules describing the a-priori knowledge. However, although RNN inference algorithms are not computationally expensive per se, building all the possible predicted suffixes could be costly and inefficient.
+The overall idea for leveraging a-priori knowledge for predictive monitoring is simple: (i) we use the LSTM approach to get the possible predictions for an ongoing trace; that one can do, because the step by step output of a recurrent neural network is basically probability distribution over next events in the trace. (ii) we rank them according to the likelihood of the prediction; and (iii) we select the first prediction which is compliant with the LTL rules describing the a-priori knowledge. However, although RNN inference algorithms are not computationally expensive per se, building all the possible predicted suffixes could be costly and inefficient. It is the standard problem of algorithms that rely on storing data in tree structures, where the growth of a tree is exponential. That is exactly the case here, as nevertheless of how many continuation of the trace is chosen at each step (let's day $N$ steps), each next step of predictions will produce $N^{i}$ nodes. Even for few iterations it is computationally and memory-wise not feasible to use this strategy.
 
-Therefore, the alternative investigated in this paper leverage, on top of state-of-the-art LSTM techniques, the approach classically used in statistical sequence-to-sequence predictions in translation tasks~\cite{Tillmann2003WRD778822778827}, i.e., the \textit{beamSearch} algorithm. The beamSearch is a heuristic algorithm based on graphs that explores the search space by expanding only the most promising branches.
+Therefore, the alternative investigated in this paper leverage, on top of state-of-the-art LSTM techniques, the approach classically used in statistical sequence-to-sequence predictions in translation tasks~\cite{Tillmann2003WRD778822778827}, i.e., the \textit{beamSearch} algorithm. The beamSearch is a heuristic algorithm based on partial ordering the probability trees, that is by exploring the search space only the most promising branches.
 In particular, we use the RNN architecture with LSTM cells and training system proposed in~\cite{niek96732}. Then, in the testing phase, to predict a certain suffix, we use a new inference algorithm (\protrack), which explores the probability space using beamSearch to cut the branches of the LSTM model which bring to predictions that are not compliant with the a-priori knowledge.
 % (described in terms of LTL rules).
 
@@ -148,7 +148,10 @@ The algorithm is then iterated until the queue of prefixes is empty or the maxim
 
 \subsection{Implementation}
 \label{ssec:implementation}
-Algorithms~\ref{alg:nocycle} and~\ref{alg:protrack} have been implemented in Python 2.6. In particular, the Keras~\cite{chollet2015keras} and TensorFlow~\cite{tensorflow2015-whitepaper} libraries have been used for neural networks. The LTL\cite{vanderAalst2005} checker for checking the compliance of traces to LTL rules is instead based on automata and written in Java. The Py4J library\cite{py4j} was used as a gateway to access Java code from Python.
+Algorithms~\ref{alg:nocycle} and~\ref{alg:protrack} have been implemented in Python 2.6. In particular, the Keras~\cite{chollet2015keras} and TensorFlow~\cite{tensorflow2015-whitepaper} libraries have been used for neural networks. The LTL\cite{vanderAalst2005} checker\footnote{The LTL formula checker is taken from the open source code of ProM process mining suite.})for checking the compliance of traces to LTL rules is instead based on automata and written in Java. 
+
+As the problem of compatibility arose having Java and Python parts, the Py4J library\cite{py4j} was used as a gateway to access Java code from Python.
+
 The full source code is available on github\footnote{\url{https://github.com/yesanton/Process-Sequence-Prediction-with-A-priori-knowledge}}. The link given contain detailed readme with instruction on how to reproduce all experiments on any machine. 
 
 %

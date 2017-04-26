@@ -26,5 +26,5 @@
 \contentsline {section}{\numberline {6}Evaluation}{30}
 \contentsline {subsection}{\numberline {6.1}Event Logs}{30}
 \contentsline {subsection}{\numberline {6.2}Experimental Procedure}{32}
-\contentsline {subsection}{\numberline {6.3}Results and Discussion}{33}
-\contentsline {section}{\numberline {7}Conclusions}{35}
+\contentsline {subsection}{\numberline {6.3}Results and Discussion}{35}
+\contentsline {section}{\numberline {7}Conclusions}{37}
