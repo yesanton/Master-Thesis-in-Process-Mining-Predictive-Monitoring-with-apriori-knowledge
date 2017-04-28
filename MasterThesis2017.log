@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.4.4)  26 APR 2017 11:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.4.4)  28 APR 2017 10:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**BPM17.tex
-(./BPM17.tex
+**MasterThesis2017.tex
+(./MasterThesis2017.tex
 LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 3 language(s) loaded.
 (./llncs.cls
@@ -1227,7 +1227,8 @@ File: babel.def 2016/04/23 3.9r Babel common definitions
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
-)) (./BPM17.aux
+))
+(./MasterThesis2017.aux
 
 LaTeX Warning: Label `alg:protrack' multiply defined.
 
@@ -1235,7 +1236,7 @@ LaTeX Warning: Label `alg:protrack' multiply defined.
 LaTeX Warning: Label `alg:protrack' multiply defined.
 
 )
-\openout1 = `BPM17.aux'.
+\openout1 = `MasterThesis2017.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
 LaTeX Font Info:    ... okay on input line 60.
@@ -1360,9 +1361,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (./tlformat.tex)) (./abstract.tex [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]) [3] (./BPM17.toc)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]) [3] (./MasterThesis20
+17.toc)
 \tf@toc=\write5
-\openout5 = `BPM17.toc'.
+\openout5 = `MasterThesis2017.toc'.
 
  [4
 
@@ -1498,7 +1500,7 @@ File: 2_evaluation.png Graphic file (type png)
 Package pdftex.def Info: 2_evaluation.png used on input line 184.
 (pdftex.def)             Requested size: 347.12354pt x 378.9433pt.
  [35] [36 <./2_evaluation.png>]) (./conclusions.tex
-[37]) (./BPM17.bbl
+[37]) (./MasterThesis2017.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 6--8
 []\OT1/cmr/m/n/9 3TU Data Cen-ter: BPI Chal-lenge 2011 Event Log (2011),
  []
@@ -1521,19 +1523,19 @@ Underfull \hbox (badness 1852) in paragraph at lines 154--156
 s : / / doi . org / 10 . 4121 / uuid :
  []
 
-[39]) [40] (./BPM17.aux)
+[39]) [40] (./MasterThesis2017.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  38037 strings out of 494945
- 917755 string characters out of 6181033
- 1042096 words of memory out of 5000000
+ 917898 string characters out of 6181033
+ 1042107 words of memory out of 5000000
  40685 multiletter control sequences out of 15000+600000
  19058 words of font info for 74 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,18n,96p,10384b,843s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,18n,96p,10395b,843s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texliv
@@ -1558,7 +1560,7 @@ onts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.p
 fb>
-Output written on BPM17.pdf (40 pages, 606606 bytes).
+Output written on MasterThesis2017.pdf (40 pages, 606606 bytes).
 PDF statistics:
  243 PDF objects out of 1000 (max. 8388607)
  170 compressed objects within 2 object streams
