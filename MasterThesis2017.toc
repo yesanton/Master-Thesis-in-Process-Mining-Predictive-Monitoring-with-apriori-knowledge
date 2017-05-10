@@ -1,30 +1,30 @@
 \select@language {english}
 \contentsline {section}{\numberline {1}Introduction}{5}
-\contentsline {section}{\numberline {2}Background}{7}
-\contentsline {subsection}{\numberline {2.1}Event Logs and Traces}{7}
-\contentsline {subsection}{\numberline {2.2}Process mining}{8}
-\contentsline {subsection}{\numberline {2.3}Predictive monitoring}{8}
-\contentsline {subsection}{\numberline {2.4}Complex Symbolic Sequences}{9}
-\contentsline {subsection}{\numberline {2.5}Structured and unstructured data}{11}
-\contentsline {subsection}{\numberline {2.6}Hidden Markov Models}{11}
-\contentsline {subsection}{\numberline {2.7}Conditional Random Field}{12}
-\contentsline {subsection}{\numberline {2.8}RNNs and LSTM}{12}
-\contentsline {subsection}{\numberline {2.9}RNNs with LSTM for Predictive Process Monitoring}{14}
-\contentsline {subsection}{\numberline {2.10}Linear Temporal Logic}{15}
-\contentsline {subsection}{\numberline {2.11}Beam search}{16}
-\contentsline {subsubsection}{Best-first variation of Beam search}{17}
-\contentsline {subsubsection}{Breath-first variation of Beam search}{17}
-\contentsline {section}{\numberline {3}Related Work}{18}
-\contentsline {subsection}{\numberline {3.1}Early approaches}{18}
-\contentsline {subsection}{\numberline {3.2}Prediction with Complex Symbolic Encoding for structured and unstructured content}{20}
-\contentsline {subsection}{\numberline {3.3}Deep learning models}{21}
-\contentsline {section}{\numberline {4}The Problem}{23}
-\contentsline {section}{\numberline {5}The Solution}{25}
-\contentsline {subsection}{\numberline {5.1}Learning from Trace Structures}{26}
-\contentsline {subsection}{\numberline {5.2}Learning from A-priori Knowledge}{27}
-\contentsline {subsection}{\numberline {5.3}Implementation}{29}
-\contentsline {section}{\numberline {6}Evaluation}{30}
-\contentsline {subsection}{\numberline {6.1}Event Logs}{30}
-\contentsline {subsection}{\numberline {6.2}Experimental Procedure}{32}
-\contentsline {subsection}{\numberline {6.3}Results and Discussion}{35}
-\contentsline {section}{\numberline {7}Conclusions}{37}
+\contentsline {section}{\numberline {2}Background}{8}
+\contentsline {subsection}{\numberline {2.1}Event Logs and Traces}{8}
+\contentsline {subsection}{\numberline {2.2}Process mining}{10}
+\contentsline {subsection}{\numberline {2.3}Predictive monitoring}{11}
+\contentsline {subsection}{\numberline {2.4}Encodings of business logs}{12}
+\contentsline {subsubsection}{Simple symbolic sequence encoding}{12}
+\contentsline {subsubsection}{Complex symbolic encoding}{14}
+\contentsline {subsubsection}{One-hot encoding}{15}
+\contentsline {subsection}{\numberline {2.5}RNNs and LSTM}{15}
+\contentsline {subsection}{\numberline {2.6}RNNs with LSTM for Predictive Process Monitoring}{17}
+\contentsline {subsection}{\numberline {2.7}Linear Temporal Logic}{18}
+\contentsline {subsection}{\numberline {2.8}Beam search}{19}
+\contentsline {subsubsection}{Best-first variation of Beam search}{19}
+\contentsline {subsubsection}{Breath-first variation of Beam search}{20}
+\contentsline {section}{\numberline {3}Related Work}{20}
+\contentsline {subsection}{\numberline {3.1}Early approaches}{21}
+\contentsline {subsection}{\numberline {3.2}Prediction with Complex Symbolic Encoding for structured and unstructured content}{22}
+\contentsline {subsection}{\numberline {3.3}Deep learning models}{24}
+\contentsline {section}{\numberline {4}The Problem}{25}
+\contentsline {section}{\numberline {5}The Solution}{28}
+\contentsline {subsection}{\numberline {5.1}Learning from Trace Structures}{29}
+\contentsline {subsection}{\numberline {5.2}Learning from A-priori Knowledge}{30}
+\contentsline {subsection}{\numberline {5.3}Implementation}{32}
+\contentsline {section}{\numberline {6}Evaluation}{33}
+\contentsline {subsection}{\numberline {6.1}Event Logs}{33}
+\contentsline {subsection}{\numberline {6.2}Experimental Procedure}{35}
+\contentsline {subsection}{\numberline {6.3}Results and Discussion}{36}
+\contentsline {section}{\numberline {7}Conclusions}{40}

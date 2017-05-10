@@ -5,53 +5,61 @@ The style file: splncs03.bst
 Database file #1: bibliography.bib
 Warning--entry type for "bpichallenge2012" isn't style-file defined
 --line 153 of file bibliography.bib
+Name 1 in "Evermann, J., Rehse, J.R., and Fettke, P" has a comma at the end for entry evermann2
+while executing---line 2947 of file splncs03.bst
+Too many commas in name 1 of "Evermann, J., Rehse, J.R., and Fettke, P" for entry evermann2
+while executing---line 2947 of file splncs03.bst
 Warning--can't use both author and editor fields in vanderAalst2005
 Warning--can't use both author and editor fields in vanderAalst2010
+Name 1 in "Evermann, J., Rehse, J.R., and Fettke, P" has a comma at the end for entry evermann2
+while executing---line 3017 of file splncs03.bst
+Too many commas in name 1 of "Evermann, J., Rehse, J.R., and Fettke, P" for entry evermann2
+while executing---line 3017 of file splncs03.bst
 Warning--missing publisher in Leontjeva2015
 Warning--can't use both author and editor fields in Maggi2012
 Warning--can't use both author and editor fields in Pika
 Warning--can't use both author and editor fields in Schonenberg2008
 Warning--can't use both author and editor fields in suriadi
 Warning--empty note in quteprints96732
-You've used 38 entries,
+You've used 40 entries,
             2785 wiz_defined-function locations,
-            851 strings with 14058 characters,
-and the built_in function-call counts, 23309 in all, are:
-= -- 1894
-> -- 861
-< -- 37
-+ -- 356
-- -- 314
-* -- 1553
-:= -- 2968
-add.period$ -- 45
-call.type$ -- 38
-change.case$ -- 290
+            864 strings with 14486 characters,
+and the built_in function-call counts, 24431 in all, are:
+= -- 1990
+> -- 890
+< -- 39
++ -- 369
+- -- 324
+* -- 1622
+:= -- 3108
+add.period$ -- 47
+call.type$ -- 40
+change.case$ -- 303
 chr.to.int$ -- 0
-cite$ -- 46
-duplicate$ -- 1955
-empty$ -- 2004
-format.name$ -- 342
-if$ -- 5071
+cite$ -- 48
+duplicate$ -- 2056
+empty$ -- 2106
+format.name$ -- 354
+if$ -- 5321
 int.to.chr$ -- 0
-int.to.str$ -- 38
-missing$ -- 420
-newline$ -- 119
-num.names$ -- 76
-pop$ -- 802
+int.to.str$ -- 40
+missing$ -- 439
+newline$ -- 125
+num.names$ -- 80
+pop$ -- 836
 preamble$ -- 1
-purify$ -- 233
+purify$ -- 242
 quote$ -- 0
-skip$ -- 616
+skip$ -- 653
 stack$ -- 0
-substring$ -- 1301
-swap$ -- 1136
-text.length$ -- 37
+substring$ -- 1372
+swap$ -- 1193
+text.length$ -- 39
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 138
+type$ -- 146
 warning$ -- 8
-while$ -- 183
-width$ -- 40
-write$ -- 387
-(There were 9 warnings)
+while$ -- 191
+width$ -- 42
+write$ -- 407
+(There were 4 error messages)

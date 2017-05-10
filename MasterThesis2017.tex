@@ -46,7 +46,7 @@
 \newcommand{\todoincdf}[1]{\todo[color=blue!40,inline]{CDF:#1}}
 \newcommand{\todogp}[1]{\todo[color=magenta]{GP:#1}}
 \algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
-
+\usepackage{lipsum}
 \newcommand{\npla}[1]{\langle#1\rangle}
 \renewcommand{\baselinestretch}{0.975}
 
@@ -87,7 +87,8 @@
 		\setlength{\extrarowheight}{5pt}
 		\begin{tabular}{r l} 
 			\sffamily \iflanguage{english}{Supervisor}{Juhendaja}: & \sffamily Fabrizio Maria Maggi \\
-			\sffamily \iflanguage{english}{Supervisor}{Juhendaja}: & \sffamily Chiara Di Francescomarino
+			\sffamily \iflanguage{english}{Supervisor}{Juhendaja}: & \sffamily Chiara Di Francescomarino \\
+			\sffamily \iflanguage{english}{Supervisor}{Juhendaja}: & \sffamily Chiara Chidini
 		\end{tabular}
 	}
 \end{flushright}
@@ -119,8 +120,23 @@
 
 %\maketitle
 
+
+%%%%% next piece is in order to change the abstract width if needed
+%\renewenvironment{abstract}
+%{\small
+%	\begin{center}
+%		\bfseries \abstractname\vspace{-.5em}\vspace{0pt}
+%	\end{center}
+%	\list{}{%
+%		\setlength{\leftmargin}{5mm}% <---------- CHANGE HERE
+%		\setlength{\rightmargin}{\leftmargin}% 
+%	}%
+%	\item\relax}
+%{\endlist}
+
 \begin{abstract}
-\input{abstract}
+	\normalsize
+	\input{abstract}
 \end{abstract}
 
 \keywords{Predictive Process Monitoring, Recurrent Neural Networks, Linear Temporal Logic, A-priori Knowledge, Process mining}

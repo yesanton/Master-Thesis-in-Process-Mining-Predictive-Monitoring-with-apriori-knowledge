@@ -70,6 +70,10 @@ van Dongen, B.: Bpi challenge 2017 (2017),
 Evermann, N., Rehse, J.R., Fettke, P.: A deep learning approach for predicting
   process behaviour at runtime. In: PRAISE-2016 (2016)
 
+\bibitem{evermann2}
+Evermann, J., R.J., Fettke, P.: Xes tensorow - process prediction using the
+  tensorflow deep-learning framework. In: CAiSE-2016 (2017)
+
 \bibitem{Folino}
 Folino, F., Guarascio, M., Pontieri, L.: Discovering context-aware models for
   predicting business process performances. In: {Proc. of On the Move to
@@ -102,6 +106,12 @@ Koehn, P., Hoang, H., Birch, A., Callison-Burch, C., Federico, M., Bertoldi,
   Interactive Poster and Demonstration Sessions. pp. 177--180. ACL '07,
   Association for Computational Linguistics, Stroudsburg, PA, USA (2007),
   \url{http://dl.acm.org/citation.cfm?id=1557769.1557821}
+
+\bibitem{Lam20096986}
+Lam, C., Ip, W., Lau, C.: A business process activity model and performance
+  measurement using a time series \{ARIMA\} intervention analysis. Expert
+  Systems with Applications  36(3, Part 2),  6986 -- 6994 (2009),
+  \url{http://www.sciencedirect.com/science/article/pii/S0957417408006076}
 
 \bibitem{Leontjeva2015}
 Leontjeva, A., Conforti, R., Di~Francescomarino, C., Dumas, M., Maggi, F.M.:
