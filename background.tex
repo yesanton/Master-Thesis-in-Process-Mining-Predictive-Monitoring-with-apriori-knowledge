@@ -174,7 +174,7 @@ This puts a limitation on the power of this encoding. The most use for the Compl
 
 
 
-\subsubsection{One-hot encoding}
+\subsubsection{One-hot encoding} \label{one-hot-encoding}
 
 As more advanced machine learning methods were brought to process mining, such as family of deep learning neural networks~\cite{evermann,niek96732,quteprints96732,evermann2}. With them came the new ways of representing the process log.
 
@@ -267,7 +267,7 @@ the training phase.
 
 Recurrent Neural Networks (RNNs, see Fig.~\ref{fig:rnn}) are a subclass of Neural Networks. We
 illustrate them with the help of an example in which the
-classification task concerns in assigning the correct part of speech -- noun, verb, adjective, etc. --
+classification task concerns the assignment of correct part of speech -- noun, verb, adjective, etc. --
 to words.  If we take the word \emph{``file''} in isolation,
 it can be both a noun and a verb. Nonetheless, this ambiguity
 disappears when we consider it in an actual sentence. Therefore, in the
@@ -293,6 +293,7 @@ the conditional probability of a given input to belong to a certain class is des
   p(\mathbf{y}^{\langle y \rangle}|\mathbf{x}^{\langle t \rangle}, ..., \mathbf{x}^{\langle 1 \rangle}) = f_{\mathit{RNN}}(\mathbf{x}^{\langle 1 \rangle}, ..., \mathbf{x}^{\langle t \rangle}; \theta).
 \end{equation}
 %
+\todo{Add example}
 RNNs have been proven to be extremely appropriate for modeling sequential
 data (see~\cite{goodfellow2016dlbook}). As shown in Fig.~\ref{fig:rnn}, they typically leverage
 recurrent functions in their hidden layers, which are, in turn, composed of hidden states. Let
@@ -332,8 +333,8 @@ are parameters to be learnt during the training phase.
 % consequently the dimension of the input vectors, is an hyper-parameter
 % of the model to be set at design time.
 
-Among the different cell functions $h$ (see equation~\eqref{eq:hidden}) explored in literature, Long Short-Term
-Memory (LSTM)~\cite{hochreiter1997long} shows a significant ability to maintain the memory of its input across long time spans. This property makes them extremely suitable to be used in RNNs that have to deal with input sequences with complex long-term dependencies such as the ones we consider in this paper.
+Among the different cell functions $h$ (see equation~\eqref{eq:hidden}) explored in the literature, Long Short-Term
+Memory (LSTM)~\cite{hochreiter1997long} shows a significant ability to maintain the memory of its input across long time spans. This property makes them extremely suitable to be used in RNNs that have to deal with input sequences with complex long-term dependencies such as the ones we consider in this thesis.
 
 % The cell made of four \emph{gates}, namely the input gate $\mathbf{i}$, the forget gate $\mathbf{f}$, the output gate $\mathbf{o}$ and the cell update gate $\mathbf{g}$.
 % At each time step, we have that:
@@ -372,7 +373,7 @@ Memory (LSTM)~\cite{hochreiter1997long} shows a significant ability to maintain 
 
 \subsection{RNNs with LSTM for Predictive Process Monitoring}
 \label{subsec:RNNforpredictive}
-In order to provide predictions on the suffix of a given prefix (of a running case), state-of-the-art approaches for predictive process monitoring use RNNs with LSTM cells.  The most recent and performing approach in this field \cite{niek96732} relies on an encoding of activity sequences that combine features related to the activities in the sequence (the so called \textit{one-hot encoding}) and features related to the time characterizing these activities. Given the set $A = \{a_{1_A}, \ldots a_{m_A}\}$ of all possible activities, an ordering function $idx:A \rightarrow \{1, \ldots, \left|A\right| \} \subseteq \mathbb{N}$ is defined on it, such that $a_{i_A}<>a_{j_A}$ if and only if $i_A<>j_A$, i.e., two activities have the same A-index if and only if they are the same activity. For instance, if $A=\{a,b,c\}$, we have $idx: A \rightarrow \{1,2,3\}$ and $idx(a)=1$, $idx(b)=2$ and $idx(c)=3$. Each activity $a_i \in \sigma$ is encoded as a vector $\mathbb(A_i)$ of length $|A|+3$ such that the first $|A|$ features are all set to $0$, except the one occurring at the index of the current activity $idx(a_i)$, which is set to $1$. The last three features of the vector pertain to time: the first one relates to the time increase with respect to the previous activity, the second reports the time since midnight (to distinguish between working and night time), and the last one refers to the time since the beginning of the week.
+In order to provide predictions on the suffix of a given prefix (of a running case), state-of-the-art approaches for predictive process monitoring use RNNs with LSTM cells.  The most recent and performing approach in this field \cite{niek96732} relies on an encoding of activity sequences that combine features related to the activities in the sequence (the so called \textit{one-hot encoding}, described in section ~\ref{one-hot-encoding}) and features related to the time characterizing these activities. Given the set $A = \{a_{1_A}, \ldots a_{m_A}\}$ of all possible activities, an ordering function $idx:A \rightarrow \{1, \ldots, \left|A\right| \} \subseteq \mathbb{N}$ is defined on it, such that $a_{i_A}<>a_{j_A}$ if and only if $i_A<>j_A$, i.e., two activities have the same A-index if and only if they are the same activity. For instance, if $A=\{a,b,c\}$, we have $idx: A \rightarrow \{1,2,3\}$ and $idx(a)=1$, $idx(b)=2$ and $idx(c)=3$. Each activity $a_i \in \sigma$ is encoded as a vector $\mathbb(A_i)$ of length $|A|+3$ such that the first $|A|$ features are all set to $0$, except the one occurring at the index of the current activity $idx(a_i)$, which is set to $1$. The last three features of the vector pertain to time: the first one relates to the time increase with respect to the previous activity, the second reports the time since midnight (to distinguish between working and night time), and the last one refers to the time since the beginning of the week.
 %For example, given the alphabet $A$ above, the activity $b$ in a trace $\sigma =  \left\langle bcc \right\rangle$ will be encoded as the vector $(0,1,0)$.
 
 A trace is encoded by composing the vectors obtained from all activities in the trace into a matrix. During the training phase, the encoded traces are used for building the LSTM model. During the testing phase, a (one-hot encoded) prefix of a running case is used to query the learned model, which returns the predicted suffix by running an inference algorithm.
@@ -446,26 +447,30 @@ First, the prefix $p_k(\sigma)$ is encoded by using the one-hot encoding (line~\
 
 
 \subsection{Linear Temporal Logic}
-In our approach, the a-priori knowledge that describes how a running case will develop in the future is formulated in terms of Linear Temporal Logic (LTL) rules~\cite{Pnueli77}. LTL is a modal logic with modalities devoted to describe time aspects. Classically, LTL is defined for infinite traces. However, to describe the characteristics of a business process, we use a variant of LTL defined for finite traces (since business processes are supposed to complete eventually).
+
+Linear Temporal Logic~\cite{Pnueli77} (LTL) is a modal logic with modalities devoted to describe time aspects. Classically, LTL is defined for infinite traces. However, to describe the characteristics of a business process, we use a variant of LTL defined for finite traces (since business processes are supposed to complete eventually).
 %
 We assume that activities occurring during the process execution fall into the set of atomic propositions. LTL rules are constructed from these atoms by applying the temporal operators $\NEXT$ (next), $\sometime$ (future), $\always$ (globally), and $\until$ (until) in addition to the usual boolean connectives. Given a formula $\varphi$, $\NEXT \varphi$ means that the next time instant exists and $\varphi$ is true in the next time instant (strong next). $\sometime \varphi$ indicates that $\varphi$ is true sometimes in the future. $\always \varphi$ means that $\varphi$ is true always in the future. $\varphi \until \psi$ indicates that $\varphi$ has to hold at least until $\psi$  holds and $\psi$ must hold in the current or in a future time instant.
 
 \subsection{Beam search}
 
-Beam search is a heuristic search algorithm, based on the principle of exploring the graph of possible solutions by the most promising node. It is built on the assumption of huge search space. It orders all partial solutions with some heuristic measure keeping only small portion of the most promising ones, expanding them to get the complete solution.
+Beam search is a heuristic search algorithm, based on the principle of exploring the graph of possible solutions by the most promising node. It is built for dealing with huge search spaces. Specifically, it orders all partial solutions with some heuristic measure; it then keeps only a small portion of the most promising solution, and expands them to get the complete solution.
 
-There are few variations of this algorithm, from which two will be thoroughly explained here.
+Beam search is used in area such as machine translation\cite{Koehn2007MOSEStranslationSystem}.
+
+
+There are few variants of this algorithm, two of which will be thoroughly explained here: The best-first and the breadth-first. 
 
 \subsubsection{Best-first variation of Beam search}
 
-Best-first search explores the solution space following the most probable solution first. The algorithm exploits a tree structure, in which each node maintains its state as open and closed. The algorithm assumes that all nodes are open at the initialization, and after visiting the nodes marks them as closed. 
+Best-first search explores the solution space following the most probable solution first. The algorithm exploits a tree structure, in which each node maintains its state as open and closed (open state means that the node of the tree was not visited yet, and can be explored in the next iteration, while closed means that the node was already visited). The algorithm assumes that all nodes are open at the initialization and, after visiting the nodes marks them as closed. 
 
-The pseudo code for the algorithm is following:
+The pseudo code for the algorithm described in the listing~\ref{alg:bestfirst}.
 
 
 \begin{algorithm}
 	\caption{Best first search}
-	\label{alg:protrack}
+	\label{alg:bestfirst}
 	\begin{algorithmic}[1]
 		\State define node of the graph, OPEN, to be starting node $s$
 		\If {\textsc{list} is empty} 
@@ -484,22 +489,22 @@ The pseudo code for the algorithm is following:
 \end{algorithm}
 
 
+On the first line, the graph is initialized, and next the list is checked if it's empty. On the fifth line the nodes from the list are ordered, and top one is chosen. The line 6, algorithm takes the top node for further processing. The 7-9 lines state if the solution found, the algorithm should construct the solution by tracing back the tree by parent nodes and return it. Lines 10-13 state that if the solution is not found, we take all nodes from successors of n, and apply the evaluation function, and if this new node is new to the algorithm (not yet exploited) we mark it as open.
 
-\vspace{0.2 cm}
+Different evaluation functions can be used for the task. The decision is made upon the specifics of the problem, and it directly influences the effectiveness of an algorithm. The example of the evaluation function can be the count of events if we need the prediction to be short, or if the predicted sequence is conformant with defined rule.
 
-Different evaluation function can be used for the task. The decision is made upon the specifics of the problem, and it directly influences the effectiveness of the algorithm. 
+\subsubsection{Breadth-first variation of Beam search}
 
-\subsubsection{Breath-first variation of Beam search}
+Breadth-first search begins with an empty node and explores the search space in the breadth-wise order. This type of beam search operates using few priority queues instead of tree structures as in the previous approach. 
 
-Breath-first search begins with an empty node and explores the search space in the breath-wise order. 
+Algorithms reported in the pseudo code listing~\ref{alg:breathfirst} (all elements in priority queues are stored with priority based on some evaluation function)
 
-This type of beam search operates using few priority queues instead of tree structures as in previous approach. 
+The algorithm starts with defining two priority queues on the line 1. On the line 2, first queue is appended with the element given as an input. Third line defines the condition that calculations will stop that is if the solution tree has reached its bottom. Line 4 starts the while loop that will iterate over all elements in s1. Lines 5-9 describe that each element from $s1$ either a solution (in that case line 7 returns it), or the next elements are predicted and top $beamsize$ elements are chosen to be passed to the next iteration.
 
-Here is the pseudo code for the algorithm (all elements in priority queues are stores with priority based on some evaluation function):
 
 \begin{algorithm}
  	\caption{Breath-first Beam search}
-	\label{alg:protrack}
+	\label{alg:breathfirst}
 	\begin{algorithmic}[1]
 		\State define two empty priority queues, $s1$ and $s2$
 		\State add the first element to $s1$
@@ -520,9 +525,8 @@ Here is the pseudo code for the algorithm (all elements in priority queues are s
 
 
 \vspace{0.2 cm}
-Both of these algorithms use the same tactic by cutting the space to the most probable and better performing prospective solutions. These algorithms are different, and depending on the nature of the problem given can have very different performance.
+Both the beam search algorithms use the same tactic: they cut the search space as to keep only the most probable and better performing prospective solutions. These algorithms are different, and depending on the nature of the problem given can have very different performance.
 
-Beam search is used in many areas such as machine translation\cite{Koehn2007MOSEStranslationSystem}.
 
 
 % section background (end)

@@ -150,6 +150,11 @@ Polato, M., Sperduti, A., Burattin, A., de~Leoni, M.: Time and activity
   sequence prediction of business process instances. CoRR  abs/1602.07566
   (2016)
 
+\bibitem{Rogge-Solti2015PBP}
+Rogge-Solti, A., Weske, M.: Prediction of business process durations using
+  non-markovian stochastic petri nets. Inf. Syst.  54(C),  1--14 (Dec 2015),
+  \url{http://dx.doi.org/10.1016/j.is.2015.04.004}
+
 \bibitem{Schonenberg2008}
 Schonenberg, H., Weber, B., van Dongen, B., van~der Aalst, W.: Supporting
   Flexible Processes through Recommendations Based on History, pp. 51--66.
