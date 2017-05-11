@@ -4,8 +4,8 @@
 \label{sec:the_problem}
 %%%% CONTENT
 % general problem of predicting with background knowledge
-Predictive business process monitoring methods use past process executions, stored in event logs, in order to build predictive that work at runtime to make predictions about the future.
-Among the different types of predictions about on an ongoing case, such as the remaining time or the fulfilment of a predicate, we can find the prediction of the sequence of future activities. This type of predictions can be useful in the scenario where some planning and resource allocation are needed for the running case.
+Predictive business process monitoring methods use past process executions, stored in event logs, in order to build predictive models that work at runtime to make predictions about the future.
+Among the different types of predictions about an ongoing case, such as the remaining time or the fulfilment of a predicate, we can find the prediction of the sequence of future activities. This type of predictions can be useful in the scenario where some planning and resource allocation are needed for the running case.
 %For instance, a call center is strongly interested in predicting future activities of its customers to be able to adopt the best strategy for convincing them to buy a product.
 For instance, the hospital management can be highly interested in predicting the future activities of patients to be able to best organize machines and resources of the hospital.
 
@@ -20,16 +20,16 @@ While predicting the sequence of future activities entirely from past execution 
 
 For instance, in the hospital example, new medical guidelines may provide new knowledge on the fact that two treatments are not useful if used together in order to cure a certain disease, or that a certain screening is required in order to perform a specific surgery, or also that if a patient is allergic to a specific treatment she will never go to take it.
 
-Also the exemplary knowledge known a-priory might be the weather information for the agricultural company that does the harvest. Knowledge about the weather can help a company to project on how their real processes concerning harvesting will unfold. For example assuming the weather is rainy in the middle of harvesting season, the big machinery usually used will not be able to perform needed operations. So inferring the incapability to use them will help to predict the real unfold of the processes. Thats could helps the management to guide their choices to best account for the new circumstances. 
+Also the exemplary knowledge known a-prior might be the weather information for the agricultural company that does the harvest. Knowledge about problems with diesel supplies can help a company to project on how their real processes concerning harvesting will unfold. For example assuming they are having delays with a supply in the middle of harvesting season, the big machinery usually used will not be able to perform needed operations. So inferring the incapability to use them will help to predict the real unfold of the processes. That could help the management to guide their choices to best account for the new circumstances. 
 
 
-Moreover solved problem of this kind can bring much more benefits to the companies. That could be if the formalization of a problem be twisted. For example a big insurance company, that deals with thousands claims per day would decide that they need some changes such as cutting down jobs, they would have a way of empirically inferring the consequences. That means  in addition to the classical qualitative methods of business process management that after building BPMN models have those changes analyzed my means of queuing theory or simulation one would have one more instrument in the toolkit. This algorithm would enable a process owner to make put some proposed changes as a-priori knowledge, and after predicting the continuation of selected business processes analyze it. 
+Moreover if the algorithmically this problem could be accurately solved it can bring much more benefits to the companies. It can be also used for simulation purposes. For example a big insurance company, that deals with thousands claims per day could decide that they need some changes such as cutting down jobs. Now they will have a capability to predict what will happen under the assumption of job cuts, and that could provide better insights. So besides classical qualitative methods of business process management that use BPMN models to analyze the changes my means of queuing theory or simulation, one would have one more instrument in the toolkit. This algorithm would enable a process owner to use some proposed changes as a-priori knowledge, and after predicting the continuations of the traces make further analysis. 
 
 Given the practical motivations for the problem at hand let's dive once more into the research question identified.
 
-RQ: How can prior knowledge about ongoing process be used to boost accuracy of predictions of trends of activities?
+RQ: How can prior knowledge about an ongoing case be used to boost accuracy of predictions of trends of activities?
 
-Here we decompose the research question into chunks to better understand the problem stated. \textit{Boost accuracy of prediction} means to develop an approach that will have better performance than current state of the art. \textit{Trends of activities} means that we are interested in finding the suffix of the trace. \textit{Ongoing process} means that we will have \textit{prior knowledge} on the inference time. 
+Here we decompose the research question into chunks to better understand the problem stated. \textit{Boost accuracy of prediction} means to develop an approach that will have better performance than current state of the art. \textit{Trends of activities} means that we are interested in finding the suffix of the current ongoing process execution. \textit{Ongoing process} means that we will have \textit{prior knowledge} on the inference time. 
 
 
 

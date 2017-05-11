@@ -144,7 +144,7 @@ That is because simple symbolic sequences discard most of the rich information p
 As well as the data used in areas described in the beginning on this chapter can be easily represented as simple symbolic sequence, there are many algorithms developed to work with. There are feature based classifications, sequence distance based, support vector machines, or model based classification~\cite{Xing:2010:BSS:1882471.1882478}. That's why first attempts to make predictions of the business processes were made with the use of this simple encodings.
 
 
-\subsubsection{Complex symbolic encoding}
+\subsubsection{Complex symbolic encoding} \label{complex-sym-enc}
 
 On contrary to Simple Symbolic Sequence encodings, the Complex Symbolic Sequences are introduced~\cite{Leontjeva2015} and we can capture much more information about log. Complex Symbolic Sequence is basically ordered list of vectors, where each vector is a subset of some alphabet inferred from the log.
 
@@ -167,6 +167,37 @@ To exemplify this approach for encodings lets again take a look at the log in fi
 	\caption{Example of Complex Symbolic Sequence encoding}
 	\label{tab:complesymbseq_log_example}
 \end{table}
+
+
+Additionally, Complex Symbolic Sequence encoding can have textual data encoded as additional parameters. For that its needed to use the text knowledge extraction techniques, such as described below.
+
+First step the data is preprocessed. It is done in few steps. Firstly, text is segmented by tokenization. Then, the text is normalized, to eliminate word differences such as "e-mail" and "email". Later, \textit{lemmatization} is used to bring same words of different grammatical form to the single form. Words such as "go" and "went" are grouped with the "go" label.
+
+Next step is encoding. The most used methods~\cite{DBLP:conf/bpm/TeinemaaDMF16}:
+
+\begin{enumerate}
+	\item \textit{Bag-of-n-grams} is a method, based on BoNG model. It has two parameters, $n$ - maximum size of $n$-grams, and $idf$ boolean variable specifying if the model is normalized. The $n$-gram means scoring feature representation based on the every sequence of $n$ words. Normalization is used in order not to favor words that are relatively popular in one document.
+	
+	By the result of this procedure, the vector will be build in the following form:
+	
+	Having vocabulary:
+	\[V(1)=("send","phone","radio","play","it","is","you","like", "say").\]
+	And the input sentence "You said you like radio".
+	
+	The resulting vector will be of the form: 
+	
+	$d^j=(0,0,1,0,0,0,2,1,1)$, assuming that parameters to the model is unigram, and no normalization is done.
+	
+	Downside of this model is that it can suffer from high dimensionality. Feature selection method is used to make this model more usable.
+	
+	\item \textit{Naive Bayes log count ratios} as an extension to the BoNG, adding weighting with NB log count ratios.
+	
+	\item \textit{Latent Dirichlet Allocation topic modeling} is a method, that represents text as a measure of a correspondence to some finite number of topics.
+	
+	\item \textit{Paragraph vector} is a technique that allows to represent the text as a feature vector of its meaning.
+\end{enumerate}
+
+So, after one of these methods of text encoding is chosen, the corresponding vector is appended to the index-based encoding.
 
 This representation also has its downsides, even though it captures much more information. It is impossible to represent the complete log in this way, because one needs to limit the number of events in the traces to some definite number. In our example in the table~\ref{tab:complesymbseq_log_example} the trace length was chosen to be 3. 
 
