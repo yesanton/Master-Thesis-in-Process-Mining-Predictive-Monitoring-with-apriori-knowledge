@@ -21,45 +21,45 @@ Warning--can't use both author and editor fields in Pika
 Warning--can't use both author and editor fields in Schonenberg2008
 Warning--can't use both author and editor fields in suriadi
 Warning--empty note in quteprints96732
-You've used 41 entries,
+You've used 42 entries,
             2785 wiz_defined-function locations,
-            874 strings with 14728 characters,
-and the built_in function-call counts, 25016 in all, are:
-= -- 2041
-> -- 902
-< -- 41
-+ -- 374
-- -- 328
-* -- 1664
-:= -- 3180
-add.period$ -- 48
-call.type$ -- 41
-change.case$ -- 308
+            883 strings with 15023 characters,
+and the built_in function-call counts, 25585 in all, are:
+= -- 2095
+> -- 909
+< -- 42
++ -- 377
+- -- 330
+* -- 1698
+:= -- 3249
+add.period$ -- 51
+call.type$ -- 42
+change.case$ -- 314
 chr.to.int$ -- 0
-cite$ -- 49
-duplicate$ -- 2112
-empty$ -- 2159
-format.name$ -- 359
-if$ -- 5448
+cite$ -- 50
+duplicate$ -- 2165
+empty$ -- 2217
+format.name$ -- 361
+if$ -- 5581
 int.to.chr$ -- 0
-int.to.str$ -- 41
-missing$ -- 449
-newline$ -- 128
-num.names$ -- 82
-pop$ -- 849
+int.to.str$ -- 42
+missing$ -- 459
+newline$ -- 131
+num.names$ -- 84
+pop$ -- 865
 preamble$ -- 1
-purify$ -- 246
+purify$ -- 249
 quote$ -- 0
-skip$ -- 667
+skip$ -- 685
 stack$ -- 0
-substring$ -- 1414
-swap$ -- 1228
-text.length$ -- 41
+substring$ -- 1451
+swap$ -- 1255
+text.length$ -- 42
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 150
+type$ -- 154
 warning$ -- 8
-while$ -- 197
-width$ -- 43
-write$ -- 418
+while$ -- 203
+width$ -- 44
+write$ -- 431
 (There were 4 error messages)

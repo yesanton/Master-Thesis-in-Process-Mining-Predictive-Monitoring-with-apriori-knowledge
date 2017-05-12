@@ -189,7 +189,7 @@ The algorithm is then iterated until the queue of prefixes is empty or the maxim
 
 \subsection{Implementation}
 \label{ssec:implementation}
-Algorithms~\ref{alg:nocycle} and~\ref{alg:protrack} have been implemented in Python 2.6. In particular, the Keras~\cite{chollet2015keras} and TensorFlow~\cite{tensorflow2015-whitepaper} libraries have been used for neural networks. The LTL\cite{vanderAalst2005} checker\footnote{The LTL formula checker is taken from the open source code of ProM process mining suite.})for checking the compliance of traces to LTL rules is instead based on automata and written in Java. 
+Algorithms~\ref{alg:nocycle} and~\ref{alg:protrack} have been implemented in Python 2.6. In particular, the Keras~\cite{chollet2015keras} and TensorFlow~\cite{tensorflow2015-whitepaper} libraries have been used for neural networks. The LTL checker~\cite{vanderAalst2005}\footnote{The LTL formula checker is taken from the open source code of ProM process mining suite.})for checking the compliance of traces to LTL rules is instead based on automata and written in Java~\cite{Westergaard2040296}. 
 
 As the problem of compatibility arose having Java and Python parts, the Py4J library\cite{py4j} was used as a gateway to access Java code from Python.
 
