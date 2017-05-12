@@ -33,7 +33,43 @@ More in detail:
  %(for example $j^{2}$ or $e^{j}$) %, that is multiplying the output of the formula by the probability for the loop causing next event.
 \end{enumerate}
 
-\todo{Add example}
+In simple words the \nocycle technique looks for the current cycle. Figure~\ref{figure:nocycle1} shows how the inference algorithm would choose next event for prediction. Then figure~\ref{figure:nocycle2} shows how the algorithm without \nocycle technique would choose next event, even though the cycle is present. If the technique applied figure ~\ref{figure:nocycle3} shows that the probability to choose the event starting the cycle is diminished. After three times cycle is repeated~\ref{figure:nocycle4} the algorithm predict second most probable event, by this going out of the cycle.
+
+
+
+
+\begin{figure}[!ht]
+	\begin{center}  
+		\includegraphics[scale=0.35]{nocycle-algo-1.png}
+		\caption{How the next event is chosen}
+		\label{figure:nocycle1}	
+	\end{center}
+\end{figure}
+
+\begin{figure}[!ht]
+	\begin{center}  
+		\includegraphics[scale=0.35]{nocycle-algo-2.png}
+		\caption{How the next even standardly chosen (cycles present)}
+		\label{figure:nocycle2}	
+	\end{center}
+\end{figure}
+
+\begin{figure}[!ht]
+	\begin{center}  
+		\includegraphics[scale=0.35]{nocycle-algo-3.png}
+		\caption{Next event chosen after the $e^{2}$ applied for cycle size 2}
+		\label{figure:nocycle3}	
+	\end{center}
+\end{figure}
+
+\begin{figure}[!ht]
+	\begin{center}  
+		\includegraphics[scale=0.35]{nocycle-algo-4.png}
+		\caption{Next event chosen after the $e^{2}$ applied for cycle size 3}
+		\label{figure:nocycle4}	
+	\end{center}
+\end{figure}
+
 Algorithm~\ref{alg:nocycle} reports the pseudo-code of the \nocycle technique. Similarly to Algorithm~\ref{alg:baseline} presented in Section~\ref{subsec:RNNforpredictive}, it takes as input a prefix $p_k(\sigma)$,  the trained LSTM model $lstm$, and the maximum number $max$ of iterations allowed. Then, it returns as output the complete trace (the prefix and the predicted suffix).  In particular, the algorithm adds to the state-of-the-art Algorithm~\ref{alg:baseline} the \textsc{weakenProb} procedure described above to find cycles in the trace and decrease the probability of the first activity of the cycle to occur again at the end of a repetition. The resulting vector of weakened probabilities is hence used for getting the next symbol as in the basic procedure.
 %\todocdf{Remember to mention which formula we are using for the evaluation in the evaluation.}
 

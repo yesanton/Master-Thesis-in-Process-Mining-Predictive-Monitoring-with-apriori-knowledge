@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.4.4)  12 MAY 2017 14:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.4.4)  12 MAY 2017 15:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1406,24 +1406,24 @@ Package pdftex.def Info: 4_event_example_csv.png used on input line 56.
 File: 5_log_example_fin.png Graphic file (type png)
 
 <use 5_log_example_fin.png>
-Package pdftex.def Info: 5_log_example_fin.png used on input line 110.
+Package pdftex.def Info: 5_log_example_fin.png used on input line 108.
 (pdftex.def)             Requested size: 347.12354pt x 194.04128pt.
- [12]
-Overfull \hbox (16.87111pt too wide) in paragraph at lines 121--122
+
+Overfull \hbox (16.87111pt too wide) in paragraph at lines 119--120
 []$\OML/cmm/m/it/12 seq \OT1/cmr/m/n/12 = ([]\OML/cmm/m/it/12 ; []; []\OT1/cmr/
 m/n/12 )$ 
  []
 
+[12]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[13 <./5_log_example_fin.png>]
-Overfull \hbox (46.83849pt too wide) in paragraph at lines 159--167
+ [13 <./5_log_example_fin.png>]
+Overfull \hbox (46.83849pt too wide) in paragraph at lines 157--165
  [][] 
  []
 
 [14]
-Overfull \hbox (2.53821pt too wide) in paragraph at lines 189--190
+Overfull \hbox (2.53821pt too wide) in paragraph at lines 187--188
 []$\OML/cmm/m/it/12 d[] \OT1/cmr/m/n/12 = (0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 
 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/c
 mm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it
@@ -1435,25 +1435,21 @@ OT1/cmr/m/n/12 1)$, as-sum-ing that pa-ram-e-ters to the model
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no — in font cmr12!
 
-Overfull \hbox (2.79228pt too wide) in paragraph at lines 214--215
+Overfull \hbox (2.79228pt too wide) in paragraph at lines 212--213
 []\OT1/cmr/m/n/12 Even though the ta-ble is usu-ally large and not so ef-fi-cie
 nt memory-
  []
 
-[16]
-Underfull \vbox (badness 1552) has occurred while \output is active []
-
- [17]
-[18]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 428.
+[16] [17] [18]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 426.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 428.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 426.
 
-Overfull \hbox (11.95749pt too wide) in paragraph at lines 476--477
+Overfull \hbox (11.95749pt too wide) in paragraph at lines 474--475
 \OT1/cmr/m/n/12 rics such as Damerau-Levenshtein sim-i-lar-ity [[]]. Damerau-Le
 venshtein
  []
@@ -1474,74 +1470,109 @@ Overfull \hbox (4.09782pt too wide) in paragraph at lines 23--24
 ri nets [[]].
  []
 
-[23]
-Underfull \vbox (badness 4328) has occurred while \output is active []
+[23] [24]
+Underfull \vbox (badness 2762) has occurred while \output is active []
 
- [24]
-[25]
+ [25]
 Overfull \hbox (20.76988pt too wide) in paragraph at lines 69--70
 \OT1/cmr/m/n/12 prob-lems in Nat-u-ral Lan-guage Pro-cess-ing, such as speech r
 ecognition[[]],
  []
 
-[26] <1.png, id=112, 1049.42062pt x 677.53125pt>
+<1.png, id=109, 1049.42062pt x 677.53125pt>
 File: 1.png Graphic file (type png)
  <use 1.png>
 Package pdftex.def Info: 1.png used on input line 85.
 (pdftex.def)             Requested size: 347.12354pt x 224.11325pt.
-) (./problem.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [27 <./1.png>]
+ [26]) (./problem.tex
+[27 <./1.png>]
 Overfull \hbox (4.78114pt too wide) in paragraph at lines 23--24
 []\OT1/cmr/m/n/12 Also the ex-em-plary knowl-edge known a-prior might be the we
 ather
  []
 
-[28] [29]) (./approach.tex [30]
-Underfull \vbox (badness 1552) has occurred while \output is active []
 
- [31]
-[32]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 99.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+Underfull \vbox (badness 4328) has occurred while \output is active []
+
+ [28])
+(./approach.tex [29] [30] <nocycle-algo-1.png, id=126, 827.09pt x 187.70125pt>
+File: nocycle-algo-1.png Graphic file (type png)
+
+<use nocycle-algo-1.png>
+Package pdftex.def Info: nocycle-algo-1.png used on input line 43.
+(pdftex.def)             Requested size: 289.48582pt x 65.69641pt.
+ <nocycle-algo-2.png, id=127, 907.39pt x 186.6975pt>
+File: nocycle-algo-2.png Graphic file (type png)
+
+<use nocycle-algo-2.png>
+Package pdftex.def Info: nocycle-algo-2.png used on input line 51.
+(pdftex.def)             Requested size: 317.59126pt x 65.3451pt.
+
+<nocycle-algo-3.png, id=128, 970.62625pt x 211.79124pt>
+File: nocycle-algo-3.png Graphic file (type png)
+
+<use nocycle-algo-3.png>
+Package pdftex.def Info: nocycle-algo-3.png used on input line 59.
+(pdftex.def)             Requested size: 339.72427pt x 74.12804pt.
+ [31 <./nocycle-algo-1.png> <./nocycle-algo-2.png>]
+<nocycle-algo-4.png, id=133, 1163.34625pt x 205.76875pt>
+File: nocycle-algo-4.png Graphic file (type png)
+
+<use nocycle-algo-4.png>
+Package pdftex.def Info: nocycle-algo-4.png used on input line 67.
+(pdftex.def)             Requested size: 407.17729pt x 72.02013pt.
+
+Overfull \hbox (60.05376pt too wide) in paragraph at lines 67--68
+ [] 
+ []
+
+[32 <./nocycle-algo-3.png> <./nocycle-algo-4.png>] [33]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 135.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 99.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 135.
 
-<beam-algo-1.png, id=133, 313.17pt x 252.945pt>
+<beam-algo-1.png, id=140, 313.17pt x 252.945pt>
 File: beam-algo-1.png Graphic file (type png)
  <use beam-algo-1.png>
-Package pdftex.def Info: beam-algo-1.png used on input line 137.
+Package pdftex.def Info: beam-algo-1.png used on input line 173.
 (pdftex.def)             Requested size: 125.26576pt x 101.17621pt.
 
-<beam-algo-2.png, id=134, 307.1475pt x 249.93375pt>
+<beam-algo-2.png, id=141, 307.1475pt x 249.93375pt>
 File: beam-algo-2.png Graphic file (type png)
  <use beam-algo-2.png>
-Package pdftex.def Info: beam-algo-2.png used on input line 145.
+Package pdftex.def Info: beam-algo-2.png used on input line 181.
 (pdftex.def)             Requested size: 122.85681pt x 99.97173pt.
 
-<beam-algo-3.png, id=135, 429.605pt x 490.83376pt>
+<beam-algo-3.png, id=142, 429.605pt x 490.83376pt>
 File: beam-algo-3.png Graphic file (type png)
  <use beam-algo-3.png>
-Package pdftex.def Info: beam-algo-3.png used on input line 153.
+Package pdftex.def Info: beam-algo-3.png used on input line 189.
 (pdftex.def)             Requested size: 171.83894pt x 196.33002pt.
 
-<beam-algo-4.png, id=136, 422.57875pt x 490.83376pt>
+<beam-algo-4.png, id=143, 422.57875pt x 490.83376pt>
 File: beam-algo-4.png Graphic file (type png)
  <use beam-algo-4.png>
-Package pdftex.def Info: beam-algo-4.png used on input line 161.
+Package pdftex.def Info: beam-algo-4.png used on input line 197.
 (pdftex.def)             Requested size: 169.0285pt x 196.33002pt.
 
-[33] [34 <./beam-algo-1.png> <./beam-algo-2.png>] [35 <./beam-algo-3.png> <./be
-am-algo-4.png>]
-Overfull \hbox (40.897pt too wide) in paragraph at lines 196--196
+[34 <./beam-algo-1.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [35 <./beam-algo-2.png> <./beam-algo-3.png>]
+Underfull \vbox (badness 2334) has occurred while \output is active []
+
+ [36 <./beam-algo-4.png>]
+Overfull \hbox (40.897pt too wide) in paragraph at lines 232--232
  [][]$\OT1/cmtt/m/n/9 https : / / github . com / yesanton / Process-[]Sequence-
 []Prediction-[]with-[]A-[]priori-[]knowledge$| 
  []
 
-) (./evaluation.tex [36]
+) (./evaluation.tex [37]
 Overfull \hbox (6.82239pt too wide) in paragraph at lines 38--38
  [][]$\OT1/cmtt/m/n/9 https : / / data . 4tu . nl / repository / uuid : e8c3a53
 d-[]5301-[]4afb-[]9bcd-[]38e74171ca32$| 
@@ -1553,35 +1584,37 @@ Overfull \hbox (4.66687pt too wide) in paragraph at lines 41--41
 -[]f712-[]4394-[]aebc-[]75976070e91f$\OT1/cmr/m/n/9 .| 
  []
 
-[37]
+[38]
 Overfull \hbox (2.09744pt too wide) in paragraph at lines 47--47
  [][]$\OT1/cmtt/m/n/9 http : / / data . 4tu . nl / repository / uuid : 5f3067df
 -[]f10b-[]45da-[]b98b-[]86ae4c7a310b$| 
  []
 
-[38]
+[39]
 Overfull \hbox (3.2145pt too wide) in paragraph at lines 88--91
 \OT1/cmr/m/n/12 In or-der to eval-u-ate the tech-niques pre-sented in the pa-pe
 r, we adopted
  []
 
-[39] <3_ltl_prom.png, id=161, 247.67531pt x 538.26094pt>
+[40] <3_ltl_prom.png, id=168, 247.67531pt x 538.26094pt>
 File: 3_ltl_prom.png Graphic file (type png)
  <use 3_ltl_prom.png>
 Package pdftex.def Info: 3_ltl_prom.png used on input line 96.
 (pdftex.def)             Requested size: 196.38695pt x 426.79134pt.
 
-[40] [41 <./3_ltl_prom.png>]
-<2_evaluation.png, id=168, 842.14626pt x 869.2475pt>
+Underfull \vbox (badness 3735) has occurred while \output is active []
+
+ [41 <./3_ltl_prom.png>] [42] <2_evaluation.png, id=175, 842.14626pt x 869.2475
+pt>
 File: 2_evaluation.png Graphic file (type png)
- <use 2_evaluation.png>
+
+<use 2_evaluation.png>
 Package pdftex.def Info: 2_evaluation.png used on input line 202.
 (pdftex.def)             Requested size: 347.12354pt x 358.29048pt.
-
-[42]) (./conclusions.tex
+ [43]) (./conclusions.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [43 <./2_evaluation.png>] [44]) (./MasterThesis2017.bbl
+ [44 <./2_evaluation.png>] [45]) (./MasterThesis2017.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 6--8
 []\OT1/cmr/m/n/9 3TU Data Cen-ter: BPI Chal-lenge 2011 Event Log (2011),
  []
@@ -1598,21 +1631,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--39
 / doi . org / 10 . 4121 / uuid :
  []
 
-[45]
+[46]
 Underfull \hbox (badness 1852) in paragraph at lines 169--171
 []\OT1/cmr/m/n/9 Steeman, W.: Bpi chal-lenge 2013 (2013), $\OT1/cmtt/m/n/9 http
 s : / / doi . org / 10 . 4121 / uuid :
  []
 
-[46]) [47] (./MasterThesis2017.aux) ) 
+[47]) [48] (./MasterThesis2017.aux) ) 
 Here is how much of TeX's memory you used:
- 38346 strings out of 494945
- 922601 string characters out of 6181033
- 1145516 words of memory out of 5000000
- 40983 multiletter control sequences out of 15000+600000
+ 38307 strings out of 494945
+ 921785 string characters out of 6181033
+ 1143123 words of memory out of 5000000
+ 40940 multiletter control sequences out of 15000+600000
  19058 words of font info for 74 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,18n,96p,10395b,844s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,18n,96p,10395b,843s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
@@ -1636,10 +1669,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on MasterThesis2017.pdf (47 pages, 753905 bytes).
+Output written on MasterThesis2017.pdf (48 pages, 805591 bytes).
 PDF statistics:
- 266 PDF objects out of 1000 (max. 8388607)
- 181 compressed objects within 2 object streams
+ 273 PDF objects out of 1000 (max. 8388607)
+ 183 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 63 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 83 words of extra memory for PDF output out of 10000 (max. 10000000)
 
