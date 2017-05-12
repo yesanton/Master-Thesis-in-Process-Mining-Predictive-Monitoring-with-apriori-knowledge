@@ -25,13 +25,13 @@ A \emph{cycle} in a trace $\sigma \in A^*$ is a sequence of activities repeated 
 
 Speaking practically, the log is a set of process executions (Traces). Trace is a set of events happened in the sequence.
 
-Sequence is defined by timestamps. They are the first essential part of the process. Every correctly stored process must contain the time stamps of when certain activity was performed. 
+The sequence is defined by timestamps. They are the first essential part of the process. Every correctly stored process must contain the time stamps of when certain activity was performed. 
 
-Trace should have an identification, that is the case ID. Whenever the real world process starts the new case ID is created. That to ensure granularity of the data values. In the issue to resolution process the ID refers to unique number associated with one instance of the issue raised. 
+Trace should have an identification, that is the case ID. Whenever the real world process starts the new case ID is created. That to ensure granularity of the data values. In the issue to resolution process, the ID refers to a unique number associated with one instance of the issue raised. 
 
 The third essential element of a trace is an Activity ID. These are the names of different activities performed during one instance of the process. For our example these might be "issue recorded", "decision made", "solved", "confirmation received", or "issue canceled". These provide an understanding of what the process is actually performing. 
 
-Many other data values can be recorded. Let's look at the real world exampl in the figure e~\ref{figure:trace-example-1} from the dutch hospital log. The figure shows one event of the process. 
+Many other data values can be recorded. Let's look at the real world example in the figure e~\ref{figure:trace-example-1} from the dutch hospital log. The figure shows one event of the process. 
 
 \begin{figure}[!ht]
 	\begin{center}  
@@ -43,7 +43,7 @@ Many other data values can be recorded. Let's look at the real world exampl in t
 
 One can see that the timestamp is present and one can define case id to be "Activity code" and activity ID as "concept:name".
 
-There are number of other parameters such as "org:group" that shows the department in the clinic, "Number of executions" that shows number of times certain operation was performed and others.  All parameters combined give the best picture of the process execution, therefore it is important for methods exploiting logs to use most complete data set possible.
+There are a number of other parameters such as "org:group" that shows the department in the clinic, "Number of executions" that shows a number of times certain operation was performed and others.  All parameters combined give the best picture of the process execution, therefore it is important for methods exploiting logs to use most complete data set possible.
 
 Furthermore, the logs can contain text information such as comments or emails, bringing up the complexity level of the problem. Text mining methods in conjunction with sequence classification should be used to bring down the problem~\cite{DBLP:conf/bpm/TeinemaaDMF16}.
 
@@ -63,9 +63,9 @@ In the data based systems, the log can be stored in different structures. Enterp
 
 \subsection{Process mining}
 
-Process mining is a business process management technique that enables the analysis of processes based on the event logs. The main idea is improving business processes based on analysis of the logs as sequential and continuous processes. This is what makes it different from the methods established in data mining and business intelligence which treat the data as set of distinct events to gather insights. 
+Process mining is a business process management technique that enables the analysis of processes based on the event logs. The main idea is improving business processes based on analysis of the logs as sequential and continuous processes. This is what makes it different from the methods established in data mining and business intelligence which treat the data as a set of distinct events to gather insights. 
 
-As a rule the methods of process mining applied mostly to the processes that do not have formal description or have consistent deviations from the ones predicted in the system. 
+As a rule, the methods of process mining applied mostly to the processes that do not have a formal description or have consistent deviations from the ones predicted in the system. 
 
 The three main activities performed under the process mining field are:
 
@@ -79,20 +79,20 @@ The three main activities performed under the process mining field are:
 
 \subsection{Predictive monitoring}
 
-Predictive monitoring is an advancing subfield of Process Mining. As a subfield of Process Mining, its main focus also lies in exploring and exploiting the process logs (the process executions). More specifically, predictive monitoring encompasses the methods that deal with online predictions of process outcomes. The outcome of interest can be compliance of with a measure (for example in an order to cash process the measure can be that any of the financial operations that involve an amount more then 2500 euro, are not performed without confirmation from the top financial officer), achieving objective (such as in issue to resolution process, if the process will be completed under 7 days time), or classifications (giving a label to the uncompleted trace, such as issue resolved, or not).  
+Predictive monitoring is an advancing subfield of Process Mining. As a subfield of Process Mining, its main focus also lies in exploring and exploiting the process logs (the process executions). More specifically, predictive monitoring encompasses the methods that deal with online predictions of process outcomes. The outcome of interest can be compliance of with a measure (for example in an order to cash process the measure can be that any of the financial operations that involve an amount more than 2500 euro, are not performed without confirmation from the top financial officer), achieving objective (such as in issue to resolution process, if the process will be completed in under 7 days time), or classifications (giving a label to the uncompleted trace, such as issue resolved, or not).  
 \par
-Many algorithms are applied to solve above mentioned problems, for example classic machine learning algorithms as classification and clustering~\cite{Leontjeva2015}. More complex concepts are also used, such as Markov models~\cite{Leontjeva2015}, time series~\cite{Lam20096986}, and deep learning~\cite{niek96732,evermann,quteprints96732} approaches. 
+Many algorithms are applied to solve above-mentioned problems, for example, classic machine learning algorithms as classification and clustering~\cite{Leontjeva2015}. More complex concepts are also used, such as Markov models~\cite{Leontjeva2015}, time series~\cite{Lam20096986}, and deep learning~\cite{niek96732,evermann,quteprints96732} approaches. 
 \par
-In order to successfully apply these algorithms for facing the problems, it is necessary to have solid understanding on the process log nature. The aspects that can come into play, are the data types (while the case ID and activity ID are defined as categorical values, we have to deal with time stamps that are basically real valued, also text comments that are strings, or other numerical values such as sums of money), stationarity (it usually refers to time series data that have a stable mean, variance etc. over time. Best example from process logs are timestamps. One should account that they represent only the moment in an absolute time scale, while algorithms would only work if the input will be a relative measure, such as difference between timestamps). 
+In order to successfully apply these algorithms for facing the problems, it is necessary to have a solid understanding of the process log nature. The aspects that can come into play, are the data types (while the case ID and activity ID are defined as categorical values, we have to deal with time stamps that are basically real-valued, also text comments that are strings or other numerical values such as sums of money), stationarity (it usually refers to time series data that have a stable mean, variance etc. over time. The best example from process logs is timestamps. One should account that they represent only the moment in an absolute time scale, while algorithms would only work if the input will be a relative measure, such as a difference between timestamps). 
 \par
-Keeping in mind definition of the business process log from the section~\ref{logs} one can easily find the caveats in the early process mining approaches, that tend to ignore the data payload, taking into consideration only the control-flow (sequence of activities). Some of the approaches do the opposite, that is consider data, without control-flow~\cite{vanderAalst2010,DBLP:journals/is/AalstSS11,Schonenberg2008}. In that case the traces are considered to be a simple sequences. Moreover, methods introduced usually designed to work in offline fashion, exploring uncompleted cases. But, to make more accurate, mature, online predictions one should leave out neither payload nor control-flow information. That's when the Complex Symbolic Sequences as methods of encoding of a log are introduced. 
+Keeping in mind definition of the business process log from the section~\ref{logs} one can easily find the caveats in the early process mining approaches, that tend to ignore the data payload, taking into consideration only the control-flow (sequence of activities). Some of the approaches do the opposite, that is consider data, without control-flow~\cite{vanderAalst2010,DBLP:journals/is/AalstSS11,Schonenberg2008}. In that case, the traces are considered to be simple sequences. Moreover, methods introduced usually designed to work in offline fashion, exploring uncompleted cases. But, to make more accurate, mature, online predictions one should leave out neither payload nor control-flow information. That's when the Complex Symbolic Sequences as methods of encoding of a log are introduced. 
 
 
 \subsection{Encodings of business logs}
 
-Every machine learning problem needs the data represented in a particular way. To solve problem one needs to be aware that it is always a trade-off between the model used and the way of data encoding. 
+Every machine learning problem needs the data represented in a particular way. To solve a problem one needs to be aware that it is always a trade-off between the model used and the way of data encoding. 
 
-In the next subsections the descriptions of the most used encodings are given.
+In the next subsections, the descriptions of the most-used encodings are given.
 
 
 \subsubsection{Simple symbolic sequence encoding}
@@ -120,7 +120,7 @@ $seq = ("A\_SUBMITTED","A\_PARTLYSUBMITTED","A\_DECLINED")$
 
 Simple Symbolic Sequences, however, have limitations that prevent getting best results of their use.
 
-That is because simple symbolic sequences discard most of the rich information present in process logs, that is not limited to control-flow. An example would be the log in the big fast food chain, where the process about their employee's actions is daily recorded into the log. In Table~\ref{tab:statements}, you can see that log of this nature contains static features, control-flow components and number of dynamic features. Static feature include ID of the employee, and his age. Dynamic features are the $t_i$ that is the time spent working, $rID_i$ is an ID of the restaurant that employee worked in on that day, $rev_i$ money he earned for the company. 
+That is because simple symbolic sequences discard most of the rich information present in process logs, that is not limited to control-flow. An example would be the log in the big fast food chain, where the process about their employee's actions is daily recorded into the log. In Table~\ref{tab:statements}, you can see that log of this nature contains static features, control-flow components, and number of dynamic features. Static feature includes ID of the employee and his age. Dynamic features are the $t_i$ that is the time spent working, $rID_i$ is an ID of the restaurant that employee worked in on that day, $rev_i$ money he earned for the company. 
 
 \begin{table}[h]
 	\centering
@@ -139,18 +139,18 @@ That is because simple symbolic sequences discard most of the rich information p
 \end{table}
 
 
-As well as the data used in areas described in the beginning on this chapter can be easily represented as simple symbolic sequence, there are many algorithms developed to work with. There are feature based classifications, sequence distance based, support vector machines, or model based classification~\cite{Xing:2010:BSS:1882471.1882478}. That's why first attempts to make predictions of the business processes were made with the use of this simple encodings.
+As well as the data used in areas described in the beginning on this chapter can be easily represented as a simple symbolic sequence, there are many algorithms developed to work with. There are feature based classifications, sequence distance based, support vector machines, or model based classification~\cite{Xing:2010:BSS:1882471.1882478}. That's why first attempts to make predictions of the business processes were made with the use of this simple encodings.
 
 
 \subsubsection{Complex symbolic encoding} \label{complex-sym-enc}
 
-On contrary to Simple Symbolic Sequence encodings, the Complex Symbolic Sequences are introduced~\cite{Leontjeva2015} and we can capture much more information about log. Complex Symbolic Sequence is basically ordered list of vectors, where each vector is a subset of some alphabet inferred from the log.
+On contrary to Simple Symbolic Sequence encodings, the Complex Symbolic Sequences are introduced~\cite{Leontjeva2015} and we can capture much more information about a log. Complex Symbolic Sequence is basically ordered list of vectors, where each vector is a subset of some alphabet inferred from the log.
 
-When Complex Symbolic Sequences are used instead of Simple Symbolic Sequences for dealing with prediction problems, the complexity space of the prediction problem grows substantially. So it suggests to use new and more complex approaches to work with them.
+When Complex Symbolic Sequences are used instead of Simple Symbolic Sequences for dealing with prediction problems, the complexity space of the prediction problem grows substantially. So it suggests using new and more complex approaches to work with them.
 
 Some of the base lines of working with complex symbolic sequences use index-based encodings, and index latest payload encodings mentioned in following paper~\cite{Leontjeva2015}.   
 
-To exemplify this approach for encodings lets again take a look at the log in figure~\ref{figure:trace-example-2}. The Complex Symbolic Sequence form of this log will have following representation:
+To exemplify this approach for encodings let's again take a look at the log in figure~\ref{figure:trace-example-2}. The Complex Symbolic Sequence form of this log will have following representation:
 
 \begin{table}[h]
 	\centering
@@ -169,7 +169,7 @@ To exemplify this approach for encodings lets again take a look at the log in fi
 
 Additionally, Complex Symbolic Sequence encoding can have textual data encoded as additional parameters. For that its needed to use the text knowledge extraction techniques, such as described below.
 
-First step the data is preprocessed. It is done in few steps. Firstly, text is segmented by tokenization. Then, the text is normalized, to eliminate word differences such as "e-mail" and "email". Later, \textit{lemmatization} is used to bring same words of different grammatical form to the single form. Words such as "go" and "went" are grouped with the "go" label.
+The first step the data is preprocessed. It is done in few steps. Firstly, a text is segmented by tokenization. Then, the text is normalized, to eliminate word differences such as "e-mail" and "email". Later, \textit{lemmatization} is used to bring same words of different grammatical form to the single form. Words such as "go" and "went" are grouped with the "go" label.
 
 Next step is encoding. The most used methods~\cite{DBLP:conf/bpm/TeinemaaDMF16}:
 
@@ -192,12 +192,12 @@ Next step is encoding. The most used methods~\cite{DBLP:conf/bpm/TeinemaaDMF16}:
 	
 	\item \textit{Latent Dirichlet Allocation topic modeling} is a method, that represents text as a measure of a correspondence to some finite number of topics.
 	
-	\item \textit{Paragraph vector} is a technique that allows to represent the text as a feature vector of its meaning.
+	\item \textit{Paragraph vector} is a technique that allows representing the text as a feature vector of its meaning.
 \end{enumerate}
 
 So, after one of these methods of text encoding is chosen, the corresponding vector is appended to the index-based encoding.
 
-This representation also has its downsides, even though it captures much more information. It is impossible to represent the complete log in this way, because one needs to limit the number of events in the traces to some definite number. In our example in the table~\ref{tab:complesymbseq_log_example} the trace length was chosen to be 3. 
+This representation also has its downsides, even though it captures much more information. It is impossible to represent the complete log in this way because one needs to limit the number of events in the traces to some definite number. In our example in the table~\ref{tab:complesymbseq_log_example} the trace length was chosen to be 3. 
 
 This puts a limitation on the power of this encoding. The most use for the Complex Symbolic Encoding was found in~\cite{Leontjeva2015,Di-Francescomarino:2016aa,DBLP:conf/bpm/TeinemaaDMF16}. They used it for binary classification of traces. 
 
@@ -205,9 +205,9 @@ This puts a limitation on the power of this encoding. The most use for the Compl
 
 \subsubsection{One-hot encoding} \label{one-hot-encoding}
 
-As more advanced machine learning methods were brought to process mining, such as family of deep learning neural networks~\cite{evermann,niek96732,quteprints96732,evermann2}. With them came the new ways of representing the process log.
+As more advanced machine learning methods were brought to process mining, such as family a of deep learning neural networks~\cite{evermann,niek96732,quteprints96732,evermann2}. With them came the new ways of representing the process log.
 
-This is actually the v×m sized matrix, where each row represents one step of business process. One-hot is because the table can only contain the binary value of one or zero. (even though some extended versions of one-hot encoding are used to add information of features such as time~\cite{niek96732}). 
+This is actually the v×m sized matrix, where each row represents one step of a business process. One-hot is because the table can only contain the binary value of one or zero. (even though some extended versions of one-hot encoding are used to add information of features such as time~\cite{niek96732}). 
 
 Even though the table is usually large and not so efficient memory-wise, but is best for neural networks computations (as most of the operations are multiplications, it's easy to multiply and add ones and zeros). 
 
@@ -231,8 +231,7 @@ In we turn the log from the figure~\ref{figure:trace-example-2} into the one-hot
 
 
 \subsection{RNNs and LSTM}
-Artificial Neural Networks (or just Neural Networks, NNs) are a well
-known class of discriminative models. In classification tasks, they are
+Artificial Neural Networks (or just Neural Networks, NNs) are a well-known class of discriminative models. In classification tasks, they are
 used to model the probability of a given input to belong to a certain
 class, given some features of the input. We can describe them in
 mathematical terms as follows:
@@ -245,7 +244,7 @@ mathematical terms as follows:
 In \eqref{eq:condprob}, $\mathbf{x}$ is the feature vector that represents the input,
 $\mathbf{y}$ is a random variable representing the output class
 labels, $f_{\mathit{NN}}$ is the function modeled by the neural network, and
-$\theta$ is the set of parameters of such a function to be learnt during
+$\theta$ is the set of parameters of such a function to be learned during
 the training phase.
 
 
@@ -345,7 +344,7 @@ All these constraints can be easily achieved specifying the generic equation \eq
 \end{equation}
 %
 where the weight matrix $\mathbf{W}$ and the bias vector $\mathbf{b}$
-are parameters to be learnt during the training phase.
+are parameters to be learned during the training phase.
 
 % The presentation of RNNs ends with a note about the representation of the input: at each time-step, the
 % input should be represented by means of a vector. When our input space is
@@ -478,15 +477,15 @@ For evaluating results, these methods usually adopt known metrics such as Damera
 
 \subsection{Linear Temporal Logic}
 
-Linear Temporal Logic~\cite{Pnueli77} (LTL) is a modal logic with modalities devoted to describe time aspects. Classically, LTL is defined for infinite traces. However, to describe the characteristics of a business process, we use a variant of LTL defined for finite traces (since business processes are supposed to complete eventually).
+Linear Temporal Logic~\cite{Pnueli77} (LTL) is a modal logic with modalities devoted to describing time aspects. Classically, LTL is defined for infinite traces. However, to describe the characteristics of a business process, we use a variant of LTL defined for finite traces (since business processes are supposed to complete eventually).
 %
 We assume that activities occurring during the process execution fall into the set of atomic propositions. LTL rules are constructed from these atoms by applying the temporal operators $\NEXT$ (next), $\sometime$ (future), $\always$ (globally), and $\until$ (until) in addition to the usual boolean connectives. Given a formula $\varphi$, $\NEXT \varphi$ means that the next time instant exists and $\varphi$ is true in the next time instant (strong next). $\sometime \varphi$ indicates that $\varphi$ is true sometimes in the future. $\always \varphi$ means that $\varphi$ is true always in the future. $\varphi \until \psi$ indicates that $\varphi$ has to hold at least until $\psi$  holds and $\psi$ must hold in the current or in a future time instant.
 
 \subsection{Beam search}
 
-Beam search is a heuristic search algorithm, based on the principle of exploring the graph of possible solutions by the most promising node. It is built for dealing with huge search spaces. Specifically, it orders all partial solutions with some heuristic measure; it then keeps only a small portion of the most promising solution, and expands them to get the complete solution.
+Beam search is a heuristic search algorithm, based on the principle of exploring the graph of possible solutions by the most promising node. It is built for dealing with huge search spaces. Specifically, it orders all partial solutions with some heuristic measure; it then keeps only a small portion of the most promising solution and expands them to get the complete solution.
 
-Beam search is used in area such as machine translation\cite{Koehn2007MOSEStranslationSystem}.
+Beam search is used in the area such as machine translation\cite{Koehn2007MOSEStranslationSystem}.
 
 
 There are few variants of this algorithm, two of which will be thoroughly explained here: The best-first and the breadth-first. 
@@ -519,17 +518,17 @@ The pseudo code for the algorithm described in the listing~\ref{alg:bestfirst}.
 \end{algorithm}
 
 
-On the first line, the graph is initialized, and next the list is checked if it's empty. On the fifth line the nodes from the list are ordered, and top one is chosen. The line 6, algorithm takes the top node for further processing. The 7-9 lines state if the solution found, the algorithm should construct the solution by tracing back the tree by parent nodes and return it. Lines 10-13 state that if the solution is not found, we take all nodes from successors of n, and apply the evaluation function, and if this new node is new to the algorithm (not yet exploited) we mark it as open.
+On the first line, the graph is initialized, and next, the list is checked if it's empty. On the fifth line, the nodes from the list are ordered, and the top one is chosen. The line 6, the algorithm takes the top node for further processing. The 7-9 lines state if the solution found, the algorithm should construct the solution by tracing back the tree by parent nodes and return it. Lines 10-13 state that if the solution is not found, we take all nodes from successors of n, and apply the evaluation function, and if this new node is new to the algorithm (not yet exploited) we mark it as open.
 
-Different evaluation functions can be used for the task. The decision is made upon the specifics of the problem, and it directly influences the effectiveness of an algorithm. The example of the evaluation function can be the count of events if we need the prediction to be short, or if the predicted sequence is conformant with defined rule.
+Different evaluation functions can be used for the task. The decision is made upon the specifics of the problem, and it directly influences the effectiveness of an algorithm. The example of the evaluation function can be the count of events if we need the prediction to be short, or if the predicted sequence is conformant with a defined rule.
 
 \subsubsection{Breadth-first variation of Beam search}
 
-Breadth-first search begins with an empty node and explores the search space in the breadth-wise order. This type of beam search operates using few priority queues instead of tree structures as in the previous approach. 
+The breadth-first search begins with an empty node and explores the search space in the breadth-wise order. This type of beam search operates using few priority queues instead of tree structures as in the previous approach. 
 
 Algorithms reported in the pseudo code listing~\ref{alg:breathfirst} (all elements in priority queues are stored with priority based on some evaluation function)
 
-The algorithm starts with defining two priority queues on the line 1. On the line 2, first queue is appended with the element given as an input. Third line defines the condition that calculations will stop that is if the solution tree has reached its bottom. Line 4 starts the while loop that will iterate over all elements in s1. Lines 5-9 describe that each element from $s1$ either a solution (in that case line 7 returns it), or the next elements are predicted and top $beamsize$ elements are chosen to be passed to the next iteration.
+The algorithm starts with defining two priority queues on line 1. On line 2, the element given as an input is appended to first queue. The third line defines the condition that calculations will stop that is if the solution tree has reached its bottom. Line 4 starts the while loop that will iterate over all elements in s1. Lines 5-9 describe that each element from $s1$ either a solution (in that case line 7 returns it) or the next elements are predicted and top $beamsize$ elements are chosen to be passed to the next iteration.
 
 
 \begin{algorithm}

@@ -26,6 +26,6 @@
 \contentsline {section}{\numberline {6}Evaluation}{37}
 \contentsline {subsection}{\numberline {6.1}Event Logs}{37}
 \contentsline {subsection}{\numberline {6.2}Extraction of LTL rules}{39}
-\contentsline {subsection}{\numberline {6.3}Experimental Procedure}{40}
+\contentsline {subsection}{\numberline {6.3}Experimental Procedure}{41}
 \contentsline {subsection}{\numberline {6.4}Results and Discussion}{42}
 \contentsline {section}{\numberline {7}Conclusions}{45}

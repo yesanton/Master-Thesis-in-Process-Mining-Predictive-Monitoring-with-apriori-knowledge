@@ -4,13 +4,13 @@
 
 As a motivation for the related work in the next subsections we state the research question:
 
-RQ: How can prior knowledge about ongoing process be used to boost accuracy of predictions of trends of activities?
+RQ: How can prior knowledge about ongoing process be used to boost the accuracy of predictions of trends of activities?
 
-The research question concerns predicting next events in the sequence, focusing on control-flow activity for next predicted event. The problem is from predictive monitoring, and in particular we are interested in all approaches related to predicting business monitoring. 
+The research question concerns predicting next events in the sequence, focusing on control-flow activity for next predicted event. The problem is from predictive monitoring, and in particular, we are interested in all approaches related to predicting business monitoring. 
 
-In the following sections the techniques and algorithms used in recent papers that are considered as a state of the art to the problems of interest will be described.
+In the following sections, the techniques and algorithms used in recent papers that are considered as a state of the art to the problems of interest will be described.
 
-The methods are ordered in chronological manner, each has description of how it relates to the above mentioned problem, and short discussion on the results and applications.
+The methods are ordered in a chronological manner, each has a description of how it relates to the above-mentioned problem and a short discussion on the results and applications.
 
 Firstly, we start off by giving a short overview of early approaches concerning predictive monitoring.
 Secondly, the state of the art methods based on Complex Symbolic Sequences Encodings will be described. 
@@ -20,17 +20,17 @@ Finally, the overview of Deep learning based algorithms for predictions will be 
 
 \subsection{Early approaches}
 
-In the early applications of business process monitoring, few mathematical models were brought to the field. The first were Petri nets~\cite{doi:10.1142/S0218126698000043}. Petri nets prove to be a very robust tool for a range of problems in process mining. They are used for conformance checking, process discovery, and process monitoring. In particular the petri nets were used for predictions of the business process duration~\cite{Rogge-Solti2015PBP}. 
+In the early applications of business process monitoring, few mathematical models were brought to the field. The first were Petri nets~\cite{doi:10.1142/S0218126698000043}. Petri nets prove to be a very robust tool for a range of problems in process mining. They are used for conformance checking, process discovery, and process monitoring. In particular, the Petri nets were used for predictions of the business process duration~\cite{Rogge-Solti2015PBP}. 
 
-Petri nets have few important properties such as having formal semantics. Also, they are simplistic models, and have graphical nature so they are expressive. Their properties are mathematically investigated. 
+Petri nets have few important properties such as having a formal semantics. Also, they are simplistic models and have graphical nature so they are expressive. Their properties are mathematically investigated. 
 
 Kang and Jung~\cite{doi:10.1108/02635571111137241} propose a new approach for monitoring the progress of ongoing processes and predicting probable performances and routes. Their contribution is based on the use of Formal Concept Analysis (FCA) for monitoring business processes. They propose an alternative approach to Petri nets for visualizing the ongoing processes and predicting the future evolving (next activities) of ongoing processes by introducing concept lattice and reachability lattice.   
 
 Also to the first group of works we can associate the work in~\cite{DBLP:journals/is/AalstSS11}. In this work the authors present a set of approaches in which annotated transition systems, containing time information extracted from event logs, are used to: (i) check time conformance;
 (ii) predict the remaining processing time of incomplete cases; (iii) recommend appropriate activities to end users working on these cases. In \cite{Folino}, an approach for predicting business process performances is presented. The approach is based on context-related execution scenarios discovered and modeled through state-aware performance predictors. In~\cite{Metzgeretal12}, the authors present a technique for predicting the delay between the expected and the actual arrival time of cases pertaining to a transport and logistics process. In~\cite{Senderovichetal15}, the queue theory is used in order to predict possible delays in process executions.
 
-Another set of works in the literature focuses on approaches that generate predictions and recommendations to reduce risks. For example, in~\cite{DBLP:conf/caise/ConfortiLRA13}, the authors present a technique to support process participants in making risk-informed decisions with the aim of reducing the process risks. Risks are predicted by traversing decision trees generated from the logs of past process executions. In~\cite{Pika}, the authors make predictions about time-related process risks by identifying and leveraging statistical indicators observable in event logs  that highlight the possibility of transgressing deadlines.
-In \cite{suriadi}, an approach for Root Cause Analysis (RCA) through classification algorithms is presented. These methods would suffer with low accuracy if applied in accordance of the problem stated. They usually state the probability of the process to "derail", but not predicting the full sequence of events. 
+Another set of works in the literature focuses on approaches that generate predictions and recommendations to reduce risks. For example, in~\cite{DBLP:conf/caise/ConfortiLRA13}, the authors present a technique to support process participants in making risk-informed decisions with the aim of reducing the process risks. Risks are predicted by traversing decision trees generated from the logs of past process executions. In~\cite{Pika}, the authors make predictions about time-related process risks by identifying and leveraging statistical indicators observable in event logs that highlight the possibility of transgressing deadlines.
+In \cite{suriadi}, an approach for Root Cause Analysis (RCA) through classification algorithms is presented. These methods would suffer from low accuracy if applied in accordance of the problem stated. They usually state the probability of the process to "derail", but not predicting the full sequence of events. 
 
 
 In the next section, the state of the art approaches with special process-log encoding are described.
@@ -39,13 +39,13 @@ In the next section, the state of the art approaches with special process-log en
 
 \subsection{Prediction with Complex Symbolic Encoding for structured and unstructured content}
 
-A second group of approaches focused on predicting the outcome (e.g., the satisfaction of a business objective) of a case can be clustered together as the methods that exploit the Complex Symbolic Sequences encodings of the process log.
+The second group of approaches focused on predicting the outcome (e.g., the satisfaction of a business objective) of a case can be clustered together as the methods that exploit the Complex Symbolic Sequences encodings of the process log.
 
-As stated in chapter~\ref{complex-sym-enc}, Complex Symbolic Sequences encodings are an adaptation of real log, that is in order to capture as much information as possible, while having a structure that easily can be used with standard machine learning algorithms.
+As stated in chapter~\ref{complex-sym-enc}, Complex Symbolic Sequences encodings are an adaptation of real log, that is in order to capture as much information as possible while having a structure that easily can be used with standard machine learning algorithms.
 
 In~\cite{Leontjeva2015} the authors focus on encoding event logs that will allow the use of clustering algorithms, that they exploit for predictions of process labels (binary classification), or sequence of next events.
 
-In~\cite{Leontjeva2015} the authors explore differeny types of encodings, called index-based encodings. They also give an alternative model called HMM-based encoding. HMM-based encoding is a direct extension to index-based, that takes into account the coefficients of the built HMM model for every possible outcome. In particular for binary classification, the log is split into two parts (according to the class) and two HMM models are built.
+In~\cite{Leontjeva2015} the authors explore different types of encodings, called index-based encodings. They also give an alternative model called HMM-based encoding. HMM-based encoding is a direct extension to index-based, that takes into account the coefficients of the built HMM model for every possible outcome. In particular for binary classification, the log is split into two parts (according to the class) and two HMM models are built.
 
 Evaluation is performed by building models that predict the label of the ongoing case.
 
@@ -60,23 +60,23 @@ In~\cite{DBLP:conf/bpm/TeinemaaDMF16} authors extends this encoding with textual
 
 These encodings are used with classification methods such as support vector machines, decision trees. 
 
-Before mentioned approaches focus on binary classification of the traces. The problem we are solving is different as instead of predicting binary outcome of the first $N$ events, we predict the next event. That makes the number of choices bigger (fron 2 in binary classification to $K$ as a number of different possible next events). If methods described in this section to be generalized to capture the prediction of next events, models will become unusable.
+Before mentioned approaches focus on binary classification of the traces. The problem we are solving is different as instead of predicting a binary outcome of the first $N$ events, we predict the next event. That makes the number of choices bigger (from 2 in binary classification to $K$ as a number of different possible next events). If methods described in this section to be generalized to capture the prediction of next events, models will become unusable.
 
 \subsection{Deep learning approaches} \label{deeplearning-stateoftheart}
 
-Recently, deep learning methods became exceptionally popular in research and industry communities. Business Process Management is not an exception~\cite{quteprints96732,niek96732,evermann}. Recent papers suggest state of the art performance on the the prediction of next events and time features of the current trace.
+Recently, deep learning methods became exceptionally popular in research and industry communities. Business Process Management is not an exception~\cite{quteprints96732,niek96732,evermann}. Recent papers suggest state of the art performance on the prediction of next events and time features of the current trace.
 
 Due to the nature of the problem, that is the sequence to sequence prediction, the recurrent neural networks are most exploited. The main motivation for this type of neural networks is currently the problems in Natural Language Processing, such as speech recognition\cite{graves2013icassp}, or translation\cite{Sutskever2014SSL29690332969173}. 
 
 The paper by Verenich~\cite{quteprints96732}, suggests the use of Recurrent Neural Networks with sliding windows. Sliding windows is using N events to predict the next one (to predict event $k+1$,  $k..(N+k)$ events are used). 
 
-The paper by Evermann\cite{evermann} proposes the use if RNN networks with LSTM cells with two hidden layers, 500 dimensions and 20 steps. They use batches of 20 to train the RNN with back propagation. The evaluation was made on the BPI2012, BPI2013 data sets. They argue that the results with this approach are comparable to state of the art based on clustering and annotating transition system approaches.
+The paper by Evermann\cite{evermann} proposes the use if RNN networks with LSTM cells with two hidden layers, 500 dimensions, and 20 steps. They use batches of 20 to train the RNN with back propagation. The evaluation was made on the BPI2012, BPI2013 data sets. They argue that the results with this approach are comparable to state of the art based on clustering and annotating transition system approaches.
 
-Also, the paper~\cite{evermann2} suggest developed software suite for prediction tasks using deep learning and TensorFlow~\cite{tensorflow2015-whitepaper}.
+Also, the paper~\cite{evermann2} suggest developed a software suite for prediction tasks using deep learning and TensorFlow~\cite{tensorflow2015-whitepaper}.
 
 The most recent paper by Tax~\cite{niek96732} uses RNN with LSTM cells to predict the next events. They achieve state of the art performance on most of the logs evaluated. 
 
-In order to predict next event and time, they use one-hot encoding for event sequence, and few time features (such as difference between time-stamps, time from midnight, time from beginning of the week). Using these features they construct a vector to be fed into recurrent neural network. They are looking for functions $f_a^1$ and $f_t^1$ that are basically the probability distributions over all possible trace continuations.
+In order to predict next event and time, they use one-hot encoding for event sequence, and few time features (such as the difference between time-stamps, time from midnight, time from the beginning of the week). Using these features they construct a vector to be fed into a recurrent neural network. They are looking for functions $f_a^1$ and $f_t^1$ that are basically the probability distributions over all possible trace continuations.
 
 Also, as they now have basically two sequences to train with, that are the sequence of events, and the sequence of time values, the paper suggests the different possible RNN architectures (As shown on figure~\ref{figure:architectureslstm}). 
 
