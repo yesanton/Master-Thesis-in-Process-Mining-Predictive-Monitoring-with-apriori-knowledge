@@ -31,21 +31,18 @@ In this section, we provide an evaluation of our predictive business process mon
 	\label{table:dataset}
 \end{table}
 
-For the evaluation of the techniques, we used six real-life event logs. Four of them were provided for the BPI Challenges (BPIC) 2011~\cite{bpichallenge2011}, 2012~\cite{bpichallenge2012}, 2013~\cite{bpichallenge2013}, and 2017~\cite{bpichallenge2017}, respectively. We also used two additional event logs, one pertaining to an environmental permit application process (``WABO''), used in the context of the CoSeLoG project~\cite{EnvironmentalLog} (\emph{EnvLog} for short in this paper), and another containing cases from a ticketing management process of the help desk of an Italian software company (\emph{Helpdesk}\footnote{\url{https://data.mendeley.com/datasets/39bp3vv62t/1}} for short). We briefly describe datasets in the following.
+For the evaluation of the techniques, we used six real-life event logs. Four of them were provided for the BPI Challenges (BPIC) 2011~\cite{bpichallenge2011}, 2012~\cite{bpichallenge2012}, 2013~\cite{bpichallenge2013}, and 2017~\cite{bpichallenge2017}, respectively. We also used two additional event logs, one pertaining to an environmental permit application process (``WABO''), used in the context of the CoSeLoG project~\cite{EnvironmentalLog} (\emph{EnvLog} for short in this paper), and another containing cases from a ticketing management process of the help desk of an Italian software company (\emph{Helpdesk}\footnote{\url{https://data.mendeley.com/datasets/39bp3vv62t/1}} for short). The logs containing less than 2 activities were filtered out, as they do not contribute to the evaluation. We briefly describe datasets in the following.
 
 
 \begin{enumerate}
 	\item \textbf{Environment permit log} (\emph{EnvLog}) contains data from a Dutch municipality\footnote{\url{https://data.4tu.nl/repository/uuid:e8c3a53d-5301-4afb-9bcd-38e74171ca32}}. The cases are the application process of the environment permits.
 	\item \textbf{Helpdesk} is a dataset containing events from a ticketing management process of the help desk of an Italian software company. The process consists of 9 activities, and all cases start with the insertion of a new ticket into the ticketing management system. Each case ends when the issue is resolved and the ticket is closed.
-	\item \textbf{BPI 11 log} is a real-life log taken from Dutch Academic Hospital. The cases of the log correspond to the Gynaecology department of the hospital. Phases (traces) consist of the diagnosis and treatment of the patient. Some attributes are repeated as the procedures could take place few times. As the log contains sensitive information it was anonymized.
-	\item \textbf{BPI 12 subprocess W dataset\footnote{\url{http://data.4tu.nl/repository/uuid:3926db30-f712-4394-aebc-75976070e91f}.}} This log is part of the BPI 2012 challenge, a real-life log, taken from a Dutch Financial Institute. The process of the event log is an application process for a personal loan or overdraft within a global financing organization.  
+	\item \textbf{BPIC11 log} is a real-life log taken from Dutch Academic Hospital. The cases of the log correspond to the Gynaecology department of the hospital. Phases (traces) consist of the diagnosis and treatment of a patient. Some attributes are repeated as the procedures could take place few times. As the log contains sensitive information it was anonymized.
+	\item \textbf{BPIC12 log\footnote{\url{http://data.4tu.nl/repository/uuid:3926db30-f712-4394-aebc-75976070e91f}.}} This log is part of the BPI 2012 challenge, a real-life log, taken from a Dutch Financial Institute. The process of the event log is an application process for a personal loan or overdraft within a global financing organization.  
 	
-	We adopt modified version of this log, as~\cite{niek96732} suggests. There are three subprocesses: one monitors the state of work items, other monitors state of an application and one to track the state of the offer. In~\cite{niek96732} authors propose to exploit the events manually executed, only. The preprocessed log can be found on github~\footnote{\url{https://github.com/verenich/ProcessSequencePrediction/tree/master/data}}.
+	\item \textbf{BPIC13 log\footnote{\url{http://www.win.tue.nl/bpi/doku.php?id=2013:challenge}}} is a log by Volvo IT in Belgium. The log consists of an incident and problem management from the Volvo "VINST" system.   
 	
-	\item \textbf{BPI 13 log\footnote{\url{http://www.win.tue.nl/bpi/doku.php?id=2013:challenge}}} is a log prepared by Volvo IT in Belgium. The log consists of an incident and problem management from the Volvo "VINST" system.   
-	
-	\item \textbf{BPI 17 log\footnote{\url{http://data.4tu.nl/repository/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b}}} is a log of a process taken from Dutch financial institute. In particular, the process we used is related to it a loan application. This log is the richest in the number of traces from those that we considered. 
-		
+	\item \textbf{BPIC17 log\footnote{\url{http://data.4tu.nl/repository/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b}}} is a log of a process taken from Dutch financial institute. In particular, the process we used is related to a loan application. 
 	
 \end{enumerate}
 
@@ -58,23 +55,24 @@ The characteristics of these logs are summarized in Table~\ref{table:dataset}. F
 
 %experiment setup table
 
-Having a look on the table~\ref{table:dataset}, one can see the difference in characteristics of the logs. Environment Permit and BPI11 are logs with a very long traces. They also have huge event alphabet size (299 and 355 respectively). More over BPI15 has a big number of cycles in the log (5.05 per trace). We expect these logs to have inferior performance. BPI12, BPI13, BPI17, and HelpDesk logs expectingly will have good performance. They contain lots of traces whilst having small alphabet size. Moreover, the traces BPI12 and BPI13 should be most benefited by the \nocycle technique, as they contain a number of cycles per trace.
+Having a look at table~\ref{table:dataset}, one can see the difference in characteristics of the logs. Environment Permit and BPIC11 are logs with a very long traces. They also have a large event alphabet size (299 and 355 respectively). Moreover BPIC15 has a big number of cycles in the log (5.05 per trace). Due to these characteristics, we expect these logs to have inferior results, as the in sparse solution space, machine learning algorithms generally have poor performance. BPIC12, BPIC13, BPIC17, and HelpDesk logs expectingly will have good performance because they contain lots of traces whilst having small alphabet size. Moreover, the traces BPIC12 and BPIC13 should be most benefited by the \nocycle technique, as they contain a number of cycles per trace.
 
 
 \subsection{Extraction of LTL rules} \label{extractionLTLrules}
 
-For testing with an a-priori algorithm, we need to establish the knowledge for every log. In order to provide the unbiased results and reproducibility of the results, we decided not to handpick the LTL formulas but to establish a strict procedure of finding them instead.
+For testing with an a-priori algorithm, we need to establish the knowledge for every log. In order to provide unbiased knowledge and reproducible results, we decided not to handpick the LTL formulas but to establish a strict procedure for finding them instead.
 
 Also, we wanted to test the algorithm with rules that differ in complexity, or "strength". With this in mind we defined 2 conjunctive rules describing a \textit{strong a-priori knowledge} and a \textit{weak a-priori knowledge}, which respectively strongly and weakly constrain the traces. In particular, we discovered rules of type $\sometime A$ (which imposes the occurrence of $A$) for defining the weak a-priori knowledge and rules of type $\always(A \imp \sometime B) \wedge \sometime A$ (which imposes the occurrence of both $A$ and $B$ and that every occurrence of $A$ is followed by an occurrence of $B$) for defining the strong a-priori knowledge.
 
 So we derived the a-priori knowledge on the traces of the testing set as follows:
 \begin{enumerate}
-\item We randomly selected 10\% of traces of the testing set. 
-\item From each trace, we extracted 4 prefixes of lengths corresponding to the 4 integers in the interval $\left[mid-2,mid+2\right]$, where $mid$ is half of the median of the trace lengths (for example median of trace length of BPI11 is 31, so we take prefixes of lengths 13,14,15, and 16). We derived all suffixes of these prefixes and we used the DeclareMiner ProM plug-in~\cite{Maggi2012} to discover LTL rules satisfied in all those suffixes (Fgure~\ref{figure:ltl} shows the LTL extraction from DeclareMiner). 
+\item We randomly selected 10\% of traces of the testing set (in order not to find rules that are 100\% satisfied in the whole testing set). 
+\item From each trace, we extracted 4 prefixes of lengths corresponding to the 4 integers in the interval $\left[mid-2,mid+2\right]$, where $mid$ is half of the median of the trace lengths (for example median of trace length of BPIC11 is 31, so we take prefixes of lengths 13,14,15, and 16). We derived all suffixes of these prefixes and we used the DeclareMiner ProM plug-in~\cite{Maggi2012} to discover LTL rules satisfied in all those suffixes (Figure~\ref{figure:ltl} shows the LTL extraction from DeclareMiner). 
 \subitem For the weak a-priori knowledge, we randomly selected from the discovered rules one, two or three (depending on the average length of the traces in the log) rules of type $\sometime A$ and we composed them into a single conjunctive formula. 
 \subitem For the strong a-priori knowledge, we randomly selected one, two or three rules from the discovered rules of type $\always(A \imp \sometime B) \wedge \sometime A$ and we composed them into a single conjunctive formula. 
 
-We followed this systematic procedure for defining the a-priori knowledge, to limit the bias of the selected rules while guaranteeing that they are satisfied in a reasonable number of traces of the testing set. The schematic form of the rules used in the evaluation is reported in Table~\ref{table:apriori}, where - for the sake of readability - we replace the original activity names with single characters. 
+The schematic form of the rules used in the evaluation is reported in Table~\ref{table:apriori}, where - for the sake of readability - we replace the original activity names with single characters. 
+
 \item Starting from strong and weak a-priori knowledge, we built a \emph{strong a-priori testing set} and a \emph{weak a-priori testing set}, respectively composed of the subsets of traces of the testing set that satisfy strong and weak a-priori knowledge.
 
 \end{enumerate}

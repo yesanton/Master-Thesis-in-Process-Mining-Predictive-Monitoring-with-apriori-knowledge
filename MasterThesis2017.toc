@@ -24,4 +24,4 @@
 \contentsline {subsection}{\numberline {6.2}Extraction of LTL rules}{36}
 \contentsline {subsection}{\numberline {6.3}Experimental Procedure}{37}
 \contentsline {subsection}{\numberline {6.4}Results and Discussion}{39}
-\contentsline {section}{\numberline {7}Conclusions}{42}
+\contentsline {section}{\numberline {7}Conclusions}{41}
