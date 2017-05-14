@@ -4,7 +4,7 @@
 \label{sec:the_problem}
 %%%% CONTENT
 % general problem of predicting with background knowledge
-Predictive business process monitoring methods use past process executions, stored in event logs, in order to build predictive models that work at runtime to make predictions about the future.
+Predictive process monitoring methods use past process executions, stored in event logs, in order to build predictive models that work at runtime to make predictions about the future.
 Among the different types of predictions about an ongoing case, such as the remaining time or the fulfillment of a predicate, we can find the prediction of the sequence of future activities. This type of predictions can be useful in the scenario where some planning and resource allocation are needed for the running case.
 %For instance, a call center is strongly interested in predicting future activities of its customers to be able to adopt the best strategy for convincing them to buy a product.
 For instance, the hospital management can be highly interested in predicting the future activities of patients to be able to best organize machines and resources of the hospital.
@@ -20,19 +20,16 @@ While predicting the sequence of future activities entirely from past execution 
 
 For instance, in the hospital example, new medical guidelines may provide new knowledge on the fact that two treatments are not useful if used together in order to cure a certain disease, or that a certain screening is required in order to perform a specific surgery, or also that if a patient is allergic to a specific treatment she will never go to take it.
 
-Also, the exemplary knowledge known a-prior might be the weather information for the agricultural company that does the harvest. Knowledge about problems with diesel supplies can help a company to project on how their real processes concerning harvesting will unfold. For example assuming they are having delays with a supply in the middle of harvesting season, the big machinery usually used will not be able to perform needed operations. So inferring the incapability to use them will help to predict the real unfold of the processes. That could help the management to guide their choices to best account for the new circumstances. 
+Also, the exemplary knowledge known a-prior might be the weather information for an agricultural company that does the harvest. Knowledge about problems with diesel supplies can help a company to project on how their real processes concerning harvesting will unfold. For example assuming they are having delays with a supply in the middle of harvesting season, the machinery usually used will not be able to perform needed operations. So inferring the incapability to use them will help to predict the real unfold of the processes. That could help the management to guide their choices to best account for the new circumstances. 
 
 
-Moreover, if the algorithmically this problem could be accurately solved it can bring much more benefits to the companies. It can be also used for simulation purposes. For example a big insurance company, that deals with thousands of claims per day could decide that they need some changes such as cutting down jobs. Now they will have a capability to predict what will happen under the assumption of job cuts, and that could provide better insights. So besides classical qualitative methods of business process management that use BPMN models to analyze the changes my means of queuing theory or simulation, one would have one more instrument in the toolkit. This algorithm would enable a process owner to use some proposed changes as a-priori knowledge, and after predicting the continuations of the traces make further analysis. 
+Therefore, if this type of problems could be accurately solved it can bring much more benefits to the companies. For example, it can be also used for simulation purposes. For example a big insurance company, that deals with thousands of claims per day could decide that they need some changes such as cutting down jobs. Now they will have a capability to predict what will happen under the assumption of job cuts, and that could provide better insights. So besides classical qualitative methods of business process management that use BPMN models to analyze the changes my means of queuing theory or simulation, one would have one more instrument in the toolkit. This algorithm would enable a process owner to use some proposed changes as a-priori knowledge, and after predicting the continuations of the traces make further analysis. 
 
 Given the practical motivations for the problem at hand let's dive once more into the research question identified.
 
 RQ: How can prior knowledge about an ongoing case be used to boost the accuracy of predictions of trends of activities?
 
-Here we decompose the research question into chunks to better understand the problem stated. \textit{Boost accuracy of prediction} means to develop an approach that will have better performance than the current state of the art. \textit{Trends of activities} means that we are interested in finding the suffix of the current ongoing process execution. \textit{Ongoing process} means that we will have \textit{prior knowledge} on the inference time. 
-
-
-
+Here we decompose the research question into chunks to better understand the problem stated. \textit{Boost accuracy of prediction} means to develop an approach that will have better performance than the current state of the art. \textit{Trends of activities} means that we are interested in finding the suffix of the current ongoing process execution. \textit{Ongoing case} means that we will have \textit{prior knowledge} on the inference time. Therefore we aim at understanding whether and how a-priori knowledge can be leveraged in order to improve the accuracy of the prediction of the (sequence of the) next activity(ies) of an ongoing case in a reasonable amount of time.
 
 
 This a-priori knowledge can be expressed in terms of LTL rules. For instance, in the hospital example, LTL can be used for defining the following rules:
@@ -54,7 +51,7 @@ This a-priori knowledge can be expressed in terms of LTL rules. For instance, in
 \end{equation}
 \end{enumerate}
 
-In this paper, we aim at understanding whether and how a-priori knowledge can be leveraged in order to improve the accuracy of the prediction of the (sequence of the) next activity(ies) of an ongoing case in a reasonable amount of time. For instance, in the example of the hospital, being aware of the fact that \texttt{treatmentA} and \texttt{treatmentB} can never be executed together could help in ruling out a prediction of \texttt{treatmentB} whenever we have already observed \texttt{treatmentA} and vice versa.
+For example, being aware of the fact that \texttt{treatmentA} and \texttt{treatmentB} can never be executed together could help in ruling out a prediction of \texttt{treatmentB} whenever we have already observed \texttt{treatmentA} and vice versa.
 %the problem of predicting the sequence of future activities consists of identifying the function $f(p_k(\sigma)) = s^k(\pi_A(\sgigma))$. When some a-priori knowledge $k(\sigma)$ for the (set of) ongoing trace is available, we are interested in identifying the function $f(p_k(\sigma), k(\sigma)) = s^k(\pi_A(\sigma))$
 
 %For example, it is easy to express simple rules such as "eventually will happen 'A'", or "After 'A' follows 'B'".

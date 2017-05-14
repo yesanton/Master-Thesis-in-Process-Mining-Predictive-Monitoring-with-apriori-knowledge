@@ -370,7 +370,7 @@ Linear Temporal Logic~\cite{Pnueli77} (LTL) is a modal logic with modalities dev
 %
 We assume that activities occurring during the process execution fall into the set of atomic propositions. LTL rules are constructed from these atoms by applying the temporal operators $\NEXT$ (next), $\sometime$ (future), $\always$ (globally), and $\until$ (until) in addition to the usual boolean connectives. Given a formula $\varphi$, $\NEXT \varphi$ means that the next time instant exists and $\varphi$ is true in the next time instant (strong next). $\sometime \varphi$ indicates that $\varphi$ is true sometimes in the future. $\always \varphi$ means that $\varphi$ is true always in the future. $\varphi \until \psi$ indicates that $\varphi$ has to hold at least until $\psi$  holds and $\psi$ must hold in the current or in a future time instant.
 
-\subsection{Beam search}
+\subsection{Beam search} \label{beam-search}
 
 Beam search is a heuristic search algorithm, based on the principle of exploring graph of possible solutions using the most promising node. It is built for dealing with large search spaces. Specifically, it orders all partial solutions with some heuristic measure; keeps only a small portion of the most promising solution and expands them to get the complete solution.
 
