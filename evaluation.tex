@@ -130,7 +130,7 @@ The experiments have been performed interchangeably on both a GPU Tesla K40c and
 \label{ssec:results}
 %big table of results + comment the table (comment on logs with cycles, comment that and on why protrack traces are longer than backtrack, ... )
 
-Tables~\ref{table:results-strong} and~\ref{table:results-weak} report, for each event log, the performances of the two techniques we propose on the strong a-priori and weak a-priori testing sets. The results for both testing sets are compared with the baseline presented in~\cite{niek96732}. For each log, we provide the average Damerau-Levenshtein similarity between the predicted sequence (in square brackets, its average length) and the ground truth (column "Groundtruth"). The best average Damerau-Levenshtein similarity for each log is emphasized in gray. Column "Tested" reports the number of traces tested while column "Prefix" specifies the range of the prefix lengths used for the specific event log. %The prefixes range is chosen around middle point of the average lengths of the traces.
+Tables~\ref{table:results-strong} and~\ref{table:results-weak} report, for each event log, the performances of the two techniques we propose on the strong a-priori and weak a-priori testing sets. The results for both testing sets are compared with the baseline presented in~\cite{niek96732}. For each log, we provide the average Damerau-Levenshtein similarity between the predicted sequence (in square brackets, its average length) and the ground truth length of the traces (column "Groundtruth"). The best average Damerau-Levenshtein similarity for each log is emphasized in gray. Column "Tested" reports the number of traces tested while column "Prefix" specifies the range of the prefix lengths used for the specific event log. %The prefixes range is chosen around middle point of the average lengths of the traces.
 
 \newcommand{\maxf}[1]{{\cellcolor[gray]{0.8}} #1}
 
@@ -204,8 +204,7 @@ Tables~\ref{table:results-strong} and~\ref{table:results-weak} report, for each 
 \end{figure}
 
 
-The tables and figure~\ref{figure:results} (specifically, the figure shows the trend of the techniques performances with a change of a prefix. As one can see that sometimes lines on the plot perfectly overlap meaning that on some logs the weak and strong formulas do not make a difference) show that the proposed algorithms outperform the baseline in most of the logs.
-The presence of cycles in the logs has a strong impact on the performance of the \nocycle algorithm. In particular, if the logs have an average number of cycle repetitions smaller than $0.5$, as in the case of EnvLog, HelpDesk, and BPIC17, then \nocycle does not show any improvement over the baseline. Therefore, we can conclude that \nocycle correctly deals with the presence of cycles in the logs to improve the predictions.
+The tables and figure~\ref{figure:results} show that the proposed algorithms outperform the baseline in most of the logs (specifically, the figure shows the trend of the techniques performances with a change of a prefix. As one can see that sometimes lines on the plot perfectly overlap meaning that on some logs the weak and strong formulas do not make a difference). The presence of cycles in the logs has a strong impact on the performance of the \nocycle algorithm. In particular, if the logs have an average number of cycle repetitions smaller than $0.5$, as in the case of EnvLog, HelpDesk, and BPIC17, then \nocycle does not show any improvement over the baseline. Therefore, we can conclude that \nocycle correctly deals with the presence of cycles in the logs to improve the predictions.
 
 
 
