@@ -11,7 +11,7 @@ In this section, we report the background concepts useful for understanding the 
 
 \subsection{Event Logs and Traces} \label{logs}
 
-Most of the huge enterprises and middle sized companies have a lot of processes being executed. With the rapid development of database technology and inexpensiveness of data warehouses saving all the transactional data in the company became a must. Most of this data is about processes that are happening in the company. Those range from core processes such as "order to cash" and "issue to resolution" to additional such as managerial processes. The nature of this information is processlike (sequential) so they are usually being recorded in the format of logs. 
+Most of the large enterprises and middle sized companies have a lot of processes being executed. With the rapid development of database technology and inexpensiveness of data warehouses saving all the transactional data in the company became a must. Most of this data is about processes that are happening in the company. Those range from core processes such as "order to cash" and "issue to resolution" to additional processes such as managerial processes. The nature of this information is processlike (sequential) so they are usually being recorded in the format of logs. 
 
 An event log is a set of traces, each representing the execution of a process (case instance). Each trace consists of a sequence of activities, each referring to the execution of an activity in a finite activity set $A$.
 
@@ -23,15 +23,16 @@ A \emph{prefix of length} $k$ of a trace $\sigma=\left\langle a_1, a_2, ... a_n\
 
 A \emph{cycle} in a trace $\sigma \in A^*$ is a sequence of activities repeated at least twice in $\sigma$ (with adjacent repetitions). For example, trace $\npla{a,b,a,b,a,b,c,d,e,f,g,e,f,g,c,d}$ contains two cycles: $\npla{a,b}$ (3 repetitions) and $\npla{e,f,g}$ (2 repetitions).
 
-Speaking practically, the log is a set of process executions (Traces). Trace is a set of events happened in the sequence.
+Practically speaking, the log is a set of process executions (Traces). Trace is a set of events happened in sequence in a process execution.
 
 The sequence is defined by timestamps. They are the first essential part of the process. Every correctly stored process must contain the time stamps of when certain activity was performed. 
 
-Trace should have an identification, that is the case ID. Whenever the real world process starts the new case ID is created. That to ensure granularity of the data values. In the issue to resolution process, the ID refers to a unique number associated with one instance of the issue raised. 
+Trace should have an identification, that is the case ID. Whenever a real world process starts the new case ID is created. For example, in the issue to resolution process, the ID refers to a unique number associated with one instance of the issue raised. 
 
-The third essential element of a trace is an Activity ID. These are the names of different activities performed during one instance of the process. For our example these might be "issue recorded", "decision made", "solved", "confirmation received", or "issue canceled". These provide an understanding of what the process is actually performing. 
+The third essential element of a trace is an Activity label. These are the names of different activities performed during one instance of the process. For our example these might be "issue recorded", "decision made", "confirmation received", or "issue canceled". These provide an understanding of what the process is actually performing. 
 
-Many other data values can be recorded. Let's look at the real world example in the figure e~\ref{figure:trace-example-1} from the dutch hospital log. The figure shows one event of the process. 
+Many other data values can be recorded. A real world example is shown in the figure~\ref{figure:trace-example-1} from a Dutch hospital log. The figure shows one event of the process. This representation refers to the standard XES~\cite{Verbeek2011} to represent logs.
+
 
 \begin{figure}[!ht]
 	\begin{center}  
@@ -41,7 +42,7 @@ Many other data values can be recorded. Let's look at the real world example in 
 	\end{center}
 \end{figure}
 
-One can see that the timestamp is present and one can define case id to be "Activity code" and activity ID as "concept:name".
+One can see that the timestamp is present and in XES activity labels are represented through the keyword "concept:name".
 
 There are a number of other parameters such as "org:group" that shows the department in the clinic, "Number of executions" that shows a number of times certain operation was performed and others.  All parameters combined give the best picture of the process execution, therefore it is important for methods exploiting logs to use most complete data set possible.
 
@@ -63,172 +64,32 @@ In the data based systems, the log can be stored in different structures. Enterp
 
 \subsection{Process mining}
 
-Process mining is a business process management technique that enables the analysis of processes based on the event logs. The main idea is improving business processes based on analysis of the logs as sequential and continuous processes. This is what makes it different from the methods established in data mining and business intelligence which treat the data as a set of distinct events to gather insights. 
+Process mining is a business process management technique that enables the analysis of processes based on the event logs. The main idea is improving business processes based on analysis of the logs of sequential executions of business processes. This is what makes it different from the methods established in data mining and business intelligence which treat the data as a set of distinct events to gather insights. 
 
-As a rule, the methods of process mining applied mostly to the processes that do not have a formal description or have consistent deviations from the ones predicted in the system. 
-
-The three main activities performed under the process mining field are:
+The three main tasks performed under the process mining field are:
 
 \begin{itemize}
-	\item \textbf{Process analysis (Discovery):} encompasses all methods to discover insights from the past process executions. As an example would be the issue to resolution process from the insurance company. Process discovery methods allow building abstract representation of an event log. The goal of this is to build approximated model that delivers better insights into the underlined processes. Discovered models can be in forms of BPMN models, Petri nets, and declarative rules. 
-	\item \textbf{Conformance analysis:} it takes existent formalized models and check them against real log. In detail, that means that the business process analyst has the BPMN model for the process created (or generated). And now, the goal is to match the real processes to the model (mostly interest is in doing it on a fly). That is done in order to check for any deviations the process can have, and if possible to for prevention on undesired behavior.
-	\item \textbf{Process enhancement:} it helps to use logs in order to enhance current executions of the processes. The information of the past is used to change the model and how the processes are being performed.
+	\item \textbf{Process discovery:} encompasses all methods to discover insights from the past process executions. As an example would be the issue to resolution process from the insurance company. Process discovery methods allow building abstract representation of an event log. The goal of this is to build approximated model that delivers better insights into the underlined processes. Discovered models can be in forms of BPMN models, Petri nets, and declarative rules. 
+	\item \textbf{Conformance analysis:} it takes existent formalized models and check them against real logs. In detail, that means that the business process analyst has the BPMN model for the process created (or generated). And now, the goal is to match the real processes to the model (mostly interest is in doing it on a fly). That is done in order to check for any deviations the process can have, and if possible for prevention of undesired behavior.
+	\item \textbf{Process enhancement:} it helps to use logs in order to enhance existing process models. The information of the past is used to change the model based on how the processes are being performed.
 \end{itemize}
  
 
 
-\subsection{Predictive monitoring}
+\subsection{Predictive process monitoring}
 
 Predictive monitoring is an advancing subfield of Process Mining. As a subfield of Process Mining, its main focus also lies in exploring and exploiting the process logs (the process executions). More specifically, predictive monitoring encompasses the methods that deal with online predictions of process outcomes. The outcome of interest can be compliance of with a measure (for example in an order to cash process the measure can be that any of the financial operations that involve an amount more than 2500 euro, are not performed without confirmation from the top financial officer), achieving objective (such as in issue to resolution process, if the process will be completed in under 7 days time), or classifications (giving a label to the uncompleted trace, such as issue resolved, or not).  
 \par
-Many algorithms are applied to solve above-mentioned problems, for example, classic machine learning algorithms as classification and clustering~\cite{Leontjeva2015}. More complex concepts are also used, such as Markov models~\cite{Leontjeva2015}, time series~\cite{Lam20096986}, and deep learning~\cite{niek96732,evermann,quteprints96732} approaches. 
+In predictive monitoring historical traces are used to train predictive models, then it is used at runtime to predict the future behavior of a new, unseen ongoing trace. To do this, the information contained in the current trace prefix is used to query the predictive model and to get a prediction on the current trace.
+
 \par
-In order to successfully apply these algorithms for facing the problems, it is necessary to have a solid understanding of the process log nature. The aspects that can come into play, are the data types (while the case ID and activity ID are defined as categorical values, we have to deal with time stamps that are basically real-valued, also text comments that are strings or other numerical values such as sums of money), stationarity (it usually refers to time series data that have a stable mean, variance etc. over time. The best example from process logs is timestamps. One should account that they represent only the moment in an absolute time scale, while algorithms would only work if the input will be a relative measure, such as a difference between timestamps). 
+Many algorithms are applied to solve the above-mentioned problems, for example, classic machine learning algorithms as classification and clustering~\cite{Leontjeva2015}. More complex concepts are also used, such as Markov models~\cite{Leontjeva2015}, time series~\cite{Lam20096986}, and deep learning~\cite{niek96732,evermann,quteprints96732} approaches. 
 \par
-Keeping in mind definition of the business process log from the section~\ref{logs} one can easily find the caveats in the early process mining approaches, that tend to ignore the data payload, taking into consideration only the control-flow (sequence of activities). Some of the approaches do the opposite, that is consider data, without control-flow~\cite{vanderAalst2010,DBLP:journals/is/AalstSS11,Schonenberg2008}. In that case, the traces are considered to be simple sequences. Moreover, methods introduced usually designed to work in offline fashion, exploring uncompleted cases. But, to make more accurate, mature, online predictions one should leave out neither payload nor control-flow information. That's when the Complex Symbolic Sequences as methods of encoding of a log are introduced. 
+In order to successfully apply these algorithms, it is necessary to have a solid understanding of the process log nature. The aspects that can come into play, are the data types (while the case ID and activity labels are defined as categorical values, we have to deal with time stamps that are basically real-valued, also text comments that are strings or other numerical values such as amounts of money), stationarity (it usually refers to time series data that have a stable mean, variance etc. over time. The best example from process logs is timestamps. One should account that they represent only the moment in an absolute time scale, while algorithms would only work if the input will be a relative measure, such as a difference between timestamps). 
+\par
+Keeping in mind the definition of the business process log from section~\ref{logs} one can easily find the caveats in the early process mining approaches, that tend to ignore the data payload, taking into consideration only the control-flow (sequence of activities). Some of the approaches do the opposite, that is consider data, without control-flow~\cite{vanderAalst2010,DBLP:journals/is/AalstSS11,Schonenberg2008}. In that case, the traces are considered to be simple sequences. Moreover, methods introduced are usually designed to work in offline fashion. But, to make more accurate, mature, online predictions one should leave out neither payload nor control-flow information. 
 
-
-\subsection{Encodings of business logs}
-
-Every machine learning problem needs the data represented in a particular way. To solve a problem one needs to be aware that it is always a trade-off between the model used and the way of data encoding. 
-
-In the next subsections, the descriptions of the most-used encodings are given.
-
-
-\subsubsection{Simple symbolic sequence encoding}
-
-This encoding is inherited from a massive number of works in machine learning and statistics such as concerning applications in health-informatics~\cite{Xing:2010:BSS:1882471.1882478}, or anomaly detection in Unix access systems, determining fraud users by its query log sequences. 
-
-The simple symbolic sequence could be formalized as follows: $seq_{k} = (a_j)_{j=1}^{n}$.
-Where the $seq_{k}$ is one trace in the log.
-
-
-\begin{figure}[!ht]
-	\begin{center}  
-		\includegraphics[width=\textwidth]{5_log_example_fin.png}
-		\caption{Trace example, exempt from the BPI12 financial log~\cite{bpichallenge2012}}
-		\label{figure:trace-example-2}	
-	\end{center}
-\end{figure}
-
-
-As an example let's take a financial log from the bpi challenge. On the figure~\ref{figure:trace-example-2} one trace is shown.
-
-So if we formalize this trace to the simple symbolic sequence from this log (considering activity ID to be "concept:name") it will have a form:
-
-$seq = ("A\_SUBMITTED","A\_PARTLYSUBMITTED","A\_DECLINED")$
-
-Simple Symbolic Sequences, however, have limitations that prevent getting best results of their use.
-
-That is because simple symbolic sequences discard most of the rich information present in process logs, that is not limited to control-flow. An example would be the log in the big fast food chain, where the process about their employee's actions is daily recorded into the log. In Table~\ref{tab:statements}, you can see that log of this nature contains static features, control-flow components, and number of dynamic features. Static feature includes ID of the employee and his age. Dynamic features are the $t_i$ that is the time spent working, $rID_i$ is an ID of the restaurant that employee worked in on that day, $rev_i$ money he earned for the company. 
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{| l | l | l | l | l | l | l | l | l | l | l | l |}
-		\hline
-		& Age & ID & t\_1 & .. & t\_n & rID\_1 & .. & rID\_n & rev\_1 & .. & rev\_n \\	
-		\hline
-		tr1 & 20 & 00123 & 28800 & .. & 24840 & 11 & .. & 12 & 120\$ & .. & 112\$ \\
-		tr2 & 24 & 00023 & 16890 & .. & 23460 & 12 & .. & 12 & 80\$ & .. & 111\$ \\
-		tr3 & 18 & 01129 & 23804 & .. & 17897 & 11 & .. & 11 & 340\$ & .. & 23\$ \\
-		tr4 & 21 & 00772 & 40034 & .. & 24564 & 12 & .. & 12 & 130\$ & .. & 2\$ \\
-		\hline
-	\end{tabular}
-	\caption{Example of Complex Symbolic Sequence encoding}
-	\label{tab:statements}
-\end{table}
-
-
-As well as the data used in areas described in the beginning on this chapter can be easily represented as a simple symbolic sequence, there are many algorithms developed to work with. There are feature based classifications, sequence distance based, support vector machines, or model based classification~\cite{Xing:2010:BSS:1882471.1882478}. That's why first attempts to make predictions of the business processes were made with the use of this simple encodings.
-
-
-\subsubsection{Complex symbolic encoding} \label{complex-sym-enc}
-
-On contrary to Simple Symbolic Sequence encodings, the Complex Symbolic Sequences are introduced~\cite{Leontjeva2015} and we can capture much more information about a log. Complex Symbolic Sequence is basically ordered list of vectors, where each vector is a subset of some alphabet inferred from the log.
-
-When Complex Symbolic Sequences are used instead of Simple Symbolic Sequences for dealing with prediction problems, the complexity space of the prediction problem grows substantially. So it suggests using new and more complex approaches to work with them.
-
-Some of the base lines of working with complex symbolic sequences use index-based encodings, and index latest payload encodings mentioned in following paper~\cite{Leontjeva2015}.   
-
-To exemplify this approach for encodings let's again take a look at the log in figure~\ref{figure:trace-example-2}. The Complex Symbolic Sequence form of this log will have following representation:
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{| l | l | l | l | l | l | l | l | l |}
-		\hline
-		& $concept:n_{1}$ & .. & $concept:name_{3}$ & $org:resource_{1}$ & .. & $org:resource_{3}$ & $time:timestamp_{1}$ & .. \\	
-		\hline
-		tr1 & A\_SUBMITTED & .. & A\_DECLINED &  112 & .. & 10929 &  2011-12-12T16:06:11 & ..  \\
-		tr2 &  & .. & .. & .. & .. & ..  & .. & ..  \\
-		\hline
-	\end{tabular}
-	\caption{Example of Complex Symbolic Sequence encoding}
-	\label{tab:complesymbseq_log_example}
-\end{table}
-
-
-Additionally, Complex Symbolic Sequence encoding can have textual data encoded as additional parameters. For that its needed to use the text knowledge extraction techniques, such as described below.
-
-The first step the data is preprocessed. It is done in few steps. Firstly, a text is segmented by tokenization. Then, the text is normalized, to eliminate word differences such as "e-mail" and "email". Later, \textit{lemmatization} is used to bring same words of different grammatical form to the single form. Words such as "go" and "went" are grouped with the "go" label.
-
-Next step is encoding. The most used methods~\cite{DBLP:conf/bpm/TeinemaaDMF16}:
-
-\begin{enumerate}
-	\item \textit{Bag-of-n-grams} is a method, based on BoNG model. It has two parameters, $n$ - maximum size of $n$-grams, and $idf$ boolean variable specifying if the model is normalized. The $n$-gram means scoring feature representation based on the every sequence of $n$ words. Normalization is used in order not to favor words that are relatively popular in one document.
-	
-	By the result of this procedure, the vector will be build in the following form:
-	
-	Having vocabulary:
-	\[V(1)=("send","phone","radio","play","it","is","you","like", "say").\]
-	And the input sentence "You said you like radio".
-	
-	The resulting vector will be of the form: 
-	
-	$d^j=(0,0,1,0,0,0,2,1,1)$, assuming that parameters to the model is unigram, and no normalization is done.
-	
-	Downside of this model is that it can suffer from high dimensionality. Feature selection method is used to make this model more usable.
-	
-	\item \textit{Naive Bayes log count ratios} as an extension to the BoNG, adding weighting with NB log count ratios.
-	
-	\item \textit{Latent Dirichlet Allocation topic modeling} is a method, that represents text as a measure of a correspondence to some finite number of topics.
-	
-	\item \textit{Paragraph vector} is a technique that allows representing the text as a feature vector of its meaning.
-\end{enumerate}
-
-So, after one of these methods of text encoding is chosen, the corresponding vector is appended to the index-based encoding.
-
-This representation also has its downsides, even though it captures much more information. It is impossible to represent the complete log in this way because one needs to limit the number of events in the traces to some definite number. In our example in the table~\ref{tab:complesymbseq_log_example} the trace length was chosen to be 3. 
-
-This puts a limitation on the power of this encoding. The most use for the Complex Symbolic Encoding was found in~\cite{Leontjeva2015,Di-Francescomarino:2016aa,DBLP:conf/bpm/TeinemaaDMF16}. They used it for binary classification of traces. 
-
-
-
-\subsubsection{One-hot encoding} \label{one-hot-encoding}
-
-As more advanced machine learning methods were brought to process mining, such as family a of deep learning neural networks~\cite{evermann,niek96732,quteprints96732,evermann2}. With them came the new ways of representing the process log.
-
-This is actually the v×m sized matrix, where each row represents one step of a business process. One-hot is because the table can only contain the binary value of one or zero. (even though some extended versions of one-hot encoding are used to add information of features such as time~\cite{niek96732}). 
-
-Even though the table is usually large and not so efficient memory-wise, but is best for neural networks computations (as most of the operations are multiplications, it's easy to multiply and add ones and zeros). 
-
-In we turn the log from the figure~\ref{figure:trace-example-2} into the one-hot encoding it will have representation shown in table~\ref{tab:one-hot} (we use only control-flow in this example, that is the activity ID).
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{| l | l | l | l |}
-		\hline
-		& A\_SUBMITTED & A\_PARTLYSUBMITTED & A\_DECLINED \\	
-		\hline
-		$e_{1}$ & 1 & 0 & 0 \\
-		$e_{2}$ & 0 & 1 & 0 \\
-		$e_{3}$ & 0 & 0 & 1 \\
-		\hline
-	\end{tabular}
-	\caption{Example of One-hot encoding}
-	\label{tab:one-hot}
-\end{table}
-
-
+%That's when the Complex Symbolic Sequences as methods of encoding of a log are introduced. In the following we illustrate how an event log can be encoded to be used for predictive monitoring. 
 
 \subsection{RNNs and LSTM}
 Artificial Neural Networks (or just Neural Networks, NNs) are a well-known class of discriminative models. In classification tasks, they are
@@ -401,7 +262,30 @@ Memory (LSTM)~\cite{hochreiter1997long} shows a significant ability to maintain 
 
 \subsection{RNNs with LSTM for Predictive Process Monitoring}
 \label{subsec:RNNforpredictive}
-In order to provide predictions on the suffix of a given prefix (of a running case), state-of-the-art approaches for predictive process monitoring use RNNs with LSTM cells.  The most recent and performing approach in this field \cite{niek96732} relies on an encoding of activity sequences that combine features related to the activities in the sequence (the so called \textit{one-hot encoding}, described in section ~\ref{one-hot-encoding}) and features related to the time characterizing these activities. Given the set $A = \{a_{1_A}, \ldots a_{m_A}\}$ of all possible activities, an ordering function $idx:A \rightarrow \{1, \ldots, \left|A\right| \} \subseteq \mathbb{N}$ is defined on it, such that $a_{i_A}<>a_{j_A}$ if and only if $i_A<>j_A$, i.e., two activities have the same A-index if and only if they are the same activity. For instance, if $A=\{a,b,c\}$, we have $idx: A \rightarrow \{1,2,3\}$ and $idx(a)=1$, $idx(b)=2$ and $idx(c)=3$. Each activity $a_i \in \sigma$ is encoded as a vector $\mathbb(A_i)$ of length $|A|+3$ such that the first $|A|$ features are all set to $0$, except the one occurring at the index of the current activity $idx(a_i)$, which is set to $1$. The last three features of the vector pertain to time: the first one relates to the time increase with respect to the previous activity, the second reports the time since midnight (to distinguish between working and night time), and the last one refers to the time since the beginning of the week.
+In order to provide predictions on the suffix of a given prefix (of a running case), state-of-the-art approaches for predictive process monitoring use RNNs with LSTM cells.  The most recent and performing approach in this field~\cite{niek96732} relies on an encoding of activity sequences that combine features related to the activities in the sequence (the so called \textit{one-hot encoding}).
+
+One-hot encoding is actually the $v*m$ sized matrix, where each row represents one step of a business process. One-hot is because the table can only contain the binary value of one or zero (even though some extended versions of one-hot encoding are used to add information of features such as time~\cite{niek96732}). 
+
+Even though the table is usually large and not so efficient memory-wise, it is suitable for neural networks computations (as most of the operations are multiplications, it's easy to multiply and add ones and zeros). 
+
+If we turn the log from figure~\ref{figure:trace-example-2} into the one-hot encoding it will have representation shown in table~\ref{tab:one-hot} (we use only control-flow in this example, that is the activity label).
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{| l | l | l | l |}
+		\hline
+		& A\_SUBMITTED & A\_PARTLYSUBMITTED & A\_DECLINED \\	
+		\hline
+		$e_{1}$ & 1 & 0 & 0 \\
+		$e_{2}$ & 0 & 1 & 0 \\
+		$e_{3}$ & 0 & 0 & 1 \\
+		\hline
+	\end{tabular}
+	\caption{Example of One-hot encoding}
+	\label{tab:one-hot}
+\end{table}
+
+Given the set $A = \{a_{1_A}, \ldots a_{m_A}\}$ of all possible activities, an ordering function $idx:A \rightarrow \{1, \ldots, \left|A\right| \} \subseteq \mathbb{N}$ is defined on it, such that $a_{i_A}<>a_{j_A}$ if and only if $i_A<>j_A$, i.e., two activities have the same A-index if and only if they are the same activity. For instance, if $A=\{a,b,c\}$, we have $idx: A \rightarrow \{1,2,3\}$ and $idx(a)=1$, $idx(b)=2$ and $idx(c)=3$. Each activity $a_i \in \sigma$ is encoded as a vector $\mathbb(A_i)$ of length $|A|+3$ such that the first $|A|$ features are all set to $0$, except the one occurring at the index of the current activity $idx(a_i)$, which is set to $1$. The last three features of the vector pertain to time: the first one relates to the time increase with respect to the previous activity, the second reports the time since midnight (to distinguish between working and night time), and the last one refers to the time since the beginning of the week.
 %For example, given the alphabet $A$ above, the activity $b$ in a trace $\sigma =  \left\langle bcc \right\rangle$ will be encoded as the vector $(0,1,0)$.
 
 A trace is encoded by composing the vectors obtained from all activities in the trace into a matrix. During the training phase, the encoded traces are used for building the LSTM model. During the testing phase, a (one-hot encoded) prefix of a running case is used to query the learned model, which returns the predicted suffix by running an inference algorithm.
@@ -470,7 +354,12 @@ First, the prefix $p_k(\sigma)$ is encoded by using the one-hot encoding (line~\
 		
 %	\end{algorithmic}
 %\end{algorithm}
-For evaluating results, these methods usually adopt known metrics such as Damerau-Levenshtein similarity~\cite{Damerau:1964:TCD:363958.363994}. Damerau-Levenshtein similarity is defined as normalized Damerau-Levenshtein distance. The distance is computed by counting the minimum number of operations needed to change one trace into another. Those operations are an insertion of a missing event, deletion of an abundant one, substitution of a single event, or transposition of two consecutive events. 
+
+Testing set is used to evaluate the algorithm. Using prefixes of a chosen size, trained model is used to predict the continuations. Then predicted suffixes are aligned with real suffixes of the input traces using evaluation metrics.
+
+As an evaluation metrics, predictive business monitoring adopted known in NLP community Damerau-Levenshtein similarity metric~\cite{Damerau:1964:TCD:363958.363994}. Damerau-Levenshtein similarity is defined as normalized Damerau-Levenshtein distance. The distance is computed by counting the minimum number of operations needed to change one trace into another. Those operations are an insertion of a missing event, deletion of an event, substitution of a single event, or transposition of two consecutive events.
+
+ 
 
 
 
@@ -483,10 +372,11 @@ We assume that activities occurring during the process execution fall into the s
 
 \subsection{Beam search}
 
-Beam search is a heuristic search algorithm, based on the principle of exploring the graph of possible solutions by the most promising node. It is built for dealing with huge search spaces. Specifically, it orders all partial solutions with some heuristic measure; it then keeps only a small portion of the most promising solution and expands them to get the complete solution.
+Beam search is a heuristic search algorithm, based on the principle of exploring graph of possible solutions using the most promising node. It is built for dealing with large search spaces. Specifically, it orders all partial solutions with some heuristic measure; keeps only a small portion of the most promising solution and expands them to get the complete solution.
 
-Beam search is used in the area such as machine translation\cite{Koehn2007MOSEStranslationSystem}.
+Beam search is used in areas such as machine translation\cite{Koehn2007MOSEStranslationSystem}.
 
+The algorithm is used to find sequences with certain characteristics that are conceptualized by evaluation function.
 
 There are few variants of this algorithm, two of which will be thoroughly explained here: The best-first and the breadth-first. 
 
@@ -501,24 +391,28 @@ The pseudo code for the algorithm described in the listing~\ref{alg:bestfirst}.
 	\caption{Best first search}
 	\label{alg:bestfirst}
 	\begin{algorithmic}[1]
-		\State define node of the graph, OPEN, to be starting node $s$
-		\If {\textsc{list} is empty} 
-		\State	failure
-		\EndIf
-		\State Take the best node from the list (call it $n$), and make it CLOSED
-		\State Expand node $n$
-		\If {any of the successor nodes are the solution} 
-			\State	success, return the solution traced back
-		\EndIf
-		\ForAll {node of the successors} 
-		\State	apply evaluation function $f$ to the $node$\;
-		\State	if $node$ is new (not CLOSED) mark as OPEN\;
-		\EndFor
+		\State initialize the initial state as OPEN
+		\While {OPEN set is not empty}
+			\State Take the best node from the list (call it $N$), and make it CLOSED
+			\If {$N$ is a solution} 
+				\State	success, return the solution traced back
+			\EndIf
+			\State Expand node $N$ (find all $successors$)
+			\ForAll {$node$ of the $successors$} 
+			\If {$node$ is not in CLOSED}
+				\State apply evaluation function $f$ to the $node$\;
+				\State $node$ as OPEN
+			\EndIf
+			\EndFor			
+		\EndWhile
+		
+		
 	\end{algorithmic}
 \end{algorithm}
 
 
-On the first line, the graph is initialized, and next, the list is checked if it's empty. On the fifth line, the nodes from the list are ordered, and the top one is chosen. The line 6, the algorithm takes the top node for further processing. The 7-9 lines state if the solution found, the algorithm should construct the solution by tracing back the tree by parent nodes and return it. Lines 10-13 state that if the solution is not found, we take all nodes from successors of n, and apply the evaluation function, and if this new node is new to the algorithm (not yet exploited) we mark it as open.
+On the first line, the graph is initialized by adding initial state to the set of OPEN states. 
+Second line starts the loop, that finishes when the solution found (according to evaluation function), or the tree was fully explored (no events are left in OPEN set). Next, on line 3, the best (according evaluation function $f$) element is chosen, and moved from OPEN set to CLOSED. On lines 4-6 algorithm checks if chosen element represent a solution. If not on the line 7 all successors of the element are found. The remaining of the pseudo code reports exploring those succcessors and adding them to the list of OPEN nodes. 
 
 Different evaluation functions can be used for the task. The decision is made upon the specifics of the problem, and it directly influences the effectiveness of an algorithm. The example of the evaluation function can be the count of events if we need the prediction to be short, or if the predicted sequence is conformant with a defined rule.
 
@@ -526,9 +420,9 @@ Different evaluation functions can be used for the task. The decision is made up
 
 The breadth-first search begins with an empty node and explores the search space in the breadth-wise order. This type of beam search operates using few priority queues instead of tree structures as in the previous approach. 
 
-Algorithms reported in the pseudo code listing~\ref{alg:breathfirst} (all elements in priority queues are stored with priority based on some evaluation function)
+The algorithm is reported in the pseudo code listing~\ref{alg:breathfirst} (all elements in priority queues are stored with priority based on some evaluation function)
 
-The algorithm starts with defining two priority queues on line 1. On line 2, the element given as an input is appended to first queue. The third line defines the condition that calculations will stop that is if the solution tree has reached its bottom. Line 4 starts the while loop that will iterate over all elements in s1. Lines 5-9 describe that each element from $s1$ either a solution (in that case line 7 returns it) or the next elements are predicted and top $beamsize$ elements are chosen to be passed to the next iteration.
+The algorithm starts with defining two priority queues on line 1. On line 2, the element given as an input is appended to first queue. The third line defines the condition that calculations will stop that is if the solution tree has reached its bottom (the priority queues s1 and s2 are empty). Line 4 starts the while loop that will iterate over all elements in s1. Lines 5-9 describe that each element from $s1$ either a solution (in that case line 7 returns it) or the next elements are predicted (based on the $elem$) and top $beamsize$ elements are chosen to be added to the $s2$ queue. On line 11, the algorithm is reset for the next step of the beam search. Only best $beamsize$ elements are chosen (others are discarded).
 
 
 \begin{algorithm}
@@ -536,8 +430,8 @@ The algorithm starts with defining two priority queues on line 1. On line 2, the
 	\label{alg:breathfirst}
 	\begin{algorithmic}[1]
 		\State define two empty priority queues, $s1$ and $s2$
-		\State add the first element to $s1$
-		\While {solution is not found or the search space is not empty} 
+		\State add the initial element to $s1$
+		\While {solution is not found} 
 			\While {s1 is not empty}
 				\State get element $elem$ from s1
 				\If{ solution found } 
@@ -545,7 +439,7 @@ The algorithm starts with defining two priority queues on line 1. On line 2, the
 					\EndIf
 					\State expands $elem$ and write $beamsize$-elements to s2
 					\EndWhile
-					\State $s2$ equals first part of $s1$ with the size of $beamsize$
+					\State initialize $s2$ with the $beamsize$ best elements from $s1$
 					\EndWhile
 	\end{algorithmic}
 \end{algorithm}
@@ -554,7 +448,7 @@ The algorithm starts with defining two priority queues on line 1. On line 2, the
 
 
 \vspace{0.2 cm}
-Both the beam search algorithms use the same tactic: they cut the search space as to keep only the most probable and better performing prospective solutions. These algorithms are different, and depending on the nature of the problem given can have very different performance.
+Both the beam search algorithms use the same tactic: they cut the search space as to keep only the most probable and better performing prospective solutions. These algorithms are different, and depending on the nature of the problem they can have very different performance.
 
 
 

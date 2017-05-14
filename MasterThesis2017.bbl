@@ -200,6 +200,11 @@ VAN DER~AALST, W.M.P.: The application of petri nets to workflow management.
   Journal of Circuits, Systems and Computers  08(01),  21--66 (1998),
   \url{http://www.worldscientific.com/doi/abs/10.1142/S0218126698000043}
 
+\bibitem{Verbeek2011}
+Verbeek, H.M.W., Buijs, J.C.A.M., van Dongen, B.F., van~der Aalst, W.M.P.: XES,
+  XESame, and ProM 6, pp. 60--75. Springer Berlin Heidelberg, Berlin,
+  Heidelberg (2011), \url{http://dx.doi.org/10.1007/978-3-642-17722-4_5}
+
 \bibitem{quteprints96732}
 Verenich, I., Dumas, M., Rosa, M.L., Maggi, F.M., Chasovskyi, D., Rozumnyi, A.:
   Tell me what{'}s ahead? predicting remaining activity sequences of business
