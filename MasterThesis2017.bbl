@@ -32,6 +32,10 @@ Abadi, M., Agarwal, A., Barham, P., Brevdo, E., Chen, Z., Citro, C., Corrado,
   machine learning on heterogeneous systems (2015),
   \url{\url{http://tensorflow.org/}}, software available from tensorflow.org
 
+\bibitem{breuker2016comprehensible}
+Breuker, D., Matzner, M., Delfmann, P., Becker, J.: Comprehensible predictive
+  models for business processes. MIS Quarterly  40(4),  1009--1034 (2016)
+
 \bibitem{EnvironmentalLog}
 Buijs, J.: Environmental permit application process (``wabo''), coselog project
   - municipality 4 (2014),
