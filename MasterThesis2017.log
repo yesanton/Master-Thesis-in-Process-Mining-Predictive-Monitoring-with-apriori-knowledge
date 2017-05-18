@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.4.4)  17 MAY 2017 11:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.5.18)  18 MAY 2017 13:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **MasterThesis2017.tex
 (./MasterThesis2017.tex
 LaTeX2e <2016/03/31> patch level 3
-Babel <3.9r> and hyphenation patterns for 3 language(s) loaded.
+Babel <3.9r> and hyphenation patterns for 30 language(s) loaded.
 (./llncs.cls
 Document Class: llncs 2015/06/24 v2.20 
  LaTeX document class for Lecture Notes in Computer Science
@@ -1214,14 +1214,19 @@ File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
 )) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2016/04/23 3.9r The Babel package
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
-Language: english 2012/08/20 v3.3p English support from the babel system
+(/usr/share/texlive/texmf-dist/tex/generic/babel-estonian/estonian.ldf
+Language: estonian 2015/08/05 v1.1a Estonian support for the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2016/04/23 3.9r Babel common definitions
 \babel@savecnt=\count299
 \U@D=\dimen322
 )
+Package babel Info: Making " an active character on input line 94.
+Warning: Hyphenation would work better for the T1 encoding.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2012/08/20 v3.3p English support from the babel system
 \l@british = a dialect from \language\l@english 
 \l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
@@ -1235,18 +1240,18 @@ Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
 (./MasterThesis2017.aux)
 \openout1 = `MasterThesis2017.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1337,72 +1342,100 @@ File: siunitx-abbreviations.cfg 2016/03/01 v2.6q siunitx: Abbreviated units
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.14} into 
 your preamble.
- on input line 61.
+ on input line 62.
 
 \c__siunitx_mathsf_int=\count307
-LaTeX Font Info:    Try loading font information for U+lasy on input line 61.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 62.
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 61.
+LaTeX Font Info:    Try loading font information for U+msa on input line 62.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 61.
+LaTeX Font Info:    Try loading font information for U+msb on input line 62.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 \c__siunitx_mathtt_int=\count308
  (./tlsymbols.tex
-(./tlformat.tex)) (./abstract.tex [1
+(./tlformat.tex)) [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¤ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¤ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¶ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¶ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no µ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¤ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no µ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¼ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¤ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no µ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¤ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¼ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¤ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¤ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no µ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no µ in font cmr12!
-
-Overfull \hbox (4.9266pt too wide) in paragraph at lines 15--16
-[]\OT1/cmr/bx/n/12 Abstract in Es-to-nian lan-guage. \OT1/cmr/m/n/12 Ikka lei-d
-ub juh-tumeid,
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[2] (./abstract.tex
+Overfull \hbox (13.99274pt too wide) in paragraph at lines 2--4
+\OT1/cmr/bx/n/14.4 An Eye into the Fu-ture: Lever-ag-ing A-Priori Knowl-
  []
 
-) [3] (./MasterThesis2017.toc)
+Missing character: There is no Ã in font cmbx12!
+Missing character: There is no „ in font cmbx12!
+Missing character: There is no Ã in font cmbx12!
+Missing character: There is no µ in font cmbx12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¤ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¤ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¶ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¶ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no µ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¤ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no µ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¼ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¤ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no µ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¤ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¼ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¤ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¤ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no µ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no µ in font cmr12!
+
+Overfull \hbox (3.40617pt too wide) in paragraph at lines 46--48
+\OT1/cmr/m/n/12 mee-todite tp-suse parane-mist vr-reldes taval-iste PLM-il phin
+evate mee-
+ []
+
+[3]
+Missing character: There is no Ã in font cmbx12!
+Missing character: There is no µ in font cmbx12!
+Missing character: There is no Ã in font cmbx12!
+Missing character: There is no µ in font cmbx12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no „ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¤ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no µ in font cmr12!
+
+Overfull \hbox (7.1228pt too wide) in paragraph at lines 54--56
+\OT1/cmr/m/n/12 riprotsesside En-nus-tus-seire, Ko-r-du-vad Tehis-nr-vivr-gud, 
+Lin-eaarne Aja-
+ []
+
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¼ in font cmr12!
+) [4] (./MasterThesis2017.toc)
 \tf@toc=\write5
 \openout5 = `MasterThesis2017.toc'.
 
- [4
+ [5
 
 
 ] (./introduction.tex
@@ -1411,42 +1444,42 @@ Overfull \hbox (0.11592pt too wide) in paragraph at lines 16--17
 al-go-rithms
  []
 
-[5
+[6
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [6])
-(./background.tex [7]
+ [7])
+(./background.tex [8]
 Overfull \hbox (4.35893pt too wide) in paragraph at lines 26--27
 []\OT1/cmr/m/n/12 Practically speak-ing, the log is a set of pro-cess ex-e-cu-t
 ions (Traces).
  []
 
-<3_event_example.png, id=35, 646.415pt x 201.75375pt>
+<3_event_example.png, id=37, 646.415pt x 201.75375pt>
 File: 3_event_example.png Graphic file (type png)
 
 <use 3_event_example.png>
 Package pdftex.def Info: 3_event_example.png used on input line 39.
 (pdftex.def)             Requested size: 347.12354pt x 108.34201pt.
- [8]
-<4_event_example_csv.png, id=44, 828.09375pt x 189.70876pt>
+ [9]
+<4_event_example_csv.png, id=46, 828.09375pt x 189.70876pt>
 File: 4_event_example_csv.png Graphic file (type png)
 
 <use 4_event_example_csv.png>
 Package pdftex.def Info: 4_event_example_csv.png used on input line 57.
 (pdftex.def)             Requested size: 347.12354pt x 79.5237pt.
- [9 <./3_event_example.png>] [10 <./4_event_example_csv.png>] [11] [12] [13]
+ [10 <./3_event_example.png>] [11 <./4_event_example_csv.png>] [12] [13] [14]
 Overfull \hbox (2.79228pt too wide) in paragraph at lines 269--270
 []\OT1/cmr/m/n/12 Even though the ta-ble is usu-ally large and not so ef-fi-cie
 nt memory-
  []
 
 
-LaTeX Warning: Reference `figure:trace-example-2' on page 14 undefined on input
+LaTeX Warning: Reference `figure:trace-example-2' on page 15 undefined on input
  line 271.
 
-[14]
+[15]
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 309.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
@@ -1457,13 +1490,13 @@ LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15]
+ [16]
 Overfull \hbox (9.40622pt too wide) in paragraph at lines 360--361
 \OT1/cmr/m/n/12 known in NLP com-mu-nity Damerau-Levenshtein sim-i-lar-ity met-
 ric [[]].
  []
 
-[16] [17]
+[17] [18]
 Overfull \hbox (0.11266pt too wide) in paragraph at lines 421--422
  \OT1/cmr/bx/n/12 Breadth-first vari-a-tion of Beam search[] \OT1/cmr/m/n/12 Th
 e breadth-first search
@@ -1472,7 +1505,7 @@ e breadth-first search
 
 Underfull \vbox (badness 1097) has occurred while \output is active []
 
- [18])
+ [19])
 (./relatedwork.tex
 Overfull \hbox (0.5423pt too wide) in paragraph at lines 10--13
 \OT1/cmr/m/n/12 con-cern-ing pre-dic-tive mon-i-tor-ing. Sec-ondly, the state o
@@ -1485,9 +1518,9 @@ Overfull \hbox (4.09782pt too wide) in paragraph at lines 18--19
 ri nets [[]].
  []
 
-[19] [20]
+[20] [21]
 
-LaTeX Warning: Reference `figure:trace-example-2' on page 21 undefined on input
+LaTeX Warning: Reference `figure:trace-example-2' on page 22 undefined on input
  line 45.
 
 
@@ -1498,8 +1531,8 @@ Overfull \hbox (46.83849pt too wide) in paragraph at lines 49--57
 
 Underfull \vbox (badness 1400) has occurred while \output is active []
 
- [21]
-[22] <1.png, id=98, 1049.42062pt x 677.53125pt>
+ [22]
+[23] <1.png, id=101, 1049.42062pt x 677.53125pt>
 File: 1.png Graphic file (type png)
  <use 1.png>
 Package pdftex.def Info: 1.png used on input line 97.
@@ -1507,8 +1540,8 @@ Package pdftex.def Info: 1.png used on input line 97.
 ) (./problem.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [23]
-[24 <./1.png>]
+ [24]
+[25 <./1.png>]
 Overfull \hbox (8.045pt too wide) in paragraph at lines 23--24
 []\OT1/cmr/m/n/12 Also, the ex-em-plary knowl-edge known a-prior might be the w
 eather
@@ -1523,33 +1556,33 @@ Overfull \hbox (5.49919pt too wide) in paragraph at lines 23--24
 
 Underfull \vbox (badness 1281) has occurred while \output is active []
 
- [25]
+ [26]
 Overfull \hbox (25.2421pt too wide) in paragraph at lines 54--56
 []\OT1/cmr/m/n/12 For ex-am-ple, be-ing aware of the fact that \OT1/cmtt/m/n/12
  treatmentA \OT1/cmr/m/n/12 and \OT1/cmtt/m/n/12 treatmentB
  []
 
-) (./approach.tex [26] [27]
-<nocycle-algo-1.png, id=116, 827.09pt x 187.70125pt>
+) (./approach.tex [27] [28]
+<nocycle-algo-1.png, id=119, 827.09pt x 187.70125pt>
 File: nocycle-algo-1.png Graphic file (type png)
  <use nocycle-algo-1.png>
 Package pdftex.def Info: nocycle-algo-1.png used on input line 44.
 (pdftex.def)             Requested size: 289.48582pt x 65.69641pt.
 
-<nocycle-algo-2.png, id=117, 907.39pt x 186.6975pt>
+<nocycle-algo-2.png, id=120, 907.39pt x 186.6975pt>
 File: nocycle-algo-2.png Graphic file (type png)
  <use nocycle-algo-2.png>
 Package pdftex.def Info: nocycle-algo-2.png used on input line 52.
 (pdftex.def)             Requested size: 317.59126pt x 65.3451pt.
 
-<nocycle-algo-3.png, id=118, 968.61874pt x 210.7875pt>
+<nocycle-algo-3.png, id=121, 968.61874pt x 210.7875pt>
 File: nocycle-algo-3.png Graphic file (type png)
 
 <use nocycle-algo-3.png>
 Package pdftex.def Info: nocycle-algo-3.png used on input line 60.
 (pdftex.def)             Requested size: 339.02164pt x 73.77672pt.
 
-<nocycle-algo-4.png, id=119, 1163.34625pt x 205.76875pt>
+<nocycle-algo-4.png, id=122, 1163.34625pt x 205.76875pt>
 File: nocycle-algo-4.png Graphic file (type png)
 
 <use nocycle-algo-4.png>
@@ -1560,10 +1593,10 @@ Overfull \hbox (60.05376pt too wide) in paragraph at lines 68--69
  [] 
  []
 
-[28 <./nocycle-algo-1.png> <./nocycle-algo-2.png>]
+[29 <./nocycle-algo-1.png> <./nocycle-algo-2.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [29 <./nocycle-algo-3.png> <./nocycle-algo-4.png>]
+ [30 <./nocycle-algo-3.png> <./nocycle-algo-4.png>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 136.
 
 
@@ -1573,48 +1606,42 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 136.
 
-<beam-algo-1.png, id=126, 313.17pt x 252.945pt>
+<beam-algo-1.png, id=129, 313.17pt x 252.945pt>
 File: beam-algo-1.png Graphic file (type png)
  <use beam-algo-1.png>
 Package pdftex.def Info: beam-algo-1.png used on input line 174.
 (pdftex.def)             Requested size: 125.26576pt x 101.17621pt.
 
-<beam-algo-2.png, id=127, 307.1475pt x 249.93375pt>
+<beam-algo-2.png, id=130, 307.1475pt x 249.93375pt>
 File: beam-algo-2.png Graphic file (type png)
  <use beam-algo-2.png>
 Package pdftex.def Info: beam-algo-2.png used on input line 182.
 (pdftex.def)             Requested size: 122.85681pt x 99.97173pt.
 
-<beam-algo-3.png, id=128, 429.605pt x 490.83376pt>
-File: beam-algo-3.png Graphic file (type png)
- <use beam-algo-3.png>
-Package pdftex.def Info: beam-algo-3.png used on input line 190.
-(pdftex.def)             Requested size: 171.83894pt x 196.33002pt.
+<beam-algo-3v2.png, id=131, 506.89375pt x 593.21625pt>
+File: beam-algo-3v2.png Graphic file (type png)
+ <use beam-algo-3v2.png>
+Package pdftex.def Info: beam-algo-3v2.png used on input line 190.
+(pdftex.def)             Requested size: 202.7539pt x 237.28229pt.
 
-<beam-algo-4.png, id=129, 422.57875pt x 490.83376pt>
-File: beam-algo-4.png Graphic file (type png)
- <use beam-algo-4.png>
-Package pdftex.def Info: beam-algo-4.png used on input line 198.
-(pdftex.def)             Requested size: 169.0285pt x 196.33002pt.
+<beam-algo-4v2.png, id=132, 512.91624pt x 586.19pt>
+File: beam-algo-4v2.png Graphic file (type png)
+ <use beam-algo-4v2.png>
+Package pdftex.def Info: beam-algo-4v2.png used on input line 198.
+(pdftex.def)             Requested size: 205.16286pt x 234.47185pt.
 
-[30]
+[31]
 
-LaTeX Warning: Text page 31 contains only floats.
+LaTeX Warning: Text page 32 contains only floats.
 
-[31 <./beam-algo-1.png> <./beam-algo-2.png>]
-Underfull \vbox (badness 2173) has occurred while \output is active []
-
- [32 <./beam-algo-3.png> <./beam-algo-4.png>]
+[32 <./beam-algo-1.png> <./beam-algo-2.png>] [33 <./beam-algo-3v2.png>]
+[34 <./beam-algo-4v2.png>]
 Overfull \hbox (40.897pt too wide) in paragraph at lines 230--230
  [][]$\OT1/cmtt/m/n/9 https : / / github . com / yesanton / Process-[]Sequence-
 []Prediction-[]with-[]A-[]priori-[]knowledge$| 
  []
 
-
-Underfull \vbox (badness 3657) has occurred while \output is active []
-
- [33])
-(./evaluation.tex [34]
+) (./evaluation.tex [35]
 Overfull \hbox (6.82239pt too wide) in paragraph at lines 38--38
  [][]$\OT1/cmtt/m/n/9 https : / / data . 4tu . nl / repository / uuid : e8c3a53
 d-[]5301-[]4afb-[]9bcd-[]38e74171ca32$| 
@@ -1626,37 +1653,36 @@ Overfull \hbox (4.66687pt too wide) in paragraph at lines 41--41
 -[]f712-[]4394-[]aebc-[]75976070e91f$\OT1/cmr/m/n/9 .| 
  []
 
-
+[36]
 Overfull \hbox (2.09744pt too wide) in paragraph at lines 47--47
  [][]$\OT1/cmtt/m/n/9 http : / / data . 4tu . nl / repository / uuid : 5f3067df
 -[]f10b-[]45da-[]b98b-[]86ae4c7a310b$| 
  []
 
-[35] [36]
-Overfull \hbox (3.2145pt too wide) in paragraph at lines 88--91
+[37]
+Overfull \hbox (3.2145pt too wide) in paragraph at lines 89--92
 \OT1/cmr/m/n/12 In or-der to eval-u-ate the tech-niques pre-sented in the pa-pe
 r, we adopted
  []
 
-<3_ltl_prom.png, id=154, 247.67531pt x 538.26094pt>
+<3_ltl_prom.png, id=158, 247.67531pt x 538.26094pt>
 File: 3_ltl_prom.png Graphic file (type png)
  <use 3_ltl_prom.png>
-Package pdftex.def Info: 3_ltl_prom.png used on input line 96.
+Package pdftex.def Info: 3_ltl_prom.png used on input line 97.
 (pdftex.def)             Requested size: 196.38695pt x 426.79134pt.
 
-[37]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [38 <./3_ltl_prom.png>] <2_evaluation.png, id=162, 842.14626pt x 869.2475pt>
+[38] [39 <./3_ltl_prom.png>]
+<2_evaluation.png, id=165, 842.14626pt x 869.2475pt>
 File: 2_evaluation.png Graphic file (type png)
-
-<use 2_evaluation.png>
-Package pdftex.def Info: 2_evaluation.png used on input line 202.
+ <use 2_evaluation.png>
+Package pdftex.def Info: 2_evaluation.png used on input line 203.
 (pdftex.def)             Requested size: 347.12354pt x 358.29048pt.
- [39]) (./conclusions.tex [40]
-Underfull \vbox (badness 6032) has occurred while \output is active []
 
- [41 <./2_evaluation.png>] [42]) (./MasterThesis2017.bbl
+[40]
+Underfull \vbox (badness 1424) has occurred while \output is active []
+
+ [41])
+(./conclusions.tex [42 <./2_evaluation.png>] [43]) (./MasterThesis2017.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 6--8
 []\OT1/cmr/m/n/9 3TU Data Cen-ter: BPI Chal-lenge 2011 Event Log (2011),
  []
@@ -1673,25 +1699,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--43
 / doi . org / 10 . 4121 / uuid :
  []
 
-[43]
+[44]
 Underfull \hbox (badness 1852) in paragraph at lines 173--175
 []\OT1/cmr/m/n/9 Steeman, W.: Bpi chal-lenge 2013 (2013), $\OT1/cmtt/m/n/9 http
 s : / / doi . org / 10 . 4121 / uuid :
  []
 
-[44]) [45] (./MasterThesis2017.aux)
+[45]) [46] (./MasterThesis2017.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 38299 strings out of 494945
- 921601 string characters out of 6181033
- 1145098 words of memory out of 5000000
- 40933 multiletter control sequences out of 15000+600000
+ 38359 strings out of 494358
+ 922637 string characters out of 6164527
+ 1148791 words of memory out of 5000000
+ 41026 multiletter control sequences out of 15000+600000
  19058 words of font info for 74 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 62i,18n,96p,10395b,843s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 350 hyphenation exceptions out of 8191
+ 62i,18n,96p,10395b,842s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texliv
@@ -1715,10 +1741,10 @@ nts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/m
 sam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
 bm10.pfb>
-Output written on MasterThesis2017.pdf (45 pages, 707997 bytes).
+Output written on MasterThesis2017.pdf (46 pages, 717410 bytes).
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
- 177 compressed objects within 2 object streams
+ 266 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  78 words of extra memory for PDF output out of 10000 (max. 10000000)
 

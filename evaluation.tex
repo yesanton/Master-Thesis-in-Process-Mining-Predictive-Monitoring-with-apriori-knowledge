@@ -18,12 +18,12 @@ In this section, we provide an evaluation of our predictive business process mon
 			   %  & 		         		     & 		               & %\multicolumn{3}{c}{\textbf{Average}} \\ \cmidrule{5-7}
 		\textbf{Log} &\textbf{\#Tr.}  & \textbf{\#Act.}  & \textbf{avg-TL} & \textbf{avg-CR}  & \textbf{Spars.}\\
 		\midrule
-		EnvLog      & 937    & 299   & 41      & 0.14 & 0.3191 \\
+		EnvLog      & 937    & 381   & 41      & 0.14 & 0.4066 \\
 		HelpDesk    & 3804   & 9     & 3.6       & 0.22 & 0.0024 \\
-		BPIC11       & 1\,143    & 355   & 54       & 5.05 & 0.3897 \\
-		BPIC12       & 13\,087   & 7     & 7.5     & 1.35 & 0.0007 \\
+		BPIC11       & 911    & 424   & 54       & 5.05 & 0.4654 \\
+		BPIC12       & 9\,658   & 6     & 7.5     & 1.35 & 0.0006 \\
 		BPIC13       & 7\,554   & 13    & 7       & 1.45 & 0.0017 \\
-		BPIC17       & 31\,509  & 27    & 18     & 0.46 & 0.0009 \\
+		BPIC17       & 31\,508  & 26    & 18     & 0.46 & 0.0008 \\
 		\bottomrule
 	\end{tabular}
 	\end{scriptsize}
@@ -69,8 +69,9 @@ Also, we wanted to test the algorithm with rules that differ in complexity, or "
 So we derived the a-priori knowledge on the traces of the testing set as follows:
 \begin{enumerate}
 \item We randomly selected 10\% of traces of the testing set (in order not to find rules that are 100\% satisfied in the whole testing set). 
-\item From each trace, we extracted 4 prefixes of lengths corresponding to the 4 integers in the interval $\left[mid-2,mid+2\right]$, where $mid$ is half of the median of the trace lengths (for example median of trace length of BPIC11 is 31, so we take prefixes of lengths 13,14,15, and 16). We derived all suffixes of these prefixes and we used the DeclareMiner ProM plug-in~\cite{Maggi2012} to discover LTL rules satisfied in all those suffixes (Figure~\ref{figure:ltl} shows the LTL extraction from DeclareMiner). 
-\subitem For the weak a-priori knowledge, we randomly selected from the discovered rules one, two or three (depending on the average length of the traces in the log) rules of type $\sometime A$ and we composed them into a single conjunctive formula. 
+\item We used the DeclareMiner ProM plug-in~\cite{Maggi2012} to discover LTL rules satisfied in the set chosen at step 1 (Figure~\ref{figure:ltl} shows the LTL extraction from DeclareMiner). 
+%From each trace, we extracted 4 prefixes of lengths corresponding to the 4 integers in the interval $\left[mid-2,mid+2\right]$, where $mid$ is half of the median of the trace lengths (for example median of trace length of BPIC11 is 31, so we take prefixes of lengths 13,14,15, and 16). We derived all suffixes of these prefixes and we used the DeclareMiner ProM plug-in~\cite{Maggi2012} to discover LTL rules satisfied in all those suffixes (Figure~\ref{figure:ltl} shows the LTL extraction from DeclareMiner).
+\subitem For the weak a-priori knowledge, we randomly selected from the discovered rules one, two or three~\footnote{Depending on the sparsity of the log (see table~\ref{table:dataset}), as a general rule if the sparsity is little (less than 0.001) we choose one rule, if sparsity is very high (more than 0.45) we choose three rules. These parameters were determined by experimentation, allowing formulas to be satisfied on around 50\% of the testing set} rules of type $\sometime A$ and we composed them into a single conjunctive formula. 
 \subitem For the strong a-priori knowledge, we randomly selected one, two or three rules from the discovered rules of type $\always(A \imp \sometime B) \wedge \sometime A$ and we composed them into a single conjunctive formula. 
 
 The schematic form of the rules used in the evaluation is reported in Table~\ref{table:apriori}, where - for the sake of readability - we replace the original activity names with single characters. 

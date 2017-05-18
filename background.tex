@@ -420,14 +420,14 @@ Different evaluation functions can be used for the task. The decision is made up
 
 The breadth-first search begins with an empty node and explores the search space in the breadth-wise order. This type of beam search operates using few priority queues instead of tree structures as in the previous approach. 
 
-The algorithm is reported in the pseudo code listing~\ref{alg:breathfirst} (all elements in priority queues are stored with priority based on some evaluation function)
+The algorithm is reported in the pseudo code listing~\ref{alg:breadthfirst} (all elements in priority queues are stored with priority based on some evaluation function)
 
 The algorithm starts with defining two priority queues on line 1. On line 2, the element given as an input is appended to first queue. The third line defines the condition that calculations will stop that is if the solution tree has reached its bottom (the priority queues s1 and s2 are empty). Line 4 starts the while loop that will iterate over all elements in s1. Lines 5-9 describe that each element from $s1$ either a solution (in that case line 7 returns it) or the next elements are predicted (based on the $elem$) and top $beamsize$ elements are chosen to be added to the $s2$ queue. On line 11, the algorithm is reset for the next step of the beam search. Only best $beamsize$ elements are chosen (others are discarded).
 
 
 \begin{algorithm}
  	\caption{Breath-first Beam search}
-	\label{alg:breathfirst}
+	\label{alg:breadthfirst}
 	\begin{algorithmic}[1]
 		\State define two empty priority queues, $s1$ and $s2$
 		\State add the initial element to $s1$
