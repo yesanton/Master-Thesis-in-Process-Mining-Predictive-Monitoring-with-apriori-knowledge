@@ -25,7 +25,7 @@ A \emph{cycle} in a trace $\sigma \in A^*$ is a sequence of activities repeated 
 
 Practically speaking, the log is a set of process executions (Traces). Trace is a set of events happened in sequence in a process execution.
 
-The sequence is defined by timestamps. They are the first essential part of the process. Every correctly stored process must contain the time stamps of when certain activity was performed. 
+The sequence is defined by timestamps. They are the first essential part of the process. Every correctly stored process must contain the timestamps of when certain activity was performed. 
 
 Trace should have an identification, that is the case ID. Whenever a real world process starts the new case ID is created. For example, in the issue to resolution process, the ID refers to a unique number associated with one instance of the issue raised. 
 
@@ -50,7 +50,7 @@ Furthermore, the logs can contain text information such as comments or emails, b
 
 As for example in the hospital log mentioned above, it might be a parameter with comments from the doctor for patient wellbeing. 
 
-In the data based systems, the log can be stored in different structures. Enterprise Resource Planning (such as SAP, Oracle) systems have their own data format of journaling the data. It can also be CSV spreadsheet (figure~\ref{figure:trace-example-2_csv}) or XES formatted log (shown in figure ~\ref{figure:trace-example-1}).  
+In the data based systems, the log can be stored in different structures. Enterprise Resource Planning (such as SAP, Oracle) systems have their own data format of journaling the data. It can also be CSV spreadsheet (figure~\ref{figure:trace-example-2_csv}) or XES formatted log (shown in Figure ~\ref{figure:trace-example-1}).  
 
 \begin{figure}[!ht]
 	\begin{center}  
@@ -85,7 +85,7 @@ In predictive monitoring historical traces are used to train predictive models, 
 \par
 Many algorithms are applied to solve the above-mentioned problems, for example, classic machine learning algorithms as classification and clustering~\cite{Leontjeva2015}. More complex concepts are also used, such as Markov models~\cite{Leontjeva2015}, time series~\cite{Lam20096986}, and deep learning~\cite{niek96732,evermann,quteprints96732} approaches. 
 \par
-In order to successfully apply these algorithms, it is necessary to have a solid understanding of the process log nature. The aspects that can come into play, are the data types (while the case ID and activity labels are defined as categorical values, we have to deal with time stamps that are basically real-valued, also text comments that are strings or other numerical values such as amounts of money), stationarity (it usually refers to time series data that have a stable mean, variance etc. over time. The best example from process logs is timestamps. One should account that they represent only the moment in an absolute time scale, while algorithms would only work if the input will be a relative measure, such as a difference between timestamps). 
+In order to successfully apply these algorithms, it is necessary to have a solid understanding of the process log nature. The aspects that can come into play, are the data types (while the case ID and activity labels are defined as categorical values, we have to deal with timestamps that are basically real-valued, also text comments that are strings or other numerical values such as amounts of money), stationarity (it usually refers to time series data that have a stable mean, variance etc. over time. The best example from process logs is timestamps. One should account that they represent only the moment in an absolute time scale, while algorithms would only work if the input will be a relative measure, such as a difference between timestamps). 
 \par
 Keeping in mind the definition of the business process log from section~\ref{logs} one can easily find the caveats in the early process mining approaches, that tend to ignore the data payload, taking into consideration only the control-flow (sequence of activities). Some of the approaches do the opposite, that is consider data, without control-flow~\cite{vanderAalst2010,DBLP:journals/is/AalstSS11,Schonenberg2008}. In that case, the traces are considered to be simple sequences. Moreover, methods introduced are usually designed to work in offline fashion. But, to make more accurate, mature, online predictions one should leave out neither payload nor control-flow information. 
 
@@ -268,7 +268,7 @@ One-hot encoding is actually the $v*m$ sized matrix, where each row represents o
 
 Even though the table is usually large and not so efficient memory-wise, it is suitable for neural networks computations (as most of the operations are multiplications, it's easy to multiply and add ones and zeros). 
 
-If we turn the log from figure~\ref{figure:trace-example-2} into the one-hot encoding it will have representation shown in table~\ref{tab:one-hot} (we use only control-flow in this example, that is the activity label).
+If we turn the log from Figure~\ref{figure:trace-example-2_csv} into the one-hot encoding it will have representation shown in table~\ref{tab:one-hot} (we use only control-flow in this example, that is the activity label).
 
 \begin{table}[h]
 	\centering
@@ -426,7 +426,7 @@ The algorithm starts with defining two priority queues on line 1. On line 2, the
 
 
 \begin{algorithm}
- 	\caption{Breath-first Beam search}
+ 	\caption{Breadth-first Beam search}
 	\label{alg:breadthfirst}
 	\begin{algorithmic}[1]
 		\State define two empty priority queues, $s1$ and $s2$

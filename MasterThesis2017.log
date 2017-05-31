@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.5.18)  18 MAY 2017 17:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.5.18)  31 MAY 2017 21:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1395,13 +1395,8 @@ Overfull \hbox (13.99274pt too wide) in paragraph at lines 2--4
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-) [2]
-Overfull \hbox (2.87979pt too wide) in paragraph at lines 49--51
-[]\OT1/cmr/m/n/12 Ariprot-ses-side En-nus-tus-seire, Ko-r-du-vad Tehisn^^?arviv
-~orgud, Lin-eaarne
- []
-
-) [3] (./MasterThesis2017.toc)
+) [2]) [3]
+(./MasterThesis2017.toc)
 \tf@toc=\write5
 \openout5 = `MasterThesis2017.toc'.
 
@@ -1445,10 +1440,6 @@ Overfull \hbox (2.79228pt too wide) in paragraph at lines 269--270
 nt memory-
  []
 
-
-LaTeX Warning: Reference `figure:trace-example-2' on page 14 undefined on input
- line 271.
-
 [14]
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 309.
 
@@ -1489,11 +1480,6 @@ ri nets [[]].
  []
 
 [19] [20]
-
-LaTeX Warning: Reference `figure:trace-example-2' on page 21 undefined on input
- line 45.
-
-
 Overfull \hbox (46.83849pt too wide) in paragraph at lines 49--57
  [][] 
  []
@@ -1512,18 +1498,6 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23]
 [24 <./1.png>]
-Overfull \hbox (8.045pt too wide) in paragraph at lines 23--24
-[]\OT1/cmr/m/n/12 Also, the ex-em-plary knowl-edge known a-prior might be the w
-eather
- []
-
-
-Overfull \hbox (5.49919pt too wide) in paragraph at lines 23--24
-\OT1/cmr/m/n/12 in-for-ma-tion for an agri-cul-tural com-pany that does the har
--vest. Knowl-
- []
-
-
 Underfull \vbox (badness 1281) has occurred while \output is active []
 
  [25]
@@ -1675,46 +1649,48 @@ Underfull \hbox (badness 1852) in paragraph at lines 173--175
 s : / / doi . org / 10 . 4121 / uuid :
  []
 
-[44]) [45] (./MasterThesis2017.aux)
+[44]) [45]
+Overfull \hbox (3.89522pt too wide) in paragraph at lines 248--248
+[]\OT1/cmr/m/n/12 herewith grant the Uni-ver-sity of Tartu a free per-mit (non-
+exclusive
+ []
 
-LaTeX Warning: There were undefined references.
-
- ) 
+[46] (./MasterThesis2017.aux) ) 
 Here is how much of TeX's memory you used:
- 39106 strings out of 494358
- 932743 string characters out of 6164527
+ 39107 strings out of 494358
+ 932739 string characters out of 6164527
  1162775 words of memory out of 5000000
- 41754 multiletter control sequences out of 15000+600000
+ 41755 multiletter control sequences out of 15000+600000
  19058 words of font info for 74 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  62i,18n,96p,10395b,842s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/m
-sam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
-bm10.pfb>
-Output written on MasterThesis2017.pdf (45 pages, 717845 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/symbols/msbm10.pfb>
+Output written on MasterThesis2017.pdf (46 pages, 718980 bytes).
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
- 177 compressed objects within 2 object streams
+ 266 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  78 words of extra memory for PDF output out of 10000 (max. 10000000)
 

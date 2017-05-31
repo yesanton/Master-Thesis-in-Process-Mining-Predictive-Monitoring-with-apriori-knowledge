@@ -42,7 +42,7 @@ When Complex Symbolic Sequences are used instead of Simple Symbolic Sequences (e
 
 Some of the base lines of working with complex symbolic sequences use index-based encodings, and index latest payload encodings mentioned in following paper~\cite{Leontjeva2015}.   
 
-To exemplify this approach for encodings let's again take a look at the log in figure~\ref{figure:trace-example-2}. The Complex Symbolic Sequence form of this log will have following representation:
+To exemplify this approach for encodings let's again take a look at the log in figure~\ref{figure:trace-example-2_csv}. The Complex Symbolic Sequence form of this log will have following representation:
 
 \begin{table}[h]
 	\centering
@@ -90,7 +90,7 @@ Due to the nature of the problem, i.e. sequence to sequence prediction, the recu
 
 The paper by Verenich~\cite{quteprints96732}, suggests the use of Recurrent Neural Networks with sliding windows. Sliding windows is using N events to predict the next one (to predict event $k+1$,  $k..(N+k)$ events are used). The paper by Evermann\cite{evermann} proposes the use if RNN networks with LSTM cells with two hidden layers, 500 dimensions, and 20 steps. They use batches of 20 to train the RNN with back propagation. The evaluation was made on the BPI2012, BPI2013 data sets. They argue that the results with this approach are comparable to state of the art based on clustering and annotating transition system approaches. Also, the paper~\cite{evermann2} suggest developed a software suite for prediction tasks using deep learning and TensorFlow~\cite{tensorflow2015-whitepaper}.
 
-The most recent paper by Tax~\cite{niek96732} uses RNN with LSTM cells to predict the next events. They achieve state of the art performance on most of the logs evaluated. In order to predict next event and time, they use one-hot encoding for event sequence, and few time features (such as the difference between time-stamps, time from midnight, time from the beginning of the week). Using these features they construct a vector to be fed into a recurrent neural network. They are looking for functions $f_a^1$ and $f_t^1$ that are basically the probability distributions over all possible trace continuations. Also, as they now have basically two sequences to train with, that are the sequence of events, and the sequence of time values, the paper suggests the different possible RNN architectures (As shown on figure~\ref{figure:architectureslstm}). 
+The most recent paper by Tax~\cite{niek96732} uses RNN with LSTM cells to predict the next events. They achieve state of the art performance on most of the logs evaluated. In order to predict next event and time, they use one-hot encoding for event sequence, and few time features (such as the difference between timestamps, time from midnight, time from the beginning of the week). Using these features they construct a vector to be fed into a recurrent neural network. They are looking for functions $f_a^1$ and $f_t^1$ that are basically the probability distributions over all possible trace continuations. Also, as they now have basically two sequences to train with, that are the sequence of events, and the sequence of time values, the paper suggests the different possible RNN architectures (As shown on figure~\ref{figure:architectureslstm}). 
 
 \begin{figure}[!ht]
 	\begin{center}  
